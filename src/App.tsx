@@ -1,6 +1,8 @@
 import React from 'react';
 import Year from './year';
 import classnames from 'classnames';
+import NumberFormat from 'react-number-format';
+
 interface IProps {
 }
 
@@ -12,9 +14,10 @@ const App: React.FC<IProps> = ( props: IProps ) => {
 	const [values2020, setValues2020] = React.useState<Array<any>>(defaultValues2020);
 	const [resultsGeneral, setResultsGeneral] = React.useState<number[]>([]);
 	const [resultsAlt, setResultsAlt] = React.useState<number[]>([]);
-	const [fieldsWithErrors, setfieldsWithErrors] = React.useState<string[]>([])
+	const [fieldsWithErrors, setfieldsWithErrors] = React.useState<string[]>([]);
 
 	React.useEffect(init, []);
+	React.useEffect(update, [values2019, values2020]);
 	return (
 		<div className="container">
 			<nav className="navbar navbar-expand-lg navbar-primary">
@@ -54,22 +57,16 @@ const App: React.FC<IProps> = ( props: IProps ) => {
 										<div className="input-group-prepend">
 											<span className="input-group-text">$</span>
 										</div>
-										<input
-											className={classnames('form-control', fieldsWithErrors.includes(`2019${index}`) && "is-invalid")}
-											value={item}
-											onChange={(evt) => {
-												updateArray2019(index, evt);
-												if( !isNaN(evt.target.value as any) ) {
-													if(fieldsWithErrors.includes(`2019${index}`)) {
-														let i = fieldsWithErrors.findIndex((v) => v === `2019${index}`);
-														let oldValues = [...fieldsWithErrors];
-														oldValues.splice(i, 1);
-														setfieldsWithErrors(oldValues);
-													}
-													update();
+										<NumberFormat
+											thousandSeparator=","
+											className={classnames('form-control', fieldsWithErrors.includes(`field-2019-${index}`) && "is-invalid")}
+											value={values2019[index]}
+											onValueChange={({floatValue}) => {
+												updateArray2019(index, floatValue);
+												if( floatValue && Math.sign(floatValue) !== -1 ) {
+													removeError(`field-2019-${index}`);
 												} else {
-													setfieldsWithErrors([...fieldsWithErrors, `2019${index}`]);
-													clear();
+													addError(`field-2019-${index}`);
 												}
 											}}
 										/>
@@ -80,22 +77,16 @@ const App: React.FC<IProps> = ( props: IProps ) => {
 										<div className="input-group-prepend">
 											<span className="input-group-text">$</span>
 										</div>
-										<input
-											className={classnames('form-control', fieldsWithErrors.includes(`2020${index}`) && "is-invalid")}
+										<NumberFormat
+											thousandSeparator=","
+											className={classnames('form-control', fieldsWithErrors.includes(`field-2020-${index}`) && "is-invalid")}
 											value={values2020[index]}
-											onChange={(evt) => {
-												updateArray2020(index, evt);
-												if( !isNaN(evt.target.value as any) ) {
-													if(fieldsWithErrors.includes(`2020${index}`)) {
-														const i = fieldsWithErrors.findIndex((v) => v === `2020${index}`);
-														const oldValues = [...fieldsWithErrors];
-														oldValues.splice(i, 1);
-														setfieldsWithErrors(oldValues);
-													}
-													update();
+											onValueChange={({floatValue}) => {
+												updateArray2020(index, floatValue);
+												if( floatValue && Math.sign(floatValue) !== -1 ) {
+													removeError(`field-2020-${index}`);
 												} else {
-													setfieldsWithErrors([...fieldsWithErrors, `2020${index}`]);
-													clear();
+													addError(`field-2020-${index}`);
 												}
 											}}
 										/>
@@ -115,16 +106,14 @@ const App: React.FC<IProps> = ( props: IProps ) => {
 		</div>
 	);
 
-	function updateArray2019(arrindex: number, event: any) {
+	function updateArray2019(arrindex: number, value: any) {
 		const oldValues = [...values2019];
-		const value = event.target.value;
 		oldValues[arrindex] = value;
 		setValues2019(oldValues);
 	}
 
-	function updateArray2020(arrindex: number, event: any) {
+	function updateArray2020(arrindex: number, value: any) {
 		const oldValues = [...values2020];
-		const value = event.target.value;
 		oldValues[arrindex] = value;
 		setValues2020(oldValues);
 	}
@@ -134,7 +123,24 @@ const App: React.FC<IProps> = ( props: IProps ) => {
 		setResultsGeneral(year.finalGeneralResults);
 		setResultsAlt(year.finalAltResults);
 	}
+
+	function addError(field: string) {
+		if(!fieldsWithErrors.includes(field)) {
+			setfieldsWithErrors([...fieldsWithErrors, field]);
+		}
+	}
+
+	function removeError(field: string) {
+		if(fieldsWithErrors.includes(field)) {
+			const i = fieldsWithErrors.findIndex((v) => v === field);
+			const oldValues = [...fieldsWithErrors];
+			oldValues.splice(i, 1);
+			setfieldsWithErrors(oldValues);
+		}
+	}
+
 	function update() {
+		console.log(fieldsWithErrors.length);
 		if ( fieldsWithErrors.length === 0 ) {
 			const year = new Year(values2019, values2020, [], []);
 			year.getvalues();
