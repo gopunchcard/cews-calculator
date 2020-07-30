@@ -5,9 +5,10 @@
 $enable-wireframe: false;
 
 $navbar-positions: (
-	top: 'TOP',
-	left: 'LEFT',
-	right: 'RIGHT');
+  top: 'TOP',
+  left: 'LEFT',
+  right: 'RIGHT',
+);
 $navbar-position: map-get($navbar-positions, top);
 $navbar-fixed: true; // FUTURE: Handle left and right navbars
 
@@ -25,30 +26,37 @@ $gray-700: #495057 !default;
 $gray-800: #343a40 !default;
 $gray-900: #212529 !default;
 
-$primary: #ed7038;
-$secondary: #6cc24a;
-$tertiary: #21466a;
+$primary: #f05a41;
+$primary-light: mix(white, $primary, 50%);
+$primary-dark: #cc4d37;
+$secondary: #f1a331;
+$secondary-light: mix(white, $secondary, 50%);
+$secondary-dark: mix(black, $secondary, 10%);
+$tertiary: #a9d8b8;
+$tertiary-light: mix(white, $tertiary, 50%);
+$tertiary-dark: mix(black, $tertiary, 15%);
+$quaternary: #f3df6b;
+$quaternary-light: mix(white, $quaternary, 50%);
+$quaternary-dark: mix(black, $quaternary, 5%);
+$quinary: #fcf9d0;
+$quinary-light: #fefce8;
+$quinary-dark: #efebc5;
 $success: #28a745;
 $info: #17a2b8;
 $warning: #ffc107;
 $danger: #dc3545;
-$light: #f0f2f3;
-$dark: #003D4C;
-$white: #fff;
-$lightdark: mix( $dark, $white, 75% );
+$light: #fcfcfc;
+$dark: #003d4c;
 
 @if $enable-wireframe {
-	$primary: $gray-600;
-	$secondary: $gray-400;
-	$tertiary: $gray-700;
+  $primary: $gray-600;
+  $secondary: $gray-400;
+  $tertiary: $gray-700;
 }
 
 $theme-colors: (
-	'primary': $primary,
-	'secondary': $secondary,
-	'tertiary': $tertiary,
-	'white': $white,
-	'lightdark': $lightdark,
+  'primary': $primary,
+  'secondary': $secondary,
 );
 
 //////////////////////////////////////////////////
@@ -65,14 +73,14 @@ $transition-bezier: cubic-bezier(0.4, 0, 0.2, 1);
 
 $spacer: 1rem;
 $spacers: (
-	0: 0,
-	1: $spacer * 0.25,
-	2: $spacer * 0.5,
-	3: $spacer,
-	4: $spacer * 2,
-	5: $spacer * 3,
-	6: $spacer * 4,
-	7: $spacer * 5
+  0: 0,
+  1: $spacer * 0.25,
+  2: $spacer * 0.5,
+  3: $spacer,
+  4: $spacer * 2,
+  5: $spacer * 3,
+  6: $spacer * 4,
+  7: $spacer * 5,
 );
 
 //////////////////////////////////////////////////
@@ -96,12 +104,12 @@ $text-muted: rgba($body-color, 0.4);
 //////////////////////////////////////////////////
 
 $grid-breakpoints: (
-	xs: 0,
-	sm: 576px,
-	md: 768px,
-	lg: 992px,
-	xl: 1200px,
-	xxl: 1600px
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1600px,
 );
 
 //////////////////////////////////////////////////
@@ -112,7 +120,7 @@ $container-max-widths: (
   sm: 576px,
   md: 768px,
   lg: 992px,
-  xl: 1200px
+  xl: 1200px,
 );
 
 //////////////////////////////////////////////////
@@ -145,23 +153,25 @@ $icon-size: 1.715rem;
 // Fonts
 //////////////////////////////////////////////////
 
-$font-family-base: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-$sans-serif-family: $font-family-base;
-
-$font-size-root: 14px;
+$font-size-root-xs: 16px;
+$font-size-root-md: 18px;
 $font-size-base: 1rem;
 
-$line-height-base: 1.5;
+$line-height-base: 1.8;
 
-$h1-font-size: $font-size-base * 2;
+$h1-font-size: $font-size-base * 3;
 $h2-font-size: $font-size-base * 1.75;
 $h3-font-size: $font-size-base * 1.5;
 $h4-font-size: $font-size-base * 1.25;
 $h5-font-size: $font-size-base * 1.125;
 $h6-font-size: $font-size-base;
 
-$headings-font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, serif;
-$headings-font-weight: 700;
+$font-family-monospace: 'Source Code Pro', SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+$font-family-base: 'Open Sans', sans-serif;
+$sans-serif-family: $font-family-base;
+
+$headings-font-family: 'sofia-pro', sans-serif;
+$headings-font-weight: 900;
 $headings-margin-bottom: 0.75rem;
 $headings-line-height: 1.2;
 
@@ -255,7 +265,7 @@ $input-border-color: $gray-400;
 
 $input-label-font-weight: 700;
 
-$input-btn-focus-color: rgba($primary, .25);
+$input-btn-focus-color: rgba($primary, 0.25);
 $input-focus-border-color: $primary;
 
 $input-placeholder-color: $gray-400;
@@ -352,7 +362,7 @@ $page-footer-color: #999;
 $page-footer-spacer-top: $grid-gutter-width * 2;
 $page-footer-spacer-bottom: $grid-gutter-width * 2;
 $page-footer-spacer-top-sm: $grid-gutter-width;
-$page-footer-spacer-bottom-sm: $grid-gutter-width ;
+$page-footer-spacer-bottom-sm: $grid-gutter-width;
 $page-footer-spacer-top-lg: $grid-gutter-width * 3;
 $page-footer-spacer-bottom-lg: $grid-gutter-width * 3;
 
@@ -383,9 +393,16 @@ $modal-inner-padding: $grid-gutter-width;
 //////////////////////////////////////////////////
 
 $datepicker-spacer: $input-btn-padding-x;
-$datepicker-prev-bg: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg fill='#{$link-color}' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M15.41 16.09l-4.58-4.59 4.58-4.59L14 5.5l-6 6 6 6z'/%3E%3C/svg%3E"),'#','%23');
-$datepicker-next-bg: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg fill='#{$link-color}' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z'/%3E%3C/svg%3E"),'#','%23');
-
+$datepicker-prev-bg: str-replace(
+  url("data:image/svg+xml;charset=utf8,%3Csvg fill='#{$link-color}' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M15.41 16.09l-4.58-4.59 4.58-4.59L14 5.5l-6 6 6 6z'/%3E%3C/svg%3E"),
+  '#',
+  '%23'
+);
+$datepicker-next-bg: str-replace(
+  url("data:image/svg+xml;charset=utf8,%3Csvg fill='#{$link-color}' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z'/%3E%3C/svg%3E"),
+  '#',
+  '%23'
+);
 
 //////////////////////////////////////////////////
 // Toast
