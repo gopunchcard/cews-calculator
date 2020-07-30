@@ -5,8 +5,10 @@ interface IProps {
 }
 
 const App: React.FC<IProps> = ( props: IProps ) => {
+	const monthLabels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 	const defaultValues2019 = [83000, 190000, 140000, 100000, 100000, 100000, 100000, 100000, 100000, 100000, 100000, 140000];
 	const defaultValues2020 = [85000, 85000, 140000, 65000, 100000, 60000, 8000, 85000, 8000, 0, 0, 0];
+	const periodStart = 2;
 
 	const [values2019, setValues2019] = React.useState<Array<any>>(defaultValues2019);
 	const [values2020, setValues2020] = React.useState<Array<any>>(defaultValues2020);
@@ -16,39 +18,41 @@ const App: React.FC<IProps> = ( props: IProps ) => {
 
 	React.useEffect(init, []);
 	return (
-		<div className="container">
-			<nav className="navbar navbar-expand-lg navbar-primary">
-				<a className="navbar-brand" href="#">CEWS Calculator</a>
-			</nav>
+		<div className="container py-4">
+			<h1 className="h4 mb-3">
+				Canadian Wage Subsidy Calculator
+			</h1>
 			<div className="row">
-				<div className="col-lg-3">
-					<div className="alert alert-warning">
-						Canada Emergency Wage Subsidy Estimator (Periods 1-9)
-						This estimator reflects the authors’ original understanding of the Canada Emergency Wage Subsidy Rules.  Note that there are many exceptions and variables associated with the rules.  Further, as this program is new, there is limited guidance and court/government interpretation.  Due to the high level of uncertainties, variables, and potential for error, the results of the estimator cannot be relied upon for the filing of a claim, but rather, is meant to be used for estimation purposes.  Professional assistance from your accountant should be sought.  No party associated with the creation, presentation, or distribution of the estimator may be held liable in any way.  Further details on the terms of use can be found here (link this to a disclaimer).
+				<div className="col-lg-4">
+					<div className="alert bg-light small">
+						<h2 className="h6">Canada Emergency Wage Subsidy Estimator (Periods 1-9)</h2>
+						<p>This estimator reflects the authors’ original understanding of the Canada Emergency Wage Subsidy Rules.  Note that there are many exceptions and variables associated with the rules.  Further, as this program is new, there is limited guidance and court/government interpretation.  Due to the high level of uncertainties, variables, and potential for error, the results of the estimator cannot be relied upon for the filing of a claim, but rather, is meant to be used for estimation purposes.  Professional assistance from your accountant should be sought.  No party associated with the creation, presentation, or distribution of the estimator may be held liable in any way.  Further details on the terms of use can be found here (link this to a disclaimer).</p>
 					</div>
 				</div>
-				<div className="col-lg-9">
+				<div className="col-lg-8">
 					<div className="row">
 						<div className="col-lg-2">
 							&nbsp;
 						</div>
-						<div className="col-lg-3">
+						<div className="col-lg-3 text-uppercase text-monospace small">
 							2019
 						</div>
-						<div className="col-lg-3">
+						<div className="col-lg-3 text-uppercase text-monospace small">
 							2020
 						</div>
-						<div className="col-lg-2">
+						<div className="col-lg-2 text-uppercase text-monospace small">
 							General
 						</div>
-						<div className="col-lg-2">
+						<div className="col-lg-2 text-uppercase text-monospace small">
 							Alt.
 						</div>
 					</div>
 					{values2019.map((item, index: number) => {
 						return (
-							<div className="row">
-								<div className="col-lg-2"></div>
+							<div className={`row ${index % 2 && 'bg-light'}`}>
+								<div className="col-lg-2 text-uppercase text-monospace small text-right">
+									{	index - periodStart >= 0 && index - periodStart + 1 } { monthLabels[index] }
+								</div>
 								<div className="col-lg-3">
 									<div className="input-group mb-3">
 										<div className="input-group-prepend">
