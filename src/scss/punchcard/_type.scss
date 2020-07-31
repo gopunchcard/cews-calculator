@@ -1,4 +1,17 @@
 //////////////////////////////////////////////////
+// Root styles
+//////////////////////////////////////////////////
+
+html {
+	font-size: $font-size-root-xs;
+
+	@include media-breakpoint-up(md) {
+		font-size: $font-size-root-md;
+	}
+}
+
+
+//////////////////////////////////////////////////
 // Headings
 //////////////////////////////////////////////////
 
@@ -52,6 +65,10 @@
 
 .text-pre-line {
   white-space: pre-line;
+}
+
+.text-nowrap {
+	white-space: nowrap;
 }
 
 .reduced-em {

@@ -2,9 +2,6 @@
 // Page wrappers
 //////////////////////////////////////////////////
 
-html {
-	font-size: $font-size-root;
-}
 #root {
 	display: flex;
 	flex-direction: column;
@@ -54,32 +51,12 @@ html {
 }
 
 //////////////////////////////////////////////////
-// Spacing helpers
-//////////////////////////////////////////////////
-
-.content-set {
-	> * + * {
-		margin-top: $grid-gutter-width;
-	}
-
-	&-sm {
-		> * + * {
-			margin-top: $grid-gutter-width * 0.75;
-		}
-	}
-
-	@include media-breakpoint-up(lg) {
-		&-lg {
-			> * + * {
-				margin-top: map-get($spacers, 5);
-			}
-		}
-	}
-}
-
-//////////////////////////////////////////////////
 // Style helpers
 //////////////////////////////////////////////////
+
+.border-transparent {
+	border-color: transparent !important;
+}
 
 .disabled {
 	opacity: $disabled-opacity;

@@ -1,92 +1,64 @@
 import React from 'react';
-import Year from './year';
+import Calculator from './Calculator';
 
-interface IProps {
-}
+import GeneralNotes from './content/GeneralNotes';
+import Lead from './content/Lead';
+import Disclaimers from './content/Disclaimers';
+import DisclaimerUse from './content/DisclaimerUse';
+import Attributes from './content/Attributes';
+import GeneralNotesFooterNotes from './content/GeneralNotesFooterNotes';
 
-const App: React.FC<IProps> = (props: IProps) => {
-	const defaultValues2019 = [83000, 190000, 140000, 100000, 100000, 100000, 100000, 100000, 100000, 100000, 100000, 140000];
-	const defaultValues2020 = [85000, 85000, 140000, 65000, 100000, 60000, 8000, 85000, 8000, 0, 0, 0];
+interface IProps { }
 
-	const [values2019, setValues2019] = React.useState<Array<any>>(defaultValues2019);
-	const [values2020, setValues2020] = React.useState<Array<any>>(defaultValues2020);
-
-	let year = new Year(values2019, values2020, [], []);
-	year.getvalues();
-	let results = year.finalGeneralResults;
-	let altResults = year.finalAltResults;
-
+const App: React.FC<IProps> = ( _props: IProps ) => {
 	return (
-		<div className="container">
-			<nav className="navbar navbar-expand-lg navbar-primary">
-				<a className="navbar-brand" href="/#">CEWS Calculator</a>
-			</nav>
-			<div className="row">
-				<div className="col-lg-3">
-					<div className="alert alert-warning">
-						Canada Emergency Wage Subsidy Estimator (Periods 1-9)!!
-						This estimator reflects the authors’ original understanding of the Canada Emergency Wage Subsidy Rules.  Note that there are many exceptions and variables associated with the rules.  Further, as this program is new, there is limited guidance and court/government interpretation.  Due to the high level of uncertainties, variables, and potential for error, the results of the estimator cannot be relied upon for the filing of a claim, but rather, is meant to be used for estimation purposes.  Professional assistance from your accountant should be sought.  No party associated with the creation, presentation, or distribution of the estimator may be held liable in any way.  Further details on the terms of use can be found here (link this to a disclaimer).
+		<article>
+			<section className="container-fluid px-lg-4 bg-texture-senary text-white">
+				<h1 className="d-inline-block h5 mb-4 p-3 text-monospace text-uppercase bg-texture-gray-900 shadow">
+					Canada Emergency Wage Subsidy<br />
+					<small>2.0 Estimator</small>
+				</h1>
+				<div className="row">
+					<div className="col-xl-4">
+						<div className="mt-lg-4 mr-lg-4">
+							<h2 className="display-1 mb-3 mb-lg-4">
+								How much can I get?
+							</h2>
+							<Lead />
+						</div>
 					</div>
-				</div>
-				<div className="col-lg-9">
-					<div className="row">
-						<div className="col-lg-3">
-							2019
-						</div>
-						<div className="col-lg-3">
-							2020
-						</div>
-						<div className="col-lg-3">
-							General
-						</div>
-						<div className="col-lg-3">
-							Alternative</div>
-					</div>
-					{values2019.map((item, index: number) => {
-						return (
-							<div className="row">
-								<div className="col-lg-3">
-									<input
-										className="form-control"
-										value={item}
-										onChange={(val) => updateArray2019(index, val)}
-									/>
-								</div>
-								<div className="col-lg-3">
-									<input
-										className="form-control"
-										value={values2020[index]}
-										onChange={(val) => updateArray2020(index, val)}
-									/>
-								</div>
-								<div className="col-lg-3">
-									{Math.round(results[index] * 100)}%
-								</div>
-								<div className="col-lg-3">
-									{Math.round(altResults[index] * 100)}%
+					<div className="col-xl-8 mt-5 mt-xl-0 hero-block text-dark mb-n5">
+						<div className="punchcard-wrapper shadow">
+							<div className="punchcard">
+								<div className="bg-quinary-light px-3 py-4 px-lg-4">
+									<Calculator />
+									<div className="mt-4">
+										<DisclaimerUse />
+									</div>
 								</div>
 							</div>
-						)
-					})}
+						</div>
+					</div>
 				</div>
-			</div>
-		</div>
+			</section>
+			<section className="py-6">
+				<div className="container pt-6">
+					<GeneralNotes />
+				</div>
+			</section>
+			<section className="py-5 bg-dark text-white">
+				<div className="container">
+					<Attributes />
+				</div>
+			</section>
+			<footer className="py-5 bg-light">
+				<section className="container">
+					<Disclaimers />
+					<GeneralNotesFooterNotes />
+				</section>
+			</footer>
+		</article>
 	);
-
-	function updateArray2019(arrindex: number, event: any) {
-		const oldValues = [...values2019];
-		const value = event.target.value;
-		oldValues[arrindex] = value;
-		setValues2019(oldValues);
-	}
-
-	function updateArray2020(arrindex: number, event: any) {
-		const oldValues = [...values2020];
-		const value = event.target.value;
-		oldValues[arrindex] = value;
-		setValues2020(oldValues);
-	}
-
 };
 
 export default App;

@@ -13,30 +13,32 @@
 // Components
 //------------------------------------------------
 
+@import 'mixins';
+@import 'background';
 @import 'buttons';
 @import 'datepicker';
 @import 'forms';
 // @import 'helpers';
-@import 'tabs';
+// @import 'tabs';
 @import 'icons';
-@import 'loading';
-@import 'modal';
-@import 'navbar';
+// @import 'loading';
+// @import 'modal';
+// @import 'navbar';
 // @import 'pagefooter';
-@import 'pagehero';
+// @import 'pagehero';
 // @import 'pincode';
 @import 'print';
-@import 'quill';
-@import 'reacttable';
+// @import 'quill';
+// @import 'reacttable';
 @import 'scaffolding';
 // @import 'signaturepad';
-@import 'spinner';
+// @import 'spinner';
 @import 'tables';
 @import 'type';
-@import 'virtualizedselect';
+// @import 'virtualizedselect';
 
 //------------------------------------------------
 // Design Language
 //------------------------------------------------
 
-@import 'designlanguage';
+// @import 'designlanguage';
