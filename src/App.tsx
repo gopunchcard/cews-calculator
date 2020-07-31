@@ -2,32 +2,53 @@ import React from 'react';
 import { Modal } from './components';
 import Calculator from './Calculator';
 
+import GeneralNotes from './content/GeneralNotes';
+import Lead from './content/Lead';
+import Disclaimers from './content/Disclaimers';
+import DisclaimerUse from './content/DisclaimerUse';
+import Attributes from './content/Attributes';
+import GeneralNotesFooterNotes from './content/GeneralNotesFooterNotes';
+
 interface IProps {
 }
 
 const App: React.FC<IProps> = ( props: IProps ) => {
 	const [isModalOpen, setIsModalOpen] = React.useState<boolean>(false)
 	return (
-		<div className="container py-4">
-			<h1 className="h2">
-				Canada Emergency Wage Subsidy Estimator <br />
-				<small>(Periods 1-9)</small>
-			</h1>
-			<div className="row">
-				<div className="col-lg-4">
-					<div className="alert bg-light mr-lg-3">
-						<p className="mb-0">This estimator reflects the authors’ original understanding of the Canada Emergency Wage Subsidy Rules.  Note that there are many exceptions and variables associated with the rules.  Further, as this program is new, there is limited guidance and court/government interpretation.  Due to the high level of uncertainties, variables, and potential for error, the results of the estimator cannot be relied upon for the filing of a claim, but rather, is meant to be used for estimation purposes.  Professional assistance from your accountant should be sought.  No party associated with the creation, presentation, or distribution of the estimator may be held liable in any way.  Further details on the terms of use can be found here (link this to a disclaimer).</p>
+		<article>
+			<section className="container-fluid py-4 px-lg-5">
+				<h1 className="h2 mb-0">Canada Emergency Wage Subsidy 2.0 Estimator</h1>
+				<h2 className="h1">
+					How much can I get?
+				</h2>
+				<div className="row">
+					<div className="col-lg-4">
+						<div className="mr-lg-3">
+							<Lead />
+						</div>
 					</div>
-					<button onClick={() => setIsModalOpen(true)}>Open test modal</button>
+					<div className="col-lg-8">
+						<Calculator />
+						<DisclaimerUse />
+					</div>
 				</div>
-				<div className="col-lg-8">
-					<Calculator />
-				</div>
-			</div>
+			</section>
+			<section className="container mt-5">
+				<GeneralNotes />
+			</section>
+			<section className="container mt-5">
+				<Attributes />
+			</section>
+			<footer className="py-5">
+				<section className="container">
+					<Disclaimers />
+					<GeneralNotesFooterNotes />
+				</section>
+			</footer>
 			<Modal isOpen={isModalOpen} onRequestClose={() => setIsModalOpen(false)} shouldCloseOnEsc={true}>
 				hello
 			</Modal>
-		</div>
+		</article>
 	);
 };
 
