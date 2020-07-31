@@ -67,13 +67,16 @@ const App: React.FC<IProps> = ( _props: IProps ) => {
 					<Disclaimers />
 					<GeneralNotesFooterNotes />
 				</section>
-				<section>
-					<div className="text-monospace text-uppercase border-top small mt-6 pt-5 text-center">
+				<section className="text-monospace text-center">
+					<div className="text-uppercase border-top small mt-6 mb-3 pt-5">
 						Built by
 						<a href="https://punchcard.io" target="_blank" rel="noreferrer noopener" aria-label="Punchcard Systems" className="navbar-brand-pcs ml-2">
 							<img src={require('./components/images/logo-punchcard-coloured.svg')} alt="Punchcard Systems Logo" className="w-100" />
 						</a>
 					</div>
+					<a href="https://github.com/gopunchcard/cews-calculator" target="_blank" rel="noreferrer noopener" aria-label="GitHub" className="text-uppercase">
+						GitHub
+					</a> 
 				</section>
 			</footer>
 		</article>
