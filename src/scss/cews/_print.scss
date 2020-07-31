@@ -1,0 +1,9 @@
+@media print {
+	* {
+		color: black !important;	
+	}
+
+	.shadow {
+		box-shadow: none !important;
+	}
+}
