@@ -7,6 +7,7 @@ import Disclaimers from './content/Disclaimers';
 import DisclaimerUse from './content/DisclaimerUse';
 import Attributes from './content/Attributes';
 import GeneralNotesFooterNotes from './content/GeneralNotesFooterNotes';
+import CalculatorInstructions from './content/CalculatorInstructions';
 
 interface IProps { }
 
@@ -14,7 +15,7 @@ const App: React.FC<IProps> = ( _props: IProps ) => {
 	return (
 		<article>
 			<section className="container-fluid px-lg-4 bg-texture-senary text-white">
-				<div className="d-md-flex align-items-md-center mb-4 ">
+				<div className="d-md-flex align-items-md-center mb-4 mb-xl-3">
 					<h1 className="d-inline-block h5 p-3 text-monospace text-uppercase bg-texture-gray-900 shadow">
 						<a href="https://punchcard.io" target="_blank" rel="noreferrer noopener" aria-label="Punchcard Systems" className="d-block d-md-none navbar-brand-pcs mb-3">
 							<img src={require('./components/images/logo-punchcard-inverse-coloured.svg')} alt="Punchcard Systems Logo" className="w-100" />
@@ -42,6 +43,9 @@ const App: React.FC<IProps> = ( _props: IProps ) => {
 						<div className="punchcard-wrapper shadow">
 							<div className="punchcard">
 								<div className="bg-quinary-light px-3 py-4 px-lg-4">
+									<div className="mt-n3 mx-n3 mb-3 mx-lg-n4 mb-lg-4 px-3 pb-3 border-bottom border-dark">
+										<CalculatorInstructions />
+									</div>
 									<Calculator />
 									<div className="mt-4">
 										<DisclaimerUse />
