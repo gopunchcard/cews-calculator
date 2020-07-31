@@ -32,10 +32,10 @@ const Calculator: React.FC<IProps> = ( props: IProps ) => {
 							<thead>
 								<tr className="text-monospace">
 									<th className="px-3">
-										Period
+										<br />Period
 									</th>
 									<th className="px-3">
-										Month
+										Reference<br />Month
 									</th>
 								</tr>
 							</thead>
@@ -66,8 +66,8 @@ const Calculator: React.FC<IProps> = ( props: IProps ) => {
 						<table className="table table-sm table-striped table-borderless mb-0">
 							<thead>
 								<tr>
-									<th>
-										<span className="d-none d-sm-block text-monospace">2019</span>
+									<th className="d-none d-sm-block px-3 px-lg-1 text-monospace">
+										<br className="d-none d-lg-inline" />2019
 									</th>
 								</tr>
 							</thead>
@@ -121,8 +121,8 @@ const Calculator: React.FC<IProps> = ( props: IProps ) => {
 						<table className="table table-sm table-striped table-borderless mb-0">
 							<thead>
 								<tr>
-									<th>
-										<span className="d-none d-sm-block text-monospace">2020</span>
+									<th className="d-none d-sm-block px-3 px-lg-1 text-monospace">
+										<br className="d-none d-lg-inline" />2020
 									</th>
 								</tr>
 							</thead>
@@ -177,13 +177,13 @@ const Calculator: React.FC<IProps> = ( props: IProps ) => {
 					<thead>
 						<tr>
 							<th className="d-lg-none px-3 text-monospace">
-								<span className="text-monospace">Month</span>
+								Reference Month
 							</th>
 							<th className="px-3 text-monospace text-right">
-								<span>General</span>
+								<span><br className="d-none d-lg-inline-block" />General</span>
 							</th>
 							<th className="px-3 text-monospace text-right">
-								<span>Alt.</span>
+								<a href="#general-notes-7"><br className="d-none d-lg-inline-block" />Alt.<sup>7</sup></a>
 							</th>
 						</tr>
 					</thead>

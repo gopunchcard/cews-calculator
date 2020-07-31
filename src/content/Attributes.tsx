@@ -34,7 +34,8 @@ const Attributes: React.FC<IProps> = (_props: IProps) => {
 				<a className="text-primary-light font-weight-bold" href="https://www.videotax.com/" target="_blank" rel="noreferrer noopener" aria-label="Video Tax News">Video Tax News</a>, and {` `}
 				<a className="text-primary-light font-weight-bold" href="https://covidcontinuity.com/" target="_blank" rel="noreferrer noopener" aria-label="Covid Continuity">Covidcontinuity.com</a> {` `}
 				as part of our fight to support and strengthen Canadian businesses and their employees.  
-				We are all in this together – If you have any suggestions for improvements or corrections, please click here (link to an email address).
+				We are all in this together – If you have any suggestions for improvements or corrections, please email {` `}
+				<a className="text-primary-light font-weight-bold" href="mailto:support@punchcard.io" arial-label="Email support@punchcard.io">support@punchcard.io</a>.
 			</p>
 		</React.Fragment>
 	);

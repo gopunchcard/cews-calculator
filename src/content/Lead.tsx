@@ -27,7 +27,8 @@ const Lead: React.FC<IProps> = (_props: IProps) => {
 				(comprised of a top-up subsidy and base subsidy) available from the first dollar of revenue decline “new system”. Periods 5 and 6 are transitional, providing the higher of the claims under the two systems. 
 			</p>
 			<p>
-				Important: The rules for calculating specific subsidies and eligibility are very complex and dynamic. Professional assistance should be sought. See Disclaimer below (link to disclaimer at the bottom of the page).
+				Important: The rules for calculating specific subsidies and eligibility are very complex and dynamic. Professional assistance should be sought. See {` `}
+				<a href="#disclaimers" className="text-primary-light font-weight-bold">Disclaimer below</a>.
 			</p>
 		</React.Fragment>		
 	);

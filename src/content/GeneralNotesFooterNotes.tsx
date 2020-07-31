@@ -44,6 +44,50 @@ const GeneralNotesFooterNotes: React.FC<IProps> = (_props: IProps) => {
 				<li id="general-notes-9">
 					Elections for Periods 5 and 6 – In determining the subsidy under the original method for periods 5 and 6, it is assumed that the decision of whether or not to elect to use the January/February prior reference period has stayed that same for Periods 5-9 as it was for Periods 1-4.
 				</li>
+				<li id="general-notes-10">
+					It is assumed that the business operated throughout January and February of 2020.
+				</li>
+				<li id="general-notes-11">
+					No information entered in the calculator is saved.
+				</li>
+				<li id="general-notes-12">
+					For more information on the subsidy, see the following Government of Canada documents: {` `}
+					<a href="https://www.canada.ca/en/department-finance/news/2020/04/additional-details-on-the-canada-emergency-wage-subsidy0.html" target="_blank" rel="noreferrer noopener">
+						Backgrounder 1
+					</a> {` `}
+					| {` `}
+					<a href="https://www.canada.ca/en/department-finance/news/2020/07/adapting-the-canada-emergency-wage-subsidy-to-protect-jobs-and-promote-growth.html" target="_blank" rel="noreferrer noopener">
+						Backgrounder 2
+					</a> {` `}
+					| {` `}
+					<a href="https://www.canada.ca/en/revenue-agency/services/subsidy/emergency-wage-subsidy.html" target="_blank" rel="noreferrer noopener">
+						Application Process
+					</a> {` `}
+					| {` `}
+					<a href="https://www.canada.ca/en/revenue-agency/services/subsidy/emergency-wage-subsidy/cews-apply-guide.html" target="_blank" rel="noreferrer noopener">
+						Application guide
+					</a> {` `}
+					| {` `}
+					<a href="https://www.canada.ca/en/revenue-agency/services/subsidy/emergency-wage-subsidy/cews-frequently-asked-questions.html" target="_blank" rel="noreferrer noopener">
+						FAQ
+					</a> {` `}
+					| {` `}
+					<a href="https://www.canada.ca/en/revenue-agency/services/subsidy/emergency-wage-subsidy/cews-apply-guide.html" target="_blank" rel="noreferrer noopener">
+						Application guide
+					</a> {` `}
+					| {` `}
+					<a href="https://www.parl.ca/DocumentViewer/en/43-1/bill/C-14/royal-assent" target="_blank" rel="noreferrer noopener">
+						Bill C-14
+					</a> {` `}
+					| {` `}
+					<a href="https://www.parl.ca/LegisInfo/BillDetails.aspx?Language=E&billId=10833096" target="_blank" rel="noreferrer noopener">
+						Bill C-20
+					</a> {` `}
+					| {` `}
+					<a href="https://www.canada.ca/en/revenue-agency/services/benefits/emergency-student-benefit/cesb-statistics.html" target="_blank" rel="noreferrer noopener">
+						Statistics
+					</a>
+				</li>
 			</ol>
 
 		</React.Fragment>
