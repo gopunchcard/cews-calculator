@@ -45,8 +45,8 @@ $success: #28a745;
 $info: #17a2b8;
 $warning: #ffc107;
 $danger: #dc3545;
-$light: #fcfcfc;
-$dark: #003d4c;
+$light: #fafafa;
+$dark: #434443;
 
 @if $enable-wireframe {
   $primary: $gray-600;
@@ -87,9 +87,8 @@ $spacers: (
 // Body
 //////////////////////////////////////////////////
 
-$body-color: #333;
+$body-color: $dark;
 $body-bg: #fff;
-$body-bg-alt: $light;
 
 //////////////////////////////////////////////////
 // Links
@@ -166,7 +165,8 @@ $h4-font-size: $font-size-base * 1.25;
 $h5-font-size: $font-size-base * 1.125;
 $h6-font-size: $font-size-base;
 
-$font-family-monospace: 'Source Code Pro', SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+$font-family-monospace: 'Source Code Pro', SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
+  monospace;
 $font-family-base: 'Open Sans', sans-serif;
 $sans-serif-family: $font-family-base;
 

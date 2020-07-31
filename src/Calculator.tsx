@@ -21,7 +21,7 @@ const Calculator: React.FC<IProps> = ( props: IProps ) => {
 	React.useEffect(init, []);
 	React.useEffect(update, [values2019, values2020]);
 	return (
-		<React.Fragment>
+		<div className="container">
 			<div className="row text-uppercase text-monospace text-right">
 				<div className="col-lg-7 offset-lg-1 font-weight-bold text-center border-right border-left">
 					Enter your revenue below
@@ -52,7 +52,7 @@ const Calculator: React.FC<IProps> = ( props: IProps ) => {
 			</div>
 			{values2019.map((item, index: number) => {
 				return (
-					<div className={classnames('row', index % 2 && 'bg-light')}>
+					<div className={classnames('row', index % 2 && 'bg-light')} key={index}>
 						<div className="col-lg-1 text-uppercase text-monospace small text-right align-self-center">
 							{	index - periodStart >= 0 ? index - periodStart + 1 : '-'}
 						</div>
@@ -116,7 +116,7 @@ const Calculator: React.FC<IProps> = ( props: IProps ) => {
 					</div>
 				)
 			})}					
-		</React.Fragment>
+		</div>
 	);
 
 	function updateArray2019(arrindex: number, value: any) {
