@@ -93,7 +93,7 @@ const Calculator: React.FC<IProps> = ( props: IProps ) => {
 															value={values2019[index]}
 															onValueChange={({floatValue}) => {
 																updateArray2019(index, floatValue);
-																if( floatValue && Math.sign(floatValue) !== -1 ) {
+																if( floatValue !== undefined && Math.sign(floatValue) !== -1 ) {
 																	removeError(`field-2019-${index}`);
 																} else {
 																	addError(`field-2019-${index}`);
@@ -141,7 +141,7 @@ const Calculator: React.FC<IProps> = ( props: IProps ) => {
 															value={values2020[index]}
 															onValueChange={({floatValue}) => {
 																updateArray2020(index, floatValue);
-																if( floatValue && Math.sign(floatValue) !== -1 ) {
+																if( floatValue !== undefined && Math.sign(floatValue) !== -1 ) {
 																	removeError(`field-2020-${index}`);
 																} else {
 																	addError(`field-2020-${index}`);
@@ -189,7 +189,7 @@ const Calculator: React.FC<IProps> = ( props: IProps ) => {
 										<td className="px-3">
 											<div className="form-control px-0 bg-transparent border-transparent text-right">
 												{resultsGeneral[index] !== undefined ? ( 
-													<span className={classnames(resultsGeneral[index] > 0 && 'font-weight-bold')}>{Math.round(resultsGeneral[index] * 100)}%</span>)
+													<span className={classnames(resultsGeneral[index] > 0 && 'font-weight-bold')}>{round(resultsGeneral[index])}%</span>)
 												: 
 													"-"
 												}
@@ -198,7 +198,7 @@ const Calculator: React.FC<IProps> = ( props: IProps ) => {
 										<td className="px-3">
 											<div className="form-control px-0 bg-transparent border-transparent text-right">
 												{resultsAlt[index] !== undefined ? (
-													<span className={classnames(resultsAlt[index] > 0 && 'font-weight-bold')}>{Math.round(resultsAlt[index] * 100)}%</span>)
+													<span className={classnames(resultsAlt[index] > 0 && 'font-weight-bold')}>{round(resultsAlt[index])}%</span>)
 												:
 													"-"
 												}
@@ -207,6 +207,30 @@ const Calculator: React.FC<IProps> = ( props: IProps ) => {
 									</tr>
 								)
 							})}
+							<tr>
+								<td className="px-3 text-uppercase text-monospace small text-nowrap align-middle d-lg-none">
+									<small className="d-block mt-n2">
+									</small>
+								</td>
+								<td className="px-3">
+									<div className="form-control px-0 bg-transparent border-transparent text-right">
+										{resultsGeneral[0] !== undefined ? ( 
+											<span className="font-weight-bold">{round(showAverage(resultsGeneral))}%</span>)
+										: 
+											"-"
+										}
+									</div>
+								</td>
+								<td className="px-3">
+									<div className="form-control px-0 bg-transparent border-transparent text-right">
+										{resultsAlt[0] !== undefined ? ( 
+											<span className="font-weight-bold">{round(showAverage(resultsAlt))}%</span>)
+										: 
+											"-"
+										}
+									</div>
+								</td>
+							</tr>
 						</tbody>
 					</table>
 				</div>
@@ -245,6 +269,18 @@ const Calculator: React.FC<IProps> = ( props: IProps ) => {
 			oldValues.splice(i, 1);
 			setfieldsWithErrors(oldValues);
 		}
+	}
+
+	function round(input: number) {
+		return Math.round(input * 100);
+	}
+
+	function showAverage( input: number[] ) {
+		const numItems = input.length;
+		let total = input.reduce(function(a, b){
+			return a + b;
+		}, 0);
+		return total / numItems;	
 	}
 
 	function update() {
