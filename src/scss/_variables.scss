@@ -55,8 +55,10 @@ $dark: #434443;
 }
 
 $theme-colors: (
-  'primary': $primary,
-  'secondary': $secondary,
+	'primary': $primary,
+	'secondary': $secondary,
+	'quinary': $quinary,
+	'quinary-light': $quinary-light,
 );
 
 //////////////////////////////////////////////////
@@ -203,7 +205,7 @@ $small-font-size: 85%;
 
 $table-hover-bg: mix($primary, $gray-100, 2%);
 
-$table-border-width: 1px;
+$table-border-width: $border-width;
 
 $table-head-cell-padding-y: 0.3rem;
 
@@ -214,7 +216,7 @@ $table-highlight-border: $table-highlight-bg-hover;
 $table-icon-padding-y: 0.62rem;
 $table-icon-padding-x: 0.75rem;
 
-$table-cell-padding-sm: 0.5rem;
+$table-cell-padding-sm: 0.25rem;
 
 //////////////////////////////////////////////////
 // Buttons
@@ -261,6 +263,7 @@ $tab-active-bg: transparent;
 
 $form-group-margin-bottom: 1.75rem;
 
+$input-bg: mix(#fff, $quinary-light, 50%);
 $input-border-color: $gray-400;
 
 $input-label-font-weight: 700;

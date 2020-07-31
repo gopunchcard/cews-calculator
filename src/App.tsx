@@ -21,7 +21,7 @@ const App: React.FC<IProps> = ( _props: IProps ) => {
 					<small>2.0 Estimator</small>
 				</h1>
 				<div className="row">
-					<div className="col-lg-4">
+					<div className="col-xl-4">
 						<div className="mt-lg-4 mr-lg-4">
 							<h2 className="display-1 mb-3 mb-lg-4">
 								How much can I get?
@@ -29,10 +29,12 @@ const App: React.FC<IProps> = ( _props: IProps ) => {
 							<Lead />
 						</div>
 					</div>
-					<div className="col-lg-8 mt-5 mt-lg-0">
-						<div className="p-4 bg-white text-dark shadow">
+					<div className="col-xl-8 mt-5 mt-xl-0">
+						<div className="px-3 py-4 px-md-4 bg-quinary-light text-dark shadow">
 							<Calculator />
-							<DisclaimerUse />
+							<div className="mt-4">
+								<DisclaimerUse />
+							</div>
 						</div>
 					</div>
 				</div>
