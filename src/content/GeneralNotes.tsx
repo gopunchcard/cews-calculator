@@ -20,17 +20,17 @@ const GeneralNotes: React.FC<IProps> = (_props: IProps) => {
 				<strong>Safe Harbour –</strong> If eligible for the immediately preceding period based on that period’s revenue reduction percentage<sup>8</sup>, you will also be eligible in the current period<sup>2</sup>.
 			</p>
 			<p>
-				<strong>Election –</strong> If an election is made, you can use the average monthly gross revenues from January and February of 2020 as the prior reference period<sup>3</sup> gross revenue. We refer to this as the “Alternative Calculation”<sup>7</sup>. The election must be used for all of these periods (1-4). Revenue declines of at least 30% are eligible
+				<strong>Election –</strong> If an election is made, you can use the average monthly gross revenues from January and February of 2020 as the prior reference period<sup>3</sup> gross revenue. We refer to this as the “Alternative Calculation”<sup>7</sup>. The election must be used for all of these periods (1-4). Revenue declines of at least 30% are eligible.
 			</p>
 			<p>
 				<strong>Subsidy Calculation –</strong> If eligible under one of the above possibilities, the subsidy would be the greater of:
 			</p>
 			<ul>
 				<li>
-					75% of the amount of eligible remuneration paid, up to a maximum benefit of $847 per week; and
+					75% of the amount of eligible remuneration paid, up to a maximum benefit of $847 per week, per eligible employee; and
 				</li>
 				<li>
-					the amount of remuneration paid, up to a maximum benefit of $847 per week or 75% of the employee's pre-crisis<sup>4</sup> weekly remuneration, whichever is less.
+					the amount of remuneration paid, up to a maximum benefit of $847 per week per eligible employee or 75% of the employee's pre-crisis<sup>4</sup> weekly remuneration, whichever is less.
 				</li>
 			</ul>
 			<p>

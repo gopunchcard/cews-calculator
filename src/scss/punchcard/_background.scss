@@ -1,7 +1,9 @@
-.bg-texture-senary {
-	@include bg-texture($senary, 0.9);
-}
+@media screen {
+	.bg-texture-senary {
+		@include bg-texture($senary, 0.9);
+	}
 
-.bg-texture-gray-900 {
-	@include bg-texture($gray-900, 0.85);
+	.bg-texture-gray-900 {
+		@include bg-texture($gray-900, 0.85);
+	}
 }
