@@ -168,6 +168,9 @@ const Calculator: React.FC<IProps> = ( props: IProps ) => {
 						</table>
 					</div>
 				</div>
+				<div className="text-center text-lg-left">
+					<button className="btn btn-outline-primary mt-4" onClick={reset}>Reset fields</button>
+				</div>
 			</div>
 			<div className="col-lg-auto mt-4 mt-lg-0 pt-4 px-lg-0 pt-lg-3 bg-quinary">
 				<h2 className="h6 px-sm-3 text-sm-center text-monospace text-uppercase">
@@ -263,11 +266,18 @@ const Calculator: React.FC<IProps> = ( props: IProps ) => {
 		oldValues[arrindex] = value;
 		setValues2020(oldValues);
 	}
+
 	function init() {
 		const year = new Year(defaultValues2019, defaultValues2020, [], []);
 		year.getvalues();
 		setResultsGeneral(year.finalGeneralResults);
 		setResultsAlt(year.finalAltResults);
+	}
+
+	function reset() {
+		setValues2019(defaultValues2019);
+		setValues2020(defaultValues2020);
+		init();
 	}
 
 	function addError(field: string) {
