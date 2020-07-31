@@ -14,14 +14,25 @@ const App: React.FC<IProps> = ( _props: IProps ) => {
 	return (
 		<article>
 			<section className="container-fluid px-lg-4 bg-texture-senary text-white">
-				<h1 className="d-inline-block h5 mb-4 p-3 text-monospace text-uppercase bg-texture-gray-900 shadow">
-					Canada Emergency Wage Subsidy<br />
-					<small>2.0 Estimator</small>
-				</h1>
+				<div className="d-md-flex align-items-md-center mb-4 ">
+					<h1 className="d-inline-block h5 p-3 text-monospace text-uppercase bg-texture-gray-900 shadow">
+						<a href="https://punchcard.io" target="_blank" rel="noreferrer noopener" aria-label="Punchcard Systems" className="d-block d-md-none navbar-brand-pcs mb-3">
+							<img src={require('./components/images/logo-punchcard-inverse-coloured.svg')} alt="Punchcard Systems Logo" className="w-100" />
+						</a>
+						Canada Emergency Wage Subsidy<br />
+						<small>2.0 Estimator</small>
+					</h1>
+					<div className="d-none d-md-block ml-md-auto text-monospace text-uppercase">
+						Built by
+						<a href="https://punchcard.io" target="_blank" rel="noreferrer noopener" aria-label="Punchcard Systems" className="navbar-brand-pcs ml-2">
+							<img src={require('./components/images/logo-punchcard-inverse-coloured.svg')} alt="Punchcard Systems Logo" className="w-100" />
+						</a>
+					</div>
+				</div>
 				<div className="row">
 					<div className="col-xl-4">
-						<div className="mt-lg-4 mr-lg-4">
-							<h2 className="display-1 mb-3 mb-lg-4">
+						<div className="mt-xl-4 mr-xl-4">
+							<h2 className="display-1 mb-3 mb-xl-4">
 								How much can I get?
 							</h2>
 							<Lead />
@@ -55,6 +66,14 @@ const App: React.FC<IProps> = ( _props: IProps ) => {
 				<section className="container">
 					<Disclaimers />
 					<GeneralNotesFooterNotes />
+				</section>
+				<section>
+					<div className="text-monospace text-uppercase border-top small mt-6 pt-5 text-center">
+						Built by
+						<a href="https://punchcard.io" target="_blank" rel="noreferrer noopener" aria-label="Punchcard Systems" className="navbar-brand-pcs ml-2">
+							<img src={require('./components/images/logo-punchcard-coloured.svg')} alt="Punchcard Systems Logo" className="w-100" />
+						</a>
+					</div>
 				</section>
 			</footer>
 		</article>
