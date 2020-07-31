@@ -8,7 +8,7 @@ interface IProps {
 
 const Calculator: React.FC<IProps> = ( props: IProps ) => {
 	const monthLabels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-	const defaultValues2019 = [83000, 190000, 140000, 100000, 100000, 100000, 100000, 100000, 100000, 100000, 100000, 140000];
+	const defaultValues2019 = [0, 0, 140000, 100000, 100000, 100000, 100000, 100000, 100000, 100000, 100000, 140000];
 	const defaultValues2020 = [85000, 85000, 140000, 65000, 100000, 60000, 8000, 85000, 8000, 0, 0, 0];
 	const periodStart = 2;
 
@@ -43,7 +43,7 @@ const Calculator: React.FC<IProps> = ( props: IProps ) => {
 								<tbody>
 									{values2019.map((item, index: number) => {
 										return (
-											<tr key={index} className="">
+											<tr key={`row-labels-${index}`}>
 												<td className="px-3">
 													<div className="form-control bg-transparent border-transparent px-0">
 														<small className="text-uppercase text-monospace text-right">{	index - periodStart >= 0 ? index - periodStart + 1 : '-'}</small>
@@ -75,7 +75,7 @@ const Calculator: React.FC<IProps> = ( props: IProps ) => {
 								<tbody>
 									{values2019.map((item, index: number) => {
 										return (
-											<tr key={index}>
+											<tr key={`column-2019-${index}`}>
 												<td className="d-lg-none pl-3 text-uppercase text-monospace small text-nowrap align-middle">
 													{ monthLabels[index] }
 													<small className="d-block mt-n2">
@@ -88,9 +88,16 @@ const Calculator: React.FC<IProps> = ( props: IProps ) => {
 															<span className="input-group-text">$</span>
 														</div>
 														<NumberFormat
+															disabled={index < 2} // disabling january & february 2019
 															thousandSeparator=","
-															className={classnames('form-control text-right', fieldsWithErrors.includes(`field-2019-${index}`) && "is-invalid")}
-															value={values2019[index]}
+															className={
+																classnames(
+																	'form-control text-right',
+																	fieldsWithErrors.includes(`field-2019-${index}`) && "is-invalid",
+																	index < 2 && 'bg-transparent', // disabling january & february 2019
+																)
+															}
+															value={index >= 2 && values2019[index]}
 															onValueChange={({floatValue}) => {
 																updateArray2019(index, floatValue);
 																if( floatValue !== undefined && Math.sign(floatValue) !== -1 ) {
@@ -123,7 +130,7 @@ const Calculator: React.FC<IProps> = ( props: IProps ) => {
 								<tbody>
 									{values2020.map((item, index: number) => {
 										return (
-											<tr key={index}>
+											<tr key={`column-2020-${index}`}>
 												<td className="d-lg-none pl-3 text-uppercase text-monospace small text-nowrap align-middle">
 													{ monthLabels[index] }
 													<small className="d-block mt-n2">
@@ -179,7 +186,7 @@ const Calculator: React.FC<IProps> = ( props: IProps ) => {
 						<tbody>
 							{values2019.map((item, index: number) => {
 								return (
-									<tr key={index}>
+									<tr key={`column-results-${index}`}>
 										<td className="px-3 text-uppercase text-monospace small text-nowrap align-middle d-lg-none">
 											{ monthLabels[index] }
 											<small className="d-block mt-n2">
@@ -284,7 +291,6 @@ const Calculator: React.FC<IProps> = ( props: IProps ) => {
 	}
 
 	function update() {
-		console.log(fieldsWithErrors.length);
 		if ( fieldsWithErrors.length === 0 ) {
 			const year = new Year(values2019, values2020, [], []);
 			year.getvalues();
