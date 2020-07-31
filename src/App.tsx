@@ -1,5 +1,4 @@
 import React from 'react';
-import { Modal } from './components';
 import Calculator from './Calculator';
 
 import GeneralNotes from './content/GeneralNotes';
@@ -12,7 +11,6 @@ import GeneralNotesFooterNotes from './content/GeneralNotesFooterNotes';
 interface IProps { }
 
 const App: React.FC<IProps> = ( _props: IProps ) => {
-	const [isModalOpen, setIsModalOpen] = React.useState<boolean>(false)
 	return (
 		<article>
 			<section className="container-fluid px-lg-4 bg-texture-senary text-white">
@@ -59,9 +57,6 @@ const App: React.FC<IProps> = ( _props: IProps ) => {
 					<GeneralNotesFooterNotes />
 				</section>
 			</footer>
-			<Modal isOpen={isModalOpen} onRequestClose={() => setIsModalOpen(false)} shouldCloseOnEsc={true}>
-				hello
-			</Modal>
 		</article>
 	);
 };
