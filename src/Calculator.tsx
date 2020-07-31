@@ -169,7 +169,7 @@ const Calculator: React.FC<IProps> = ( props: IProps ) => {
 					</div>
 				</div>
 			</div>
-			<div className="col-lg-auto mt-4 mt-lg-0 py-4 px-lg-0 py-lg-3 bg-quinary">
+			<div className="col-lg-auto mt-4 mt-lg-0 pt-4 px-lg-0 pt-lg-3 bg-quinary">
 				<h2 className="h6 px-sm-3 text-sm-center text-monospace text-uppercase">
 					Estimated subsidy
 				</h2>
@@ -218,9 +218,13 @@ const Calculator: React.FC<IProps> = ( props: IProps ) => {
 								</tr>
 							)
 						})}
-						<tr>
+						<tr className="bg-quinary border-top border-dark">
+							<td colSpan={2} className="d-none d-lg-table-cell pb-0 text-uppercase text-monospace small text-nowrap text-center">Average Subsidy</td>
+						</tr>
+						<tr className="bg-quinary">
 							<td className="px-3 text-uppercase text-monospace small text-nowrap align-middle d-lg-none">
-								<small className="d-block mt-n2">
+								<small className="font-weight-bold">
+									Average Subsidy
 								</small>
 							</td>
 							<td className="px-3">
