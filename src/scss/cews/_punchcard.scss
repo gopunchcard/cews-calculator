@@ -1,0 +1,104 @@
+.punchcard-wrapper {
+	padding: 0;
+	position: relative;
+	border-radius: $border-radius-lg;
+	overflow: hidden;
+	z-index: 2;
+
+	&::before,
+	&::after {
+		content: '';
+		display: block;
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		width: $pc-size-x-xs;
+		z-index: 1;
+	}
+	
+	&::before {
+		left: 0;
+		background-color: $quinary-light;
+		border-right: $border-width solid;
+	}
+
+	&::after {
+		right: 0;
+		background-color: $quinary-light;
+		border-left: $border-width solid;
+		clip-path: polygon(
+			0 0, /* top left */
+			0 0, /* top left */
+			calc(100% - #{$pc-size-x-lg}) 0%, /* top right */
+			100% $pc-size-x-lg, /* top right */
+			100% 100%, /* bottom right */
+			100% 100%, /* bottom right */
+			0 100%, /* bottom left */
+			0 100%  /* bottom left */
+		);
+	}
+
+	@include media-breakpoint-up(lg) {
+		&::before,
+		&::after {
+			width: $pc-size-x-lg;
+		}
+	}
+}
+
+.punchcard {
+	position: relative;
+	margin: 0 $pc-size-x-xs;
+	z-index: 2;
+
+	&::before,
+	&::after {
+		display: block;
+		height: $spacer * 2;
+		padding-left: $spacer;
+		z-index: 1;
+		background-color: $quinary-light;
+		font-family: $font-family-monospace;
+		font-size: 0.7rem;
+		line-height: $spacer * 2;
+	}
+	
+	&::before {
+		content: 'CANADA EMERGENCY WAGE SUBSIDY';
+		background-color: $quinary-light;
+		border-bottom: $border-width solid;
+		clip-path: polygon(
+			0 0, /* top left */
+			0 0, /* top left */
+			calc(100% - #{$pc-size-x-lg - $pc-size-x-xs}) 0%, /* top right */
+			100% $pc-size-x-lg - $pc-size-x-xs, /* top right */
+			100% 100%, /* bottom right */
+			100% 100%, /* bottom right */
+			0 100%, /* bottom left */
+			0 100%  /* bottom left */
+		);
+	}
+
+	&::after {
+		content: '2.0 ESTIMATOR';
+		border-top: $border-width solid;
+	}
+
+	@include media-breakpoint-up(lg) {
+		margin-left: $pc-size-x-lg;
+		margin-right: $pc-size-x-lg;
+	
+		&::before {
+			clip-path: none;
+		}
+
+		&::after {
+			padding-left: $spacer;
+			background-color: $quinary-light;
+			border-top: $border-width solid;
+			font-family: $font-family-monospace;
+			font-size: 0.7rem;
+			line-height: $spacer * 2;
+		}
+	}
+}

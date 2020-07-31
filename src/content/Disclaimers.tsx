@@ -4,7 +4,7 @@ interface IProps { }
 
 const Disclaimers: React.FC<IProps> = (_props: IProps) => {
 	return (
-		<div className="small">
+		<div className="small" id="disclaimers">
 			<p>
 				The calculator is intended for financial professionals.
 			</p>

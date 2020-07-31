@@ -25,7 +25,7 @@ const Calculator: React.FC<IProps> = ( props: IProps ) => {
 			<div className="row mx-lg-0">
 				<div className="col-lg px-lg-0 py-lg-3">
 					<div className="row mx-lg-0">
-						<h2 className="h6 d-none d-sm-block col-12 px-lg-0 text-sm-center text-monospace text-uppercase">
+						<h2 className="d-none d-sm-block col-12 px-lg-0 h6 text-sm-center text-monospace text-uppercase">
 							Enter your revenue below
 						</h2>
 						<div className="d-none d-lg-block col-lg-auto px-lg-0">
@@ -61,7 +61,7 @@ const Calculator: React.FC<IProps> = ( props: IProps ) => {
 							</table>	
 						</div>
 						<div className="col-sm-6 col-lg px-lg-0">
-							<h2 className="font-weight-bold d-sm-none">
+							<h2 className="d-sm-none h6 text-monospace text-uppercase">
 								Enter your 2019 revenue
 							</h2>
 							<table className="table table-sm table-striped table-borderless mb-0">
@@ -109,7 +109,7 @@ const Calculator: React.FC<IProps> = ( props: IProps ) => {
 							</table>
 						</div>
 						<div className="col-sm-6 col-lg mt-4 mt-sm-0 px-lg-0">
-							<h2 className="font-weight-bold d-sm-none">
+							<h2 className="d-sm-none h6 text-monospace text-uppercase">
 								Enter your 2020 revenue
 							</h2>
 							<table className="table table-sm table-striped table-borderless mb-0">
@@ -159,7 +159,7 @@ const Calculator: React.FC<IProps> = ( props: IProps ) => {
 					</div>
 				</div>
 				<div className="col-lg-auto mt-4 mt-lg-0 py-4 px-lg-0 py-lg-3 bg-quinary">
-					<h2 className="h6 px-3 text-sm-center text-monospace text-uppercase">
+					<h2 className="h6 px-sm-3 text-sm-center text-monospace text-uppercase">
 						Estimated subsidy
 					</h2>
 					<table className="table table-sm table-striped table-borderless mb-0">

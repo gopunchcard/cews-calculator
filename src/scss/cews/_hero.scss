@@ -1,0 +1,19 @@
+.hero-block {
+	position: relative;
+
+	&::before,
+	&::after {
+		content: '';
+		display: block;
+		position: absolute;
+		z-index: 0;
+	}
+
+	&::before {
+		@include bg-slash(rgba($light, 0.1));
+		top: -$spacer * 1.5;
+		left: -$spacer;
+		right: 0;
+		height: $spacer * 4;
+	}
+}

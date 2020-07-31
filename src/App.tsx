@@ -15,8 +15,8 @@ const App: React.FC<IProps> = ( _props: IProps ) => {
 	const [isModalOpen, setIsModalOpen] = React.useState<boolean>(false)
 	return (
 		<article>
-			<section className="container-fluid pt-3 pb-6 p-lg-4 pb-lg-7 bg-dark text-white">
-				<h1 className="h5 mb-4 text-monospace text-uppercase">
+			<section className="container-fluid px-lg-4 bg-texture-senary text-white">
+				<h1 className="d-inline-block h5 mb-4 p-3 text-monospace text-uppercase bg-texture-gray-900 shadow">
 					Canada Emergency Wage Subsidy<br />
 					<small>2.0 Estimator</small>
 				</h1>
@@ -29,20 +29,26 @@ const App: React.FC<IProps> = ( _props: IProps ) => {
 							<Lead />
 						</div>
 					</div>
-					<div className="col-xl-8 mt-5 mt-xl-0">
-						<div className="px-3 py-4 px-md-4 bg-quinary-light text-dark shadow">
-							<Calculator />
-							<div className="mt-4">
-								<DisclaimerUse />
+					<div className="col-xl-8 mt-5 mt-xl-0 hero-block text-dark mb-n5">
+						<div className="punchcard-wrapper shadow">
+							<div className="punchcard">
+								<div className="bg-quinary-light px-3 py-4 px-lg-4">
+									<Calculator />
+									<div className="mt-4">
+										<DisclaimerUse />
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</section>
-			<section className="container mt-6">
-				<GeneralNotes />
+			<section className="py-6">
+				<div className="container pt-6">
+					<GeneralNotes />
+				</div>
 			</section>
-			<section className="mt-6 py-5 bg-dark text-white">
+			<section className="py-5 bg-dark text-white">
 				<div className="container">
 					<Attributes />
 				</div>
