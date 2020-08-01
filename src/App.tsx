@@ -11,7 +11,7 @@ import CalculatorInstructions from './content/CalculatorInstructions';
 
 interface IProps { }
 
-const App: React.FC<IProps> = ( _props: IProps ) => {
+const App: React.FC<IProps> = (_props: IProps) => {
 	return (
 		<article>
 			<section className="container-fluid px-lg-4 bg-texture-senary text-white">
@@ -24,9 +24,13 @@ const App: React.FC<IProps> = ( _props: IProps ) => {
 						<small>2.0 Estimator</small>
 					</h1>
 					<div className="d-none d-md-block ml-md-auto text-monospace text-uppercase">
-						Built by
+						<a href="https://www.videotax.com/" target="_blank" rel="noreferrer noopener" aria-label="Video Tax News" className="navbar-brand-pcs ml-2">
+							<img src={require('./components/images/logo-vtn-inverse.png')} alt="Video Tax Nees" className="w-100" />
+						</a>
 						<a href="https://punchcard.io" target="_blank" rel="noreferrer noopener" aria-label="Punchcard Systems" className="navbar-brand-pcs ml-2">
 							<img src={require('./components/images/logo-punchcard-inverse-coloured.svg')} alt="Punchcard Systems Logo" className="w-100" />
+
+
 						</a>
 					</div>
 				</div>
@@ -80,7 +84,7 @@ const App: React.FC<IProps> = ( _props: IProps ) => {
 					</div>
 					<a href="https://github.com/gopunchcard/cews-calculator" target="_blank" rel="noreferrer noopener" aria-label="GitHub" className="text-uppercase">
 						GitHub
-					</a> 
+					</a>
 				</section>
 			</footer>
 		</article>
