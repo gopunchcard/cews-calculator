@@ -108,8 +108,8 @@ const Calculator: React.FC<IProps> = ( props: IProps ) => {
 													</div>
 												) : (
 													<div className="form-control bg-transparent border-transparent px-0 text-right text-monospace">
-														<small className="d-inline-flex align-items-center px-2 bg-quinary-light border border-dark align-middle mx-n2 mx-lg-n2">
-															Field for Alt.<IconArrowRight className="ml-1" />
+														<small className="d-inline-flex align-items-center align-middle mx-n4 mx-lg-n3">
+															Field for Alt.<IconArrowRight />
 														</small>
 													</div>
 												)}
