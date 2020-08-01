@@ -4,7 +4,7 @@ interface IProps { }
 
 const CalculatorInstructions: React.FC<IProps> = (_props: IProps) => {
 	return (
-		<ol className="mb-0 text-monospace small font-weight-bold">
+		<ol className="mb-0 pl-4 text-monospace small font-weight-bold">
 			<li>
 				Enter the gross income for the month relating to period you want to claim. 
 			</li>

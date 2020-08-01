@@ -2,14 +2,14 @@ import React from 'react';
 import Year from './year';
 import classnames from 'classnames';
 import NumberFormat from 'react-number-format';
+import { ReactComponent as IconArrowRight } from './components/icons/icon-arrow-right.svg';
 
-interface IProps {
-}
+interface IProps { }
 
 const Calculator: React.FC<IProps> = ( props: IProps ) => {
 	const monthLabels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-	const defaultValues2019 = [0, 0, 140000, 100000, 100000, 100000, 100000, 100000, 100000, 100000, 100000, 140000];
-	const defaultValues2020 = [85000, 85000, 140000, 65000, 100000, 60000, 8000, 85000, 8000, 0, 0, 0];
+	const defaultValues2019 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+	const defaultValues2020 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 	const periodStart = 2;
 
 	const [values2019, setValues2019] = React.useState<Array<any>>(defaultValues2019);
@@ -59,7 +59,7 @@ const Calculator: React.FC<IProps> = ( props: IProps ) => {
 							</tbody>
 						</table>	
 					</div>
-					<div className="col-sm-6 col-lg px-lg-0">
+					<div className="col-sm-6 col-lg pr-sm-1 px-lg-0">
 						<h2 className="d-sm-none h6 text-monospace text-uppercase">
 							Enter your 2019 revenue
 						</h2>
@@ -74,7 +74,7 @@ const Calculator: React.FC<IProps> = ( props: IProps ) => {
 							<tbody>
 								{values2019.map((item, index: number) => {
 									return (
-										<tr key={`column-2019-${index}`}>
+										<tr key={`column-2019-${index}`} className={classnames(index < periodStart && 'd-none d-sm-table-row')}>
 											<td className="d-lg-none pl-3 text-uppercase text-monospace small text-nowrap align-middle">
 												{ monthLabels[index] }
 												<small className="d-block mt-n2">
@@ -82,31 +82,37 @@ const Calculator: React.FC<IProps> = ( props: IProps ) => {
 												</small>
 											</td>
 											<td className="pr-3">
-												<div className="input-group">
-													<div className="input-group-prepend">
-														<span className="input-group-text">$</span>
+												{index >= periodStart ? (
+													<div className="input-group">
+														<div className="input-group-prepend">
+															<span className="input-group-text">$</span>
+														</div>
+															<NumberFormat
+																thousandSeparator=","
+																className={
+																	classnames(
+																		'form-control text-right',
+																		fieldsWithErrors.includes(`field-2019-${index}`) && "is-invalid",
+																	)
+																}
+																value={index >= 2 && values2019[index]}
+																onValueChange={({floatValue}) => {
+																	updateArray2019(index, floatValue);
+																	if( floatValue !== undefined && Math.sign(floatValue) !== -1 ) {
+																		removeError(`field-2019-${index}`);
+																	} else {
+																		addError(`field-2019-${index}`);
+																	}
+																}}
+															/>
 													</div>
-													<NumberFormat
-														disabled={index < 2} // disabling january & february 2019
-														thousandSeparator=","
-														className={
-															classnames(
-																'form-control text-right',
-																fieldsWithErrors.includes(`field-2019-${index}`) && "is-invalid",
-																index < 2 && 'bg-transparent', // disabling january & february 2019
-															)
-														}
-														value={index >= 2 && values2019[index]}
-														onValueChange={({floatValue}) => {
-															updateArray2019(index, floatValue);
-															if( floatValue !== undefined && Math.sign(floatValue) !== -1 ) {
-																removeError(`field-2019-${index}`);
-															} else {
-																addError(`field-2019-${index}`);
-															}
-														}}
-													/>
-												</div>
+												) : (
+													<div className="form-control bg-transparent border-transparent px-0 text-right text-monospace">
+														<small className="d-inline-flex align-items-center align-middle mx-n4 mx-lg-n3">
+															Field for Alt.<IconArrowRight />
+														</small>
+													</div>
+												)}
 											</td>
 										</tr>
 									)
@@ -114,7 +120,7 @@ const Calculator: React.FC<IProps> = ( props: IProps ) => {
 							</tbody>
 						</table>
 					</div>
-					<div className="col-sm-6 col-lg mt-4 mt-sm-0 px-lg-0">
+					<div className="col-sm-6 col-lg mt-4 mt-sm-0 pl-sm-1 px-lg-0">
 						<h2 className="d-sm-none h6 text-monospace text-uppercase">
 							Enter your 2020 revenue
 						</h2>
