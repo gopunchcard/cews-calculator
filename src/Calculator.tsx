@@ -8,8 +8,8 @@ interface IProps { }
 
 const Calculator: React.FC<IProps> = ( props: IProps ) => {
 	const monthLabels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-	const defaultValues2019 = [0, 0, 140000, 100000, 100000, 100000, 100000, 100000, 100000, 100000, 100000, 140000];
-	const defaultValues2020 = [85000, 85000, 140000, 65000, 100000, 60000, 8000, 85000, 8000, 0, 0, 0];
+	const defaultValues2019 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+	const defaultValues2020 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 	const periodStart = 2;
 
 	const [values2019, setValues2019] = React.useState<Array<any>>(defaultValues2019);
