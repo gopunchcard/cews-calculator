@@ -8,6 +8,7 @@ import DisclaimerUse from './content/DisclaimerUse';
 import Attributes from './content/Attributes';
 import GeneralNotesFooterNotes from './content/GeneralNotesFooterNotes';
 import CalculatorInstructions from './content/CalculatorInstructions';
+import Video from './content/Video';
 
 interface IProps { }
 
@@ -50,6 +51,7 @@ const App: React.FC<IProps> = (_props: IProps) => {
 								How much can I get?
 							</h2>
 							<Lead />
+							<Video className="d-none d-xl-block mt-4" />
 						</div>
 					</div>
 					<div className="col-xl-8 mt-5 mt-xl-0 hero-block text-dark mb-n5">
@@ -69,8 +71,13 @@ const App: React.FC<IProps> = (_props: IProps) => {
 					</div>
 				</div>
 			</section>
+			<section className="d-xl-none py-6 bg-light">
+				<div className="container pt-4">
+					<Video />
+				</div>
+			</section>
 			<section className="py-6">
-				<div className="container pt-6">
+				<div className="container py-xl-6">
 					<GeneralNotes />
 				</div>
 			</section>

@@ -6,17 +6,34 @@ import { ReactComponent as IconArrowRight } from './components/icons/icon-arrow-
 
 interface IProps { }
 
-const Calculator: React.FC<IProps> = ( props: IProps ) => {
+const Calculator: React.FC<IProps> = (props: IProps) => {
 	const monthLabels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 	const defaultValues2019 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 	const defaultValues2020 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+	const defaultEnabledPeriods = [false, false, false, false, false, false, false, false, false, false, false, false];
 	const periodStart = 2;
+	const enabledValues = [
+		[2, 3, 4, 5, 6, 7, 8, 9, 10, 11], //Jan
+		[2, 3, 4, 5, 6, 7, 8, 9, 10, 11], //Feb
 
+		[2, 3], // Mar = Feb and March
+		[3, 4, 6],
+		[4, 5, 6, 7],
+		[5, 6, 7, 8],
+		[6, 7, 8, 9],
+		[7, 8, 9, 10],
+		[8, 9, 10],
+		[9, 10],
+		[10],
+		[]
+	];
 	const [values2019, setValues2019] = React.useState<Array<any>>(defaultValues2019);
 	const [values2020, setValues2020] = React.useState<Array<any>>(defaultValues2020);
 	const [resultsGeneral, setResultsGeneral] = React.useState<number[]>([]);
 	const [resultsAlt, setResultsAlt] = React.useState<number[]>([]);
 	const [fieldsWithErrors, setfieldsWithErrors] = React.useState<string[]>([]);
+
+	const [enabledPeriods, setEnabledPeriods] = React.useState<boolean[]>(defaultEnabledPeriods);
 
 	React.useEffect(init, []);
 	React.useEffect(update, [values2019, values2020]);
@@ -32,6 +49,9 @@ const Calculator: React.FC<IProps> = ( props: IProps ) => {
 							<thead>
 								<tr className="text-monospace">
 									<th className="px-3">
+										<br />Enable
+									</th>
+									<th className="px-3">
 										<br />Period
 									</th>
 									<th className="px-3">
@@ -45,9 +65,16 @@ const Calculator: React.FC<IProps> = ( props: IProps ) => {
 										<tr key={`row-labels-${index}`}>
 											<td className="px-3">
 												<div className="form-control bg-transparent border-transparent px-0">
+													<input type="checkbox" disabled={index - periodStart < 0} value={index} onChange={updateEnabledPeriods} checked={enabledPeriods[index]} />
+
+												</div>
+											</td>
+											<td className="px-3">
+												<div className="form-control bg-transparent border-transparent px-0">
 													<small className="text-uppercase text-monospace text-right">{index - periodStart >= 0 ? index - periodStart + 1 : '-'}</small>
 												</div>
 											</td>
+
 											<td className="px-3">
 												<div className="form-control bg-transparent border-transparent px-0">
 													<small className="text-uppercase text-monospace text-right">{monthLabels[index]}</small>
@@ -55,9 +82,9 @@ const Calculator: React.FC<IProps> = ( props: IProps ) => {
 											</td>
 										</tr>
 									)
-								})}				
+								})}
 							</tbody>
-						</table>	
+						</table>
 					</div>
 					<div className="col-sm-6 col-lg pr-sm-1 px-lg-0">
 						<h2 className="d-sm-none h6 text-monospace text-uppercase">
@@ -76,9 +103,9 @@ const Calculator: React.FC<IProps> = ( props: IProps ) => {
 									return (
 										<tr key={`column-2019-${index}`} className={classnames(index < periodStart && 'd-none d-sm-table-row')}>
 											<td className="d-lg-none pl-3 text-uppercase text-monospace small text-nowrap align-middle">
-												{ monthLabels[index] }
+												{monthLabels[index]}
 												<small className="d-block mt-n2">
-													{	index - periodStart >= 0 ? `Period ${index - periodStart + 1}` : '-'}
+													{index - periodStart >= 0 ? `Period ${index - periodStart + 1}` : '-'}
 												</small>
 											</td>
 											<td className="pr-3">
@@ -87,32 +114,33 @@ const Calculator: React.FC<IProps> = ( props: IProps ) => {
 														<div className="input-group-prepend">
 															<span className="input-group-text">$</span>
 														</div>
-															<NumberFormat
-																thousandSeparator=","
-																className={
-																	classnames(
-																		'form-control text-right',
-																		fieldsWithErrors.includes(`field-2019-${index}`) && "is-invalid",
-																	)
+														<NumberFormat
+															thousandSeparator=","
+															className={
+																classnames(
+																	'form-control text-right',
+																	fieldsWithErrors.includes(`field-2019-${index}`) && "is-invalid",
+																)
+															}
+															value={index >= 2 && values2019[index]}
+															onValueChange={({ floatValue }) => {
+																updateArray2019(index, floatValue);
+																if (floatValue !== undefined && Math.sign(floatValue) !== -1) {
+																	removeError(`field-2019-${index}`);
+																} else {
+																	addError(`field-2019-${index}`);
 																}
-																value={index >= 2 && values2019[index]}
-																onValueChange={({floatValue}) => {
-																	updateArray2019(index, floatValue);
-																	if( floatValue !== undefined && Math.sign(floatValue) !== -1 ) {
-																		removeError(`field-2019-${index}`);
-																	} else {
-																		addError(`field-2019-${index}`);
-																	}
-																}}
-															/>
+															}}
+															disabled={!checkEnabledPeriods(index)}
+														/>
 													</div>
 												) : (
-													<div className="form-control bg-transparent border-transparent px-0 text-right text-monospace">
-														<small className="d-inline-flex align-items-center align-middle mx-n4 mx-lg-n3">
-															Field for Alt.<IconArrowRight />
-														</small>
-													</div>
-												)}
+														<div className="form-control bg-transparent border-transparent px-0 text-right text-monospace">
+															<small className="d-inline-flex align-items-center align-middle mx-n4 mx-lg-n3">
+																Field for Alt.<IconArrowRight />
+															</small>
+														</div>
+													)}
 											</td>
 										</tr>
 									)
@@ -137,9 +165,9 @@ const Calculator: React.FC<IProps> = ( props: IProps ) => {
 									return (
 										<tr key={`column-2020-${index}`}>
 											<td className="d-lg-none pl-3 text-uppercase text-monospace small text-nowrap align-middle">
-												{ monthLabels[index] }
+												{monthLabels[index]}
 												<small className="d-block mt-n2">
-													{	index - periodStart >= 0 ? `Period ${index - periodStart + 1}` : '-'}
+													{index - periodStart >= 0 ? `Period ${index - periodStart + 1}` : '-'}
 												</small>
 											</td>
 											<td className="pr-3">
@@ -156,14 +184,15 @@ const Calculator: React.FC<IProps> = ( props: IProps ) => {
 															)
 														}
 														value={values2020[index]}
-														onValueChange={({floatValue}) => {
+														onValueChange={({ floatValue }) => {
 															updateArray2020(index, floatValue);
-															if( floatValue !== undefined && Math.sign(floatValue) !== -1 ) {
+															if (floatValue !== undefined && Math.sign(floatValue) !== -1) {
 																removeError(`field-2020-${index}`);
 															} else {
 																addError(`field-2020-${index}`);
 															}
 														}}
+														disabled={!checkEnabledPeriods(index)}
 													/>
 												</div>
 											</td>
@@ -201,16 +230,16 @@ const Calculator: React.FC<IProps> = ( props: IProps ) => {
 							return (
 								<tr key={`column-results-${index}`}>
 									<td className="px-3 text-uppercase text-monospace small text-nowrap align-middle d-lg-none">
-										{ monthLabels[index] }
+										{monthLabels[index]}
 										<small className="d-block mt-n2">
-											{	index - periodStart >= 0 ? `Period ${index - periodStart + 1}` : '-'}
+											{index - periodStart >= 0 ? `Period ${index - periodStart + 1}` : '-'}
 										</small>
 									</td>
 									<td className="px-3">
 										<div className="form-control px-0 bg-transparent border-transparent text-right">
-											{resultsGeneral[index] !== undefined ? ( 
+											{resultsGeneral[index] !== undefined ? (
 												<span className={classnames(resultsGeneral[index] > 0 && 'font-weight-bold')}>{round(resultsGeneral[index])}%</span>)
-											: 
+												:
 												"-"
 											}
 										</div>
@@ -219,7 +248,7 @@ const Calculator: React.FC<IProps> = ( props: IProps ) => {
 										<div className="form-control px-0 bg-transparent border-transparent text-right">
 											{resultsAlt[index] !== undefined ? (
 												<span className={classnames(resultsAlt[index] > 0 && 'font-weight-bold')}>{round(resultsAlt[index])}%</span>)
-											:
+												:
 												"-"
 											}
 										</div>
@@ -238,18 +267,18 @@ const Calculator: React.FC<IProps> = ( props: IProps ) => {
 							</td>
 							<td className="px-3">
 								<div className="form-control px-0 bg-transparent border-transparent text-right">
-									{resultsGeneral[0] !== undefined ? ( 
+									{resultsGeneral[0] !== undefined ? (
 										<span className="font-weight-bold">{round(showAverage(resultsGeneral))}%</span>)
-									: 
+										:
 										"-"
 									}
 								</div>
 							</td>
 							<td className="px-3">
 								<div className="form-control px-0 bg-transparent border-transparent text-right">
-									{resultsAlt[0] !== undefined ? ( 
+									{resultsAlt[0] !== undefined ? (
 										<span className="font-weight-bold">{round(showAverage(resultsAlt))}%</span>)
-									: 
+										:
 										"-"
 									}
 								</div>
@@ -273,6 +302,11 @@ const Calculator: React.FC<IProps> = ( props: IProps ) => {
 		setValues2020(oldValues);
 	}
 
+	function updateEnabledPeriods(event: React.ChangeEvent<HTMLInputElement>) {
+		const oldValues = [...enabledPeriods];
+		oldValues[parseInt(event.target.value)] = event.target.checked;
+		setEnabledPeriods(oldValues);
+	}
 	function init() {
 		const year = new Year(defaultValues2019, defaultValues2020, [], []);
 		year.getvalues();
@@ -283,17 +317,18 @@ const Calculator: React.FC<IProps> = ( props: IProps ) => {
 	function reset() {
 		setValues2019(defaultValues2019);
 		setValues2020(defaultValues2020);
+		setEnabledPeriods(defaultEnabledPeriods);
 		init();
 	}
 
 	function addError(field: string) {
-		if(!fieldsWithErrors.includes(field)) {
+		if (!fieldsWithErrors.includes(field)) {
 			setfieldsWithErrors([...fieldsWithErrors, field]);
 		}
 	}
 
 	function removeError(field: string) {
-		if(fieldsWithErrors.includes(field)) {
+		if (fieldsWithErrors.includes(field)) {
 			const i = fieldsWithErrors.findIndex((v) => v === field);
 			const oldValues = [...fieldsWithErrors];
 			oldValues.splice(i, 1);
@@ -305,16 +340,16 @@ const Calculator: React.FC<IProps> = ( props: IProps ) => {
 		return Math.round(input * 100);
 	}
 
-	function showAverage( input: number[] ) {
+	function showAverage(input: number[]) {
 		const numItems = input.length;
-		let total = input.reduce(function(a, b){
+		let total = input.reduce(function (a, b) {
 			return a + b;
 		}, 0);
-		return total / numItems;	
+		return total / numItems;
 	}
 
 	function update() {
-		if ( fieldsWithErrors.length === 0 ) {
+		if (fieldsWithErrors.length === 0) {
 			const year = new Year(values2019, values2020, [], []);
 			year.getvalues();
 			setResultsGeneral(year.finalGeneralResults);
@@ -326,6 +361,15 @@ const Calculator: React.FC<IProps> = ( props: IProps ) => {
 	function clear() {
 		setResultsGeneral([]);
 		setResultsAlt([]);
+	}
+
+	function checkEnabledPeriods(index: number) {
+		let enableIfChecked = enabledValues[index];
+		for (let i = 0; i < enableIfChecked.length; i++) {
+			if (enabledPeriods[enableIfChecked[i]] === true)
+				return true;
+		}
+		return false;
 	}
 };
 
