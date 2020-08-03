@@ -237,7 +237,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 									</td>
 									<td className="px-3">
 										<div className="form-control px-0 bg-transparent border-transparent text-right">
-											{resultsGeneral[index] !== undefined ? (
+											{(enabledPeriods[index] && (resultsGeneral[index] !== undefined)) ? (
 												<span className={classnames(resultsGeneral[index] > 0 && 'font-weight-bold')}>{round(resultsGeneral[index])}%</span>)
 												:
 												"-"
@@ -246,7 +246,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 									</td>
 									<td className="px-3">
 										<div className="form-control px-0 bg-transparent border-transparent text-right">
-											{resultsAlt[index] !== undefined ? (
+											{(enabledPeriods[index] && (resultsAlt[index] !== undefined)) ? (
 												<span className={classnames(resultsAlt[index] > 0 && 'font-weight-bold')}>{round(resultsAlt[index])}%</span>)
 												:
 												"-"

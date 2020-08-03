@@ -82,6 +82,17 @@ describe("Joe Test 7", () => {
 
     setupFullTest(inputs2019, inputs2020, expectedOldGeneral, expectedOldAlt);
 });
+
+describe("Joe Test 7", () => {
+
+    const inputs2019 = [0, 0, 0, 100000, 100000, 100000, 250000, 0, 0, 0, 0, 0];
+    const inputs2020 = [0, 0, 0, 0, 0, 45000, 225000, 0, 0, 0, 0, 0];
+    const expectedOldGeneral = [0, 0, 0, 0, 0, 0.75, 0.85, 0.12, 0, 0, 0, 0];
+    const expectedOldAlt = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+
+    setupFullTest(inputs2019, inputs2020, expectedOldGeneral, expectedOldAlt);
+});
+
 // describe("Joe Test 8", () => {
 
 //     const inputs2019 = [83000, 190000, 140000, 140000, 110000, 100000, 100000, 100000, 100000, 100000, 100000, 140000];

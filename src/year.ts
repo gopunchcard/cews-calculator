@@ -19,7 +19,7 @@ class Year {
             let prevMonthTest = null;
             let month = new Month(i, i, this.revenue2019, this.revenue2020);
 
-            if (i > 6) { //This only applies to the newcalculations
+            if (i >= 6) { //This only applies to the newcalculations
                 // This should only apply to the new values, not the old values..
                 prevMonthTest = new Month(i - 1, i, this.revenue2019, this.revenue2020);
                 month.prevNewGeneral = (prevMonthTest.generalBasePercent);
