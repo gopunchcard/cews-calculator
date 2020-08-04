@@ -45,7 +45,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 					Enable relevant months for subsidy
 				</h2>
 				<div className="row">
-					{monthLabels.map((month, index: number) => index - periodStart >=0 && (
+					{monthLabels.map((month, index: number) => index - periodStart >= 0 && (
 						<div className="col-auto" key={month}>
 							<label className="mb-0 py-2 text-monospace" htmlFor={`enable-${month}`}>
 								<input id={`enable-${month}`} type="checkbox" value={index} onChange={updateEnabledPeriods} checked={enabledPeriods[index]} className="mr-2" />
