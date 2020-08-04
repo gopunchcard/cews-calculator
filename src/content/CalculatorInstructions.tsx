@@ -6,16 +6,13 @@ const CalculatorInstructions: React.FC<IProps> = (_props: IProps) => {
 	return (
 		<ol className="mb-0 pl-4 text-monospace small font-weight-bold">
 			<li>
-				Enter the gross income for the month relating to period you want to claim. 
+				Enable the months you want to determine the subsidy for.
 			</li>
 			<li>
-				Enter gross income for the 3 previous months.
+				Enter your gross revenue<a href="#general-notes-1"><sup>1</sup></a> in the highlighted fields.
 			</li>
 			<li>
-				Enter the 2019 gross income for each of those 4 same months (month of claim plus 3 prior).
-			</li>
-			<li>
-				To see the <a href="#general-notes-7">Alt.<sup>7</sup></a> calculations, enter gross revenue for January and February of 2020.
+				Multiply the resulting calculated percentage by the applicable amount of eligible remuneration8 to estimate your subsidy.
 			</li>
 		</ol>		
 	);
