@@ -226,7 +226,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 								<span><br className="d-none d-lg-inline-block" />General</span>
 							</th>
 							<th className="px-3 text-monospace text-right">
-								<a href="#general-notes-7"><br className="d-none d-lg-inline-block" />Alt.<sup>7</sup></a>
+								<a href="#general-notes-7"><br className="d-none d-lg-inline-block" />Alt.<sup>6</sup></a>
 							</th>
 						</tr>
 					</thead>
