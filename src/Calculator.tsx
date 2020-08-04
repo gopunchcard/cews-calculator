@@ -11,6 +11,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 	const defaultValues2019 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 	const defaultValues2020 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 	const defaultEnabledPeriods = [false, false, false, false, false, false, false, false, false, false, false, false];
+	const mobileEnabledPeriods = [true, true, true, true, true, true, true, true, true, true, true, true];
 	const periodStart = 2;
 	const enabledValues = [
 		[2, 3, 4, 5, 6, 7, 8, 9, 10, 11], //Jan
@@ -37,6 +38,10 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 
 	React.useEffect(init, []);
 	React.useEffect(update, [values2019, values2020]);
+	var x = window.matchMedia("(max-width: 991px)")
+	checkWindowSize(x) // Call listener function at run time
+	x.addListener(checkWindowSize)
+
 	return (
 		<div className="row mx-lg-0">
 			<div className="col-lg px-lg-0 py-lg-3">
@@ -371,6 +376,20 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 		}
 		return false;
 	}
+
+	function checkWindowSize(x: any) {
+		if (x.matches) { // If media query matches
+			console.log('small');
+			if (enabledPeriods.includes(false))
+				setEnabledPeriods(mobileEnabledPeriods);
+		} else {
+			console.log('big');
+			// if (enabledPeriods.includes(true))
+			// 	setEnabledPeriods(defaultEnabledPeriods);
+		}
+	}
+
+
 };
 
 export default Calculator;
