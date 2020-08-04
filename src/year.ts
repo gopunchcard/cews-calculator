@@ -14,14 +14,19 @@ class Year {
 
     getvalues() {
         var results = [];
-
+        let noZeroRevenue2019 = [];
+        let noZeroRevenue2020 = [];
+        for (let i = 0; i < 12; i++) {
+            this.revenue2019[i] === 0 ? noZeroRevenue2019[i] = 0.001 : noZeroRevenue2019[i] = this.revenue2019[i];
+            this.revenue2020[i] === 0 ? noZeroRevenue2020[i] = 0.001 : noZeroRevenue2020[i] = this.revenue2020[i];
+        }
         for (let i = 0; i < 12; i++) {
             let prevMonthTest = null;
-            let month = new Month(i, i, this.revenue2019, this.revenue2020);
+            let month = new Month(i, i, noZeroRevenue2019, noZeroRevenue2020);
 
             if (i >= 6) { //This only applies to the newcalculations
                 // This should only apply to the new values, not the old values..
-                prevMonthTest = new Month(i - 1, i, this.revenue2019, this.revenue2020);
+                prevMonthTest = new Month(i - 1, i, noZeroRevenue2019, noZeroRevenue2020);
                 month.prevNewGeneral = (prevMonthTest.generalBasePercent);
                 month.prevNewAlternative = (prevMonthTest.altBasePercent);
                 //we need to inject the results
