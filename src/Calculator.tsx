@@ -124,6 +124,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 															</div>
 															<NumberFormat
 																thousandSeparator=","
+
 																className={
 																	classnames(
 																		'form-control text-right',
@@ -185,6 +186,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 														</div>
 														<NumberFormat
 															thousandSeparator=","
+
 															className={
 																classnames(
 																	'form-control text-right',
