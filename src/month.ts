@@ -65,16 +65,16 @@ class Month {
     get oldgeneralEligiblePercent(): number {
         if (this.month > 7) //Not available after month 7
             return 0
-        if (this.generalPercentChange > constants[this.constraintsMonth]?.threshold) return .75;
+        if (this.generalPercentChange >= constants[this.constraintsMonth]?.threshold) return .75;
 
-        if (this.generalPercentChangePreviousMonth > constants[this.constraintsMonth - 1]?.threshold) return .75;
+        if (this.generalPercentChangePreviousMonth >= constants[this.constraintsMonth - 1]?.threshold) return .75;
         return 0;
     }
     get oldAlternativeEligiblePercent(): number {
         if (this.month > 7) //Not available after month 7
             return 0
-        if (this.alternativePercentChange > constants[this.constraintsMonth]?.threshold) return .75;
-        if (this.alternativePercentChangePreviousMonth > constants[this.constraintsMonth - 1]?.threshold) return .75;
+        if (this.alternativePercentChange >= constants[this.constraintsMonth]?.threshold) return .75;
+        if (this.alternativePercentChangePreviousMonth >= constants[this.constraintsMonth - 1]?.threshold) return .75;
         return 0;
     }
 
