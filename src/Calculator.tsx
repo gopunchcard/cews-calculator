@@ -42,7 +42,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 		<React.Fragment>
 			<div className="mb-4 p-3 bg-quinary-light border border-dark">
 				<h2 className="h6 text-monospace text-uppercase mb-2">
-					Enable relevant months for subsidy
+					Choose the months you want to calculate the subsidy for
 				</h2>
 				<div className="row">
 					{monthLabels.map((month, index: number) => index - periodStart >= 0 && (
@@ -59,7 +59,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 				<div className="col-lg px-lg-0 py-lg-3">
 					<div className="row mx-lg-0">
 						<h2 className="d-none d-sm-block col-12 px-lg-0 h6 text-sm-center text-monospace text-uppercase">
-							Enter your revenue below
+							Enter your gross revenue below
 						</h2>
 						<div className="d-none d-lg-block col-lg-auto px-lg-0">
 							<table className="table table-sm table-striped table-borderless mb-0">
@@ -118,7 +118,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 												</td>
 												<td className="pr-3">
 													{index >= periodStart ? (
-														<div className="input-group">
+														<div className={classnames("input-group", !checkEnabledPeriods(index) && 'disabled')}>
 															<div className="input-group-prepend">
 																<span className="input-group-text">$</span>
 															</div>
@@ -179,7 +179,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 													</small>
 												</td>
 												<td className="pr-3">
-													<div className="input-group">
+													<div className={classnames("input-group", !checkEnabledPeriods(index) && 'disabled')}>
 														<div className="input-group-prepend">
 															<span className="input-group-text">$</span>
 														</div>
