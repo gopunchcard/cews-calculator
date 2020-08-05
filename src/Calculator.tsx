@@ -351,13 +351,13 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 		return Math.round(input * 100);
 	}
 
-	function showAverage(input: number[]) {
-		const numItems = input.length;
-		let total = input.reduce(function (a, b) {
-			return a + b;
-		}, 0);
-		return total / numItems;
-	}
+	// function showAverage(input: number[]) {
+	// 	const numItems = input.length;
+	// 	let total = input.reduce(function (a, b) {
+	// 		return a + b;
+	// 	}, 0);
+	// 	return total / numItems;
+	// }
 
 	function update() {
 		if (fieldsWithErrors.length === 0) {
