@@ -101,7 +101,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 							<table className="table table-sm table-striped table-borderless mb-0">
 								<thead>
 									<tr>
-										<th className="d-none d-sm-block px-3 px-lg-1 text-monospace">
+										<th className="d-none d-sm-table-cell px-3 px-lg-1 text-monospace">
 											<br className="d-none d-lg-inline" />2019
 										</th>
 									</tr>
@@ -164,7 +164,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 							<table className="table table-sm table-striped table-borderless mb-0">
 								<thead>
 									<tr>
-										<th className="d-none d-sm-block px-3 px-lg-1 text-monospace">
+										<th className="d-none d-sm-table-cell px-3 px-lg-1 text-monospace">
 											<br className="d-none d-lg-inline" />2020
 										</th>
 									</tr>
