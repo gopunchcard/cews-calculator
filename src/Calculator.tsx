@@ -266,7 +266,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 									</tr>
 								)
 							})}
-							<tr className="bg-quinary border-top border-dark">
+							{/* <tr className="bg-quinary border-top border-dark">
 								<td colSpan={2} className="d-none d-lg-table-cell pb-0 text-uppercase text-monospace small text-nowrap text-center">Average Subsidy</td>
 							</tr>
 							<tr className="bg-quinary">
@@ -293,7 +293,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 										}
 									</div>
 								</td>
-							</tr>
+							</tr> */}
 						</tbody>
 					</table>
 				</div>
