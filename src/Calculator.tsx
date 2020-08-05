@@ -7,7 +7,7 @@ import { ReactComponent as IconArrowRight } from './components/icons/icon-arrow-
 interface IProps { }
 
 const Calculator: React.FC<IProps> = (props: IProps) => {
-	const monthLabels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+	const monthLabels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov'];
 	const defaultValues2019 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 	const defaultValues2020 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 	const defaultEnabledPeriods = [false, false, false, false, false, false, false, false, false, false, false, false];

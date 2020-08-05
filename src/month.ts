@@ -12,7 +12,7 @@ const constants = [
     { month: 8, cewsPeriod: 6, threshold: .30, baseModifier: 1.2, baseCap: .6 },
     { month: 9, cewsPeriod: 7, threshold: 200, baseModifier: 1.0, baseCap: .5 },
     { month: 10, cewsPeriod: 8, threshold: 200, baseModifier: 0.8, baseCap: .4 },
-    { month: 11, cewsPeriod: 9, threshold: 200, baseModifier: 0.4, baseCap: .4 },
+    { month: 11, cewsPeriod: 9, threshold: 200, baseModifier: 0.4, baseCap: .2 },
     { month: 12, cewsPeriod: 10, threshold: 200, baseModifier: 0, baseCap: 0 },
 ];
 
@@ -85,9 +85,13 @@ class Month {
         return Math.min(this.alternativePercentChange * constants[this.constraintsMonth].baseModifier, constants[this.constraintsMonth].baseCap);
     }
     get generalTopUpRevenueDrop(): number {
+        if (this.month < 6)
+            return 0;
         return calcPercentLostNoNegative(this.prevYear3PrecedingMonthsRevenue, this.currentYearPreceding3MonthsRevenue)
     }
     get altTopUpRevenueDrop(): number {
+        if (this.month < 6)
+            return 0;
         return calcPercentLostNoNegative(this.janFebValue, this.currentYearPreceding3MonthsRevenue)
     }
     get generalTopUpPercent(): number {
