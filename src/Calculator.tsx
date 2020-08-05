@@ -217,7 +217,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 						<button className="btn btn-outline-primary mt-4" onClick={reset}>Reset fields</button>
 					</div>
 				</div>
-				<div className="col-lg-auto mt-4 mt-lg-0 pt-4 px-lg-0 pt-lg-3 bg-quinary">
+				<div className="align-self-start col-lg-auto mt-4 mt-lg-0 pt-4 px-lg-0 pt-lg-3 bg-quinary">
 					<h2 className="h6 px-sm-3 text-sm-center text-monospace text-uppercase">
 						Estimated subsidy
 					</h2>
@@ -266,34 +266,6 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 									</tr>
 								)
 							})}
-							{/* <tr className="bg-quinary border-top border-dark">
-								<td colSpan={2} className="d-none d-lg-table-cell pb-0 text-uppercase text-monospace small text-nowrap text-center">Average Subsidy</td>
-							</tr>
-							<tr className="bg-quinary">
-								<td className="px-3 text-uppercase text-monospace small text-nowrap align-middle d-lg-none">
-									<small className="font-weight-bold">
-										Average Subsidy
-									</small>
-								</td>
-								<td className="px-3">
-									<div className="form-control px-0 bg-transparent border-transparent text-right">
-										{resultsGeneral[0] !== undefined ? (
-											<span className="font-weight-bold">{round(showAverage(resultsGeneral))}%</span>)
-											:
-											"-"
-										}
-									</div>
-								</td>
-								<td className="px-3">
-									<div className="form-control px-0 bg-transparent border-transparent text-right">
-										{resultsAlt[0] !== undefined ? (
-											<span className="font-weight-bold">{round(showAverage(resultsAlt))}%</span>)
-											:
-											"-"
-										}
-									</div>
-								</td>
-							</tr> */}
 						</tbody>
 					</table>
 				</div>
@@ -349,14 +321,6 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 
 	function round(input: number) {
 		return Math.round(input * 100);
-	}
-
-	function showAverage(input: number[]) {
-		const numItems = input.length;
-		let total = input.reduce(function (a, b) {
-			return a + b;
-		}, 0);
-		return total / numItems;
 	}
 
 	function update() {
