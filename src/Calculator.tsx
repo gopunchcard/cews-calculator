@@ -10,6 +10,8 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 	const monthLabels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov'];
 	const defaultValues2019 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 	const defaultValues2020 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+	const defaultRenumeration = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+
 	const defaultEnabledPeriods = [false, false, false, false, false, false, false, false, false, false, false, false];
 	const periodStart = 2;
 	const enabledValues = [
@@ -34,7 +36,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 	const [fieldsWithErrors, setfieldsWithErrors] = React.useState<string[]>([]);
 
 	const [enabledPeriods, setEnabledPeriods] = React.useState<boolean[]>(defaultEnabledPeriods);
-
+	const [renumerationValues, setRenumeration] = React.useState<Array<number>>(defaultRenumeration);
 	React.useEffect(init, []);
 	React.useEffect(update, [values2019, values2020]);
 
@@ -212,6 +214,61 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 								</tbody>
 							</table>
 						</div>
+						<div className="col-sm-6 col-lg mt-4 mt-sm-0 pl-sm-1 px-lg-0">
+							<h2 className="d-sm-none h6 text-monospace text-uppercase">
+								Renumeration
+							</h2>
+							<table className="table table-sm table-striped table-borderless mb-0">
+								<thead>
+									<tr>
+										<th className="d-none d-sm-table-cell px-3 px-lg-1 text-monospace">
+											<br className="d-none d-lg-inline" />Renumeration
+										</th>
+									</tr>
+								</thead>
+								<tbody>
+									{renumerationValues.map((item, index: number) => {
+										return (
+											<tr key={`column-2020-${index}`}>
+												<td className="d-lg-none pl-3 text-uppercase text-monospace small text-nowrap align-middle">
+													{monthLabels[index]}
+													<small className="d-block mt-n2">
+														{index - periodStart >= 0 ? `Period ${index - periodStart + 1}` : '-'}
+													</small>
+												</td>
+												<td className="pr-3">
+													<div className={classnames("input-group", !enabledPeriods[index] && 'disabled')}>
+														<div className="input-group-prepend">
+															<span className="input-group-text">$</span>
+														</div>
+														<NumberFormat
+															thousandSeparator=","
+
+															className={
+																classnames(
+																	'form-control text-right',
+																	fieldsWithErrors.includes(`field-ren-${index}`) && "is-invalid"
+																)
+															}
+															value={renumerationValues[index]}
+															onValueChange={({ floatValue }) => {
+																updateArrayRenumeration(index, floatValue);
+																if (floatValue !== undefined && Math.sign(floatValue) !== -1) {
+																	removeError(`field-ren-${index}`);
+																} else {
+																	addError(`field-ren0-${index}`);
+																}
+															}}
+															disabled={!enabledPeriods[index]}
+														/>
+													</div>
+												</td>
+											</tr>
+										)
+									})}
+								</tbody>
+							</table>
+						</div>
 					</div>
 					<div className="text-center text-lg-left">
 						<button className="btn btn-outline-primary mt-4" onClick={reset}>Reset fields</button>
@@ -248,7 +305,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 										<td className="px-3">
 											<div className="form-control px-0 bg-transparent border-transparent text-right">
 												{(enabledPeriods[index] && (resultsGeneral[index] !== undefined)) ? (
-													<span className={classnames(resultsGeneral[index] > 0 && 'font-weight-bold')}>{round(resultsGeneral[index])}%</span>)
+													<span className={classnames(resultsGeneral[index] > 0 && 'font-weight-bold')}>{getGeneralSubsidyAmount(index)}</span>)
 													:
 													"-"
 												}
@@ -257,7 +314,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 										<td className="px-3">
 											<div className="form-control px-0 bg-transparent border-transparent text-right">
 												{(enabledPeriods[index] && (resultsAlt[index] !== undefined)) ? (
-													<span className={classnames(resultsAlt[index] > 0 && 'font-weight-bold')}>{round(resultsAlt[index])}%</span>)
+													<span className={classnames(resultsAlt[index] > 0 && 'font-weight-bold')}>{getAltSubsidyAmount(index)}</span>)
 													:
 													"-"
 												}
@@ -273,6 +330,20 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 		</React.Fragment>
 	);
 
+	function getGeneralSubsidyAmount(index: number) {
+		return getSubsidyAmount(renumerationValues[index], resultsGeneral[index])
+	}
+	function getAltSubsidyAmount(index: number) {
+		return getSubsidyAmount(renumerationValues[index], resultsAlt[index])
+	}
+	function getSubsidyAmount(renumerationValue: number, percentLost: number) {
+
+		if (renumerationValue > 0) {
+			return "(" + round(percentLost) + "%) $" + round((percentLost / 100) * renumerationValue).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+		}
+		return round(percentLost) + "%"
+	}
+
 	function updateArray2019(arrindex: number, value: any) {
 		const oldValues = [...values2019];
 		oldValues[arrindex] = value;
@@ -284,7 +355,11 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 		oldValues[arrindex] = value;
 		setValues2020(oldValues);
 	}
-
+	function updateArrayRenumeration(arrindex: number, value: any) {
+		const oldValues = [...renumerationValues];
+		oldValues[arrindex] = value;
+		setRenumeration(oldValues);
+	}
 	function updateEnabledPeriods(event: React.ChangeEvent<HTMLInputElement>) {
 		const oldValues = [...enabledPeriods];
 		oldValues[parseInt(event.target.value)] = event.target.checked;
@@ -346,6 +421,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 		}
 		return false;
 	}
+
 };
 
 export default Calculator;
