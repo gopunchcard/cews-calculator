@@ -219,10 +219,12 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 								Renumeration
 							</h2>
 							<table className="table table-sm table-striped table-borderless mb-0">
+
 								<thead>
-									<tr>
+									<tr className="text-monospace">
+
 										<th className="d-none d-sm-table-cell px-3 px-lg-1 text-monospace">
-											<br className="d-none d-lg-inline" />Eligible Renumeration<a href="#general-notes-8"><sup>8</sup></a>
+											Eligible<br /> Renumeration<a href="#general-notes-8"><sup>8</sup></a>
 										</th>
 									</tr>
 								</thead>
