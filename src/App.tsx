@@ -61,7 +61,7 @@ const App: React.FC<IProps> = (_props: IProps) => {
 						</div>
 					</div>
 					<div className="col-xxl-8 mt-5 mt-xxl-0 hero-block text-dark mb-n5">
-						<div className="punchcard-wrapper shadow">
+						<div id="wrapper-calculator" className="punchcard-wrapper shadow">
 							<div className="punchcard">
 								<div className="bg-quinary-light px-3 py-4 px-lg-4">
 									<div className="mt-n3 mx-n3 mb-4 mx-lg-n4 mb-lg-4 px-3 px-lg-4 pb-3 border-bottom border-dark">

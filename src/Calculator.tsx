@@ -60,7 +60,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 			<div className="row mx-lg-0">
 				<div className="col-lg px-lg-0 py-lg-3">
 					<div className="row mx-md-0">
-						<h2 className="d-none d-sm-block col-12 px-lg-0 h6 text-sm-center text-monospace text-uppercase">
+						<h2 className="d-none d-md-block col-12 px-lg-0 h6 text-sm-center text-monospace text-uppercase">
 							Enter your gross revenue below
 						</h2>
 						<div className="d-none d-md-block col-md-auto px-md-0">
@@ -106,76 +106,77 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 							</table>
 						</div>
 						<div className="col-md px-md-0">
-							<h2 className="d-sm-none h6 text-monospace text-uppercase">
+							<h2 className="d-md-none h6 text-monospace text-uppercase">
 								Enter your 2019 revenue
 							</h2>
 							<table className="table table-sm table-striped table-borderless mb-0">
 								<thead>
 									<tr>
-										<th className="d-none d-sm-table-cell px-3 px-md-1 text-monospace line-height-1">
+										<th className="d-none d-md-table-cell px-3 px-md-1 text-monospace line-height-1">
 											<br className="d-none d-lg-inline" />2019
 										</th>
 									</tr>
 								</thead>
 								<tbody>
-									{values2019.map((item, index: number) => {
-										return (
-											<tr key={`column-2019-${index}`} className={classnames(index < periodStart && 'd-none d-md-table-row', !checkEnabledPeriods(index) && 'disabled')}>
-												<td className="d-md-none pl-3 text-uppercase text-monospace small text-nowrap align-middle">
-													{monthLabels[index]}
-													<small className="d-block mt-n2">
-														{index - periodStart >= 0 ? `Period ${index - periodStart + 1}` : '-'}
-													</small>
-												</td>
-												<td className="pr-3">
-													{index >= periodStart ? (
-														<div className={classnames("input-group", !checkEnabledPeriods(index) && 'disabled')}>
-															<div className="input-group-prepend">
-																<span className="input-group-text">$</span>
-															</div>
-															<NumberFormat
-																thousandSeparator=","
+									{values2019.map((item, index: number) => (
+										<tr key={`column-2019-${index}`} className={classnames(!checkEnabledPeriods(index) && 'd-none d-md-table-row disabled', index < periodStart && checkEnabledPeriods(index) && 'd-none d-md-table-row')}>
+											<td className="d-md-none pl-3 text-uppercase text-monospace small text-nowrap align-middle">
+												{monthLabels[index]}
+												<small className="d-block mt-n2">
+													{index - periodStart >= 0 ? `Period ${index - periodStart + 1}` : '-'}
+												</small>
+											</td>
+											<td className="pr-3">
+												{index >= periodStart ? (
+													<div className={classnames("input-group", !checkEnabledPeriods(index) && 'disabled')}>
+														<div className="input-group-prepend">
+															<span className="input-group-text">$</span>
+														</div>
+														<NumberFormat
+															thousandSeparator=","
 
-																className={
-																	classnames(
-																		'form-control text-right',
-																		fieldsWithErrors.includes(`field-2019-${index}`) && "is-invalid",
-																	)
+															className={
+																classnames(
+																	'form-control text-right',
+																	fieldsWithErrors.includes(`field-2019-${index}`) && "is-invalid",
+																)
+															}
+															value={index >= 2 && values2019[index]}
+															onValueChange={({ floatValue }) => {
+																updateArray2019(index, floatValue);
+																if (floatValue !== undefined && Math.sign(floatValue) !== -1) {
+																	removeError(`field-2019-${index}`);
+																} else {
+																	addError(`field-2019-${index}`);
 																}
-																value={index >= 2 && values2019[index]}
-																onValueChange={({ floatValue }) => {
-																	updateArray2019(index, floatValue);
-																	if (floatValue !== undefined && Math.sign(floatValue) !== -1) {
-																		removeError(`field-2019-${index}`);
-																	} else {
-																		addError(`field-2019-${index}`);
-																	}
-																}}
-																disabled={!checkEnabledPeriods(index)}
-															/>
-														</div>
-													) : (
-														<div className="form-control bg-transparent border-transparent px-0 text-right text-monospace">
-															<small className="d-inline-flex align-items-center align-middle mx-md-n3">
-																Field for Alt.<IconArrowRight />
-															</small>
-														</div>
-													)}
-												</td>
-											</tr>
-										)
-									})}
+															}}
+															disabled={!checkEnabledPeriods(index)}
+														/>
+													</div>
+												) : (
+													<div className="form-control bg-transparent border-transparent px-0 text-right text-monospace">
+														<small className="d-inline-flex align-items-center align-middle mx-md-n3">
+															Field for Alt.<IconArrowRight />
+														</small>
+													</div>
+												)}
+											</td>
+										</tr>
+									))}
+									{!enabledPeriods.includes(true) && (
+										<tr className="bg-transparent d-md-none"><td className="px-0 font-italic text-muted">No months selected. Choose the months you want to calculate above.</td></tr>
+									)}
 								</tbody>
 							</table>
 						</div>
 						<div className="col-md mt-4 mt-md-0 px-md-0">
-							<h2 className="d-sm-none h6 text-monospace text-uppercase">
+							<h2 className="d-md-none h6 text-monospace text-uppercase">
 								Enter your 2020 revenue
 							</h2>
 							<table className="table table-sm table-striped table-borderless mb-0">
 								<thead>
 									<tr>
-										<th className="d-none d-sm-table-cell px-3 px-md-1 text-monospace line-height-1">
+										<th className="d-none d-md-table-cell px-3 px-md-1 text-monospace line-height-1">
 											<br className="d-none d-lg-inline" />2020
 										</th>
 									</tr>
@@ -183,7 +184,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 								<tbody>
 									{values2020.map((item, index: number) => {
 										return (
-											<tr key={`column-2020-${index}`} className={classnames(!checkEnabledPeriods(index) && 'disabled')}>
+											<tr key={`column-2020-${index}`} className={classnames(!checkEnabledPeriods(index) && 'd-none d-md-table-row disabled')}>
 												<td className="d-md-none pl-3 text-uppercase text-monospace small text-nowrap align-middle">
 													{monthLabels[index]}
 													<small className="d-block mt-n2">
@@ -220,17 +221,20 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 											</tr>
 										)
 									})}
+									{!enabledPeriods.includes(true) && (
+										<tr className="bg-transparent d-md-none"><td className="px-0 font-italic text-muted">No months selected. Choose the months you want to calculate above.</td></tr>
+									)}
 								</tbody>
 							</table>
 						</div>
 						<div className="col-md mt-4 mt-md-0 px-md-0">
-							<h2 className="d-sm-none h6 text-monospace text-uppercase">
+							<h2 className="d-md-none h6 text-monospace text-uppercase">
 								Eligible Renumeration<a href="#general-notes-8"><sup>8</sup></a>
 							</h2>
 							<table className="table table-sm table-striped table-borderless mb-0">
 								<thead>
 									<tr className="text-monospace">
-										<th className="d-none d-sm-table-cell px-3 px-lg-1 text-monospace line-height-1">
+										<th className="d-none d-md-table-cell px-3 px-md-1 text-monospace line-height-1">
 											Eligible<br className="d-none d-lg-inline" /> Renumeration<a href="#general-notes-8"><sup>8</sup></a>
 										</th>
 									</tr>
@@ -238,7 +242,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 								<tbody>
 									{renumerationValues.map((item, index: number) => {
 										return (
-											<tr key={`column-2020-${index}`} className={classnames(!checkEnabledPeriods(index) && 'disabled')}>
+											<tr key={`column-2020-${index}`} className={classnames(!checkEnabledPeriods(index) && 'disabled', !enabledPeriods[index] && 'd-none d-md-table-row')}>
 												<td className="d-md-none pl-3 text-uppercase text-monospace small text-nowrap align-middle">
 													{monthLabels[index]}
 													<small className="d-block mt-n2">
@@ -274,20 +278,23 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 											</tr>
 										)
 									})}
+									{!enabledPeriods.includes(true) && (
+										<tr className="bg-transparent d-md-none"><td className="px-0 font-italic text-muted">No months selected. Choose the months you want to calculate above.</td></tr>
+									)}
 								</tbody>
 							</table>
 						</div>
 					</div>
 				</div>
-				<div className="align-self-start col-lg-auto mt-4 mt-lg-0 pt-4 px-lg-0 pt-lg-3 bg-quinary">
-					<h2 className="h6 px-sm-3 text-sm-center text-monospace text-uppercase">
+				<div className="align-self-start col-lg-auto mt-4 mt-lg-0 py-4 px-lg-0 pt-lg-3 pb-lg-0 bg-quinary">
+					<h2 className="h6 text-md-center text-monospace text-uppercase">
 						Estimated subsidy
 					</h2>
 					<table className="table table-sm table-striped table-borderless mb-0">
 						<thead>
 							<tr>
-								<th className="d-lg-none px-3 text-monospace line-height-1">
-									Reference Month
+								<th className="d-none d-md-table-cell d-lg-none pl-3 text-monospace line-height-1">
+									Period
 								</th>
 								<th className="px-3 text-monospace text-right line-height-1">
 									<span><br className="d-none d-lg-inline-block" />General</span>
@@ -300,14 +307,14 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 						<tbody>
 							{values2019.map((item, index: number) => {
 								return (
-									<tr key={`column-results-${index}`} className={classnames(!checkEnabledPeriods(index) && 'disabled')}>
-										<td className="px-3 text-uppercase text-monospace small text-nowrap align-middle d-lg-none">
+									<tr key={`column-results-${index}`} className={classnames(!checkEnabledPeriods(index) && 'disabled', !enabledPeriods[index] && 'd-none d-lg-table-row')}>
+										<td className="pl-3 text-uppercase text-monospace small text-nowrap align-middle d-lg-none">
 											{monthLabels[index]}
 											<small className="d-block mt-n2">
 												{index - periodStart >= 0 ? `Period ${index - periodStart + 1}` : '-'}
 											</small>
 										</td>
-										<td className="pl-3 pr-2">
+										<td className="pl-lg-3 pr-lg-2">
 											<div
 												className={classnames(
 													"d-flex flex-column justify-content-center form-control px-0 bg-transparent border-transparent text-right line-height-1 min-width-5",
@@ -322,7 +329,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 												}
 											</div>
 										</td>
-										<td className="pl-2 pr-3">
+										<td className="pl-lg-2 pr-3">
 											<div
 												className={classnames(
 													"d-flex flex-column justify-content-center form-control px-0 bg-transparent border-transparent text-right line-height-1 min-width-5",
@@ -340,6 +347,9 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 									</tr>
 								)
 							})}
+							{!enabledPeriods.includes(true) && (
+								<tr className="bg-transparent d-md-none"><td className="px-0 font-italic text-muted" colSpan={3}>No months selected. Choose the months you want to calculate above.</td></tr>
+							)}
 						</tbody>
 					</table>
 				</div>
@@ -400,8 +410,10 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 	function reset() {
 		setValues2019(defaultValues2019);
 		setValues2020(defaultValues2020);
+		setRenumeration(defaultRenumeration);
 		setEnabledPeriods(defaultEnabledPeriods);
 		init();
+		document.getElementById("wrapper-calculator")!.scrollIntoView({behavior: "smooth"});
 	}
 
 	function addError(field: string) {
