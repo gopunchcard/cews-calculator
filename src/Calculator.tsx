@@ -67,10 +67,10 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 							<table className="table table-sm table-striped table-borderless mb-0">
 								<thead>
 									<tr className="text-monospace">
-										<th className="px-3">
+										<th className="px-3 line-height-1">
 											<br />Period
 										</th>
-										<th className="px-3">
+										<th className="px-3 pl-lg-0 line-height-1">
 											Reference<br />Month
 										</th>
 									</tr>
@@ -78,14 +78,14 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 								<tbody>
 									{values2019.map((item, index: number) => {
 										return (
-											<tr key={`row-labels-${index}`}>
+											<tr key={`row-labels-${index}`} className={classnames(!checkEnabledPeriods(index) && 'disabled')}>
 												<td className="px-3">
 													<div className="form-control bg-transparent border-transparent px-0">
 														<small className="text-uppercase text-monospace text-right">{index - periodStart >= 0 ? index - periodStart + 1 : '-'}</small>
 													</div>
 												</td>
 
-												<td className="px-3">
+												<td className="px-3 pl-lg-0">
 													<div className="form-control bg-transparent border-transparent px-0">
 														<small className="text-uppercase text-monospace text-right">{monthLabels[index]}</small>
 													</div>
@@ -103,7 +103,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 							<table className="table table-sm table-striped table-borderless mb-0">
 								<thead>
 									<tr>
-										<th className="d-none d-sm-table-cell px-3 px-lg-1 text-monospace">
+										<th className="d-none d-sm-table-cell px-3 px-lg-1 text-monospace line-height-1">
 											<br className="d-none d-lg-inline" />2019
 										</th>
 									</tr>
@@ -111,7 +111,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 								<tbody>
 									{values2019.map((item, index: number) => {
 										return (
-											<tr key={`column-2019-${index}`} className={classnames(index < periodStart && 'd-none d-sm-table-row')}>
+											<tr key={`column-2019-${index}`} className={classnames(index < periodStart && 'd-none d-sm-table-row', !checkEnabledPeriods(index) && 'disabled')}>
 												<td className="d-lg-none pl-3 text-uppercase text-monospace small text-nowrap align-middle">
 													{monthLabels[index]}
 													<small className="d-block mt-n2">
@@ -166,7 +166,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 							<table className="table table-sm table-striped table-borderless mb-0">
 								<thead>
 									<tr>
-										<th className="d-none d-sm-table-cell px-3 px-lg-1 text-monospace">
+										<th className="d-none d-sm-table-cell px-3 px-lg-1 text-monospace line-height-1">
 											<br className="d-none d-lg-inline" />2020
 										</th>
 									</tr>
@@ -174,7 +174,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 								<tbody>
 									{values2020.map((item, index: number) => {
 										return (
-											<tr key={`column-2020-${index}`}>
+											<tr key={`column-2020-${index}`} className={classnames(!checkEnabledPeriods(index) && 'disabled')}>
 												<td className="d-lg-none pl-3 text-uppercase text-monospace small text-nowrap align-middle">
 													{monthLabels[index]}
 													<small className="d-block mt-n2">
@@ -219,11 +219,9 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 								Renumeration
 							</h2>
 							<table className="table table-sm table-striped table-borderless mb-0">
-
 								<thead>
 									<tr className="text-monospace">
-
-										<th className="d-none d-sm-table-cell px-3 px-lg-1 text-monospace">
+										<th className="d-none d-sm-table-cell px-3 px-lg-1 text-monospace line-height-1">
 											Eligible<br /> Renumeration<a href="#general-notes-8"><sup>8</sup></a>
 										</th>
 									</tr>
@@ -231,7 +229,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 								<tbody>
 									{renumerationValues.map((item, index: number) => {
 										return (
-											<tr key={`column-2020-${index}`}>
+											<tr key={`column-2020-${index}`} className={classnames(!checkEnabledPeriods(index) && 'disabled')}>
 												<td className="d-lg-none pl-3 text-uppercase text-monospace small text-nowrap align-middle">
 													{monthLabels[index]}
 													<small className="d-block mt-n2">
@@ -245,7 +243,6 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 														</div>
 														<NumberFormat
 															thousandSeparator=","
-
 															className={
 																classnames(
 																	'form-control text-right',
@@ -283,40 +280,52 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 					<table className="table table-sm table-striped table-borderless mb-0">
 						<thead>
 							<tr>
-								<th className="d-lg-none px-3 text-monospace">
+								<th className="d-lg-none px-3 text-monospace line-height-1">
 									Reference Month
 								</th>
-								<th className="px-3 text-monospace text-right">
+								<th className="px-3 text-monospace text-right line-height-1">
 									<span><br className="d-none d-lg-inline-block" />General</span>
 								</th>
-								<th className="px-3 text-monospace text-right">
-									<a href="#general-notes-6"><br className="d-none d-lg-inline-block" />Alt.<sup>6</sup></a>
+								<th className="px-3 text-monospace text-right line-height-1">
+									<br className="d-none d-lg-inline-block" />Alt.<a href="#general-notes-6"><sup>6</sup></a>
 								</th>
 							</tr>
 						</thead>
 						<tbody>
 							{values2019.map((item, index: number) => {
 								return (
-									<tr key={`column-results-${index}`}>
+									<tr key={`column-results-${index}`} className={classnames(!checkEnabledPeriods(index) && 'disabled')}>
 										<td className="px-3 text-uppercase text-monospace small text-nowrap align-middle d-lg-none">
 											{monthLabels[index]}
 											<small className="d-block mt-n2">
 												{index - periodStart >= 0 ? `Period ${index - periodStart + 1}` : '-'}
 											</small>
 										</td>
-										<td className="px-3">
-											<div className="form-control px-0 bg-transparent border-transparent text-right">
+										<td className="pl-3 pr-2">
+											<div
+												className={classnames(
+													"d-flex flex-column justify-content-center form-control px-0 bg-transparent border-transparent text-right line-height-1 min-width-5",
+													resultsGeneral[index] > 0 && 'font-weight-bold',
+													!enabledPeriods[index] && 'disabled',
+												)}
+											>
 												{(enabledPeriods[index] && (resultsGeneral[index] !== undefined)) ? (
-													<span className={classnames(resultsGeneral[index] > 0 && 'font-weight-bold')}>{getGeneralSubsidyAmount(index)}</span>)
+													getGeneralSubsidyAmount(index))
 													:
 													"-"
 												}
 											</div>
 										</td>
-										<td className="px-3">
-											<div className="form-control px-0 bg-transparent border-transparent text-right">
+										<td className="pl-2 pr-3">
+											<div
+												className={classnames(
+													"d-flex flex-column justify-content-center form-control px-0 bg-transparent border-transparent text-right line-height-1 min-width-5",
+													resultsAlt[index] > 0 && 'font-weight-bold',
+													!enabledPeriods[index] && 'disabled',
+												)}
+											>
 												{(enabledPeriods[index] && (resultsAlt[index] !== undefined)) ? (
-													<span className={classnames(resultsAlt[index] > 0 && 'font-weight-bold')}>{getAltSubsidyAmount(index)}</span>)
+													getAltSubsidyAmount(index))
 													:
 													"-"
 												}
@@ -341,7 +350,12 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 	function getSubsidyAmount(renumerationValue: number, percentLost: number) {
 
 		if (renumerationValue > 0) {
-			return "(" + round(percentLost) + "%) $" + round((percentLost / 100) * renumerationValue).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+			return (
+				<React.Fragment>
+					${round((percentLost / 100) * renumerationValue).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}<br />
+					<span className="small font-weight-inherit">({round(percentLost)}%)</span>
+				</React.Fragment>
+			);
 		}
 		return round(percentLost) + "%"
 	}
