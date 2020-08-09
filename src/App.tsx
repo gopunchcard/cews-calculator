@@ -9,6 +9,7 @@ import Attributes from './content/Attributes';
 import GeneralNotesFooterNotes from './content/GeneralNotesFooterNotes';
 import CalculatorInstructions from './content/CalculatorInstructions';
 import Video from './content/Video';
+import Updates from './content/Updates';
 
 interface IProps { }
 
@@ -96,6 +97,7 @@ const App: React.FC<IProps> = (_props: IProps) => {
 				<section className="container">
 					<Disclaimers />
 					<GeneralNotesFooterNotes />
+					<Updates />
 				</section>
 				<section className="text-monospace text-center">
 					<div className="d-flex align-items-center justify-content-center ml-md-auto border-top small mt-6 mb-3 pt-5 text-monospace text-uppercase">
