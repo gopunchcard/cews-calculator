@@ -59,18 +59,18 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 			</div>
 			<div className="row mx-lg-0">
 				<div className="col-lg px-lg-0 py-lg-3">
-					<div className="row mx-lg-0">
+					<div className="row mx-md-0">
 						<h2 className="d-none d-sm-block col-12 px-lg-0 h6 text-sm-center text-monospace text-uppercase">
 							Enter your gross revenue below
 						</h2>
-						<div className="d-none d-lg-block col-lg-auto px-lg-0">
+						<div className="d-none d-md-block col-md-auto px-md-0">
 							<table className="table table-sm table-striped table-borderless mb-0">
 								<thead>
 									<tr className="text-monospace">
-										<th className="px-3 line-height-1">
-											<br />Period
+										<th className="px-3 line-height-1 visibil">
+											<br className="d-none d-lg-inline" />Period
 										</th>
-										<th className="px-3 pl-lg-0 line-height-1">
+										<th className="d-none d-lg-table-cell px-3 pl-lg-1 line-height-1">
 											Reference<br />Month
 										</th>
 									</tr>
@@ -79,13 +79,22 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 									{values2019.map((item, index: number) => {
 										return (
 											<tr key={`row-labels-${index}`} className={classnames(!checkEnabledPeriods(index) && 'disabled')}>
-												<td className="px-3">
+												<td className="d-lg-none px-3 text-uppercase text-monospace small text-nowrap align-middle">
+													<div className="d-flex flex-column justify-content-center form-control px-0 bg-transparent border-transparent">
+														<small>
+															{monthLabels[index]}
+															<small className="d-block mt-n2">
+																{index - periodStart >= 0 ? `Period ${index - periodStart + 1}` : '-'}
+															</small>
+														</small>
+													</div>
+												</td>
+												<td className="d-none d-lg-table-cell px-3">
 													<div className="form-control bg-transparent border-transparent px-0">
 														<small className="text-uppercase text-monospace text-right">{index - periodStart >= 0 ? index - periodStart + 1 : '-'}</small>
 													</div>
 												</td>
-
-												<td className="px-3 pl-lg-0">
+												<td className="d-none d-lg-table-cell px-3 pl-lg-1">
 													<div className="form-control bg-transparent border-transparent px-0">
 														<small className="text-uppercase text-monospace text-right">{monthLabels[index]}</small>
 													</div>
@@ -96,14 +105,14 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 								</tbody>
 							</table>
 						</div>
-						<div className="col-sm-6 col-lg pr-sm-1 px-lg-0">
+						<div className="col-md px-md-0">
 							<h2 className="d-sm-none h6 text-monospace text-uppercase">
 								Enter your 2019 revenue
 							</h2>
 							<table className="table table-sm table-striped table-borderless mb-0">
 								<thead>
 									<tr>
-										<th className="d-none d-sm-table-cell px-3 px-lg-1 text-monospace line-height-1">
+										<th className="d-none d-sm-table-cell px-3 px-md-1 text-monospace line-height-1">
 											<br className="d-none d-lg-inline" />2019
 										</th>
 									</tr>
@@ -111,8 +120,8 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 								<tbody>
 									{values2019.map((item, index: number) => {
 										return (
-											<tr key={`column-2019-${index}`} className={classnames(index < periodStart && 'd-none d-sm-table-row', !checkEnabledPeriods(index) && 'disabled')}>
-												<td className="d-lg-none pl-3 text-uppercase text-monospace small text-nowrap align-middle">
+											<tr key={`column-2019-${index}`} className={classnames(index < periodStart && 'd-none d-md-table-row', !checkEnabledPeriods(index) && 'disabled')}>
+												<td className="d-md-none pl-3 text-uppercase text-monospace small text-nowrap align-middle">
 													{monthLabels[index]}
 													<small className="d-block mt-n2">
 														{index - periodStart >= 0 ? `Period ${index - periodStart + 1}` : '-'}
@@ -146,12 +155,12 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 															/>
 														</div>
 													) : (
-															<div className="form-control bg-transparent border-transparent px-0 text-right text-monospace">
-																<small className="d-inline-flex align-items-center align-middle mx-n4 mx-lg-n3">
-																	Field for Alt.<IconArrowRight />
-																</small>
-															</div>
-														)}
+														<div className="form-control bg-transparent border-transparent px-0 text-right text-monospace">
+															<small className="d-inline-flex align-items-center align-middle mx-md-n3">
+																Field for Alt.<IconArrowRight />
+															</small>
+														</div>
+													)}
 												</td>
 											</tr>
 										)
@@ -159,14 +168,14 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 								</tbody>
 							</table>
 						</div>
-						<div className="col-sm-6 col-lg mt-4 mt-sm-0 pl-sm-1 px-lg-0">
+						<div className="col-md mt-4 mt-md-0 px-md-0">
 							<h2 className="d-sm-none h6 text-monospace text-uppercase">
 								Enter your 2020 revenue
 							</h2>
 							<table className="table table-sm table-striped table-borderless mb-0">
 								<thead>
 									<tr>
-										<th className="d-none d-sm-table-cell px-3 px-lg-1 text-monospace line-height-1">
+										<th className="d-none d-sm-table-cell px-3 px-md-1 text-monospace line-height-1">
 											<br className="d-none d-lg-inline" />2020
 										</th>
 									</tr>
@@ -175,7 +184,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 									{values2020.map((item, index: number) => {
 										return (
 											<tr key={`column-2020-${index}`} className={classnames(!checkEnabledPeriods(index) && 'disabled')}>
-												<td className="d-lg-none pl-3 text-uppercase text-monospace small text-nowrap align-middle">
+												<td className="d-md-none pl-3 text-uppercase text-monospace small text-nowrap align-middle">
 													{monthLabels[index]}
 													<small className="d-block mt-n2">
 														{index - periodStart >= 0 ? `Period ${index - periodStart + 1}` : '-'}
@@ -214,15 +223,15 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 								</tbody>
 							</table>
 						</div>
-						<div className="col-sm-6 col-lg mt-4 mt-sm-0 pl-sm-1 px-lg-0">
+						<div className="col-md mt-4 mt-md-0 px-md-0">
 							<h2 className="d-sm-none h6 text-monospace text-uppercase">
-								Renumeration
+								Eligible Renumeration<a href="#general-notes-8"><sup>8</sup></a>
 							</h2>
 							<table className="table table-sm table-striped table-borderless mb-0">
 								<thead>
 									<tr className="text-monospace">
 										<th className="d-none d-sm-table-cell px-3 px-lg-1 text-monospace line-height-1">
-											Eligible<br /> Renumeration<a href="#general-notes-8"><sup>8</sup></a>
+											Eligible<br className="d-none d-lg-inline" /> Renumeration<a href="#general-notes-8"><sup>8</sup></a>
 										</th>
 									</tr>
 								</thead>
@@ -230,7 +239,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 									{renumerationValues.map((item, index: number) => {
 										return (
 											<tr key={`column-2020-${index}`} className={classnames(!checkEnabledPeriods(index) && 'disabled')}>
-												<td className="d-lg-none pl-3 text-uppercase text-monospace small text-nowrap align-middle">
+												<td className="d-md-none pl-3 text-uppercase text-monospace small text-nowrap align-middle">
 													{monthLabels[index]}
 													<small className="d-block mt-n2">
 														{index - periodStart >= 0 ? `Period ${index - periodStart + 1}` : '-'}
@@ -268,9 +277,6 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 								</tbody>
 							</table>
 						</div>
-					</div>
-					<div className="text-center text-lg-left">
-						<button className="btn btn-outline-primary mt-4" onClick={reset}>Reset fields</button>
 					</div>
 				</div>
 				<div className="align-self-start col-lg-auto mt-4 mt-lg-0 pt-4 px-lg-0 pt-lg-3 bg-quinary">
@@ -337,6 +343,9 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 						</tbody>
 					</table>
 				</div>
+			</div>
+			<div className="text-center text-lg-left mt-4 mt-lg-3">
+				<button className="btn btn-outline-primary" onClick={reset}>Reset fields</button>
 			</div>
 		</React.Fragment>
 	);
