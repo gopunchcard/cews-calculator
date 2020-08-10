@@ -9,6 +9,7 @@ import Attributes from './content/Attributes';
 import GeneralNotesFooterNotes from './content/GeneralNotesFooterNotes';
 import CalculatorInstructions from './content/CalculatorInstructions';
 import Video from './content/Video';
+import Updates from './content/Updates';
 
 interface IProps { }
 
@@ -45,17 +46,23 @@ const App: React.FC<IProps> = (_props: IProps) => {
 					</div>
 				</div>
 				<div className="row">
-					<div className="col-xl-4">
+					<div className="col-xxl-4">
 						<div className="mt-xl-4 mr-xl-4">
 							<h2 className="display-1 mb-3 mb-xl-4">
 								How much can I get?
 							</h2>
-							<Lead />
-							<Video className="d-none d-xl-block mt-4" />
+							<div className="row">
+								<div className="col-xl-6 col-xxl-12">
+									<Lead />
+								</div>
+								<div className="d-none d-xl-flex align-items-center col-xl-5 col-xxl-12 mt-xxl-4 ml-xl-auto">
+									<Video />
+								</div>
+							</div>
 						</div>
 					</div>
-					<div className="col-xl-8 mt-5 mt-xl-0 hero-block text-dark mb-n5">
-						<div className="punchcard-wrapper shadow">
+					<div className="col-xxl-8 mt-5 mt-xxl-0 hero-block text-dark mb-n5">
+						<div id="wrapper-calculator" className="punchcard-wrapper shadow">
 							<div className="punchcard">
 								<div className="bg-quinary-light px-3 py-4 px-lg-4">
 									<div className="mt-n3 mx-n3 mb-4 mx-lg-n4 mb-lg-4 px-3 px-lg-4 pb-3 border-bottom border-dark">
@@ -90,6 +97,7 @@ const App: React.FC<IProps> = (_props: IProps) => {
 				<section className="container">
 					<Disclaimers />
 					<GeneralNotesFooterNotes />
+					<Updates />
 				</section>
 				<section className="text-monospace text-center">
 					<div className="d-flex align-items-center justify-content-center ml-md-auto border-top small mt-6 mb-3 pt-5 text-monospace text-uppercase">

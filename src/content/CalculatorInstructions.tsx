@@ -9,10 +9,7 @@ const CalculatorInstructions: React.FC<IProps> = (_props: IProps) => {
 				Choose the months you want to determine the subsidy for.
 			</li>
 			<li>
-				Enter your gross revenue<a href="#general-notes-1"><sup>1</sup></a> in the enabled fields.
-			</li>
-			<li>
-				Multiply the resulting calculated percentage by the applicable amount of eligible remuneration<a href="#general-notes-8"><sup>8</sup></a> to estimate your subsidy.
+				Enter your gross revenue<a href="#general-notes-1"><sup>1</sup></a> and eligible remuneration<a href="#general-notes-8"><sup>8</sup></a> in the enabled fields.
 			</li>
 		</ol>		
 	);

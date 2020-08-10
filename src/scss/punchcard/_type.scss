@@ -51,12 +51,20 @@ html {
 	font-style: italic;
 }
 
+.font-weight-inherit {
+	font-weight: inherit;
+}
+
 .large {
 	font-size: 125%;
 }
 
 .xlarge {
 	font-size: 150%;
+}
+
+.line-height-1 {
+	line-height: 1;
 }
 
 .text-break {
