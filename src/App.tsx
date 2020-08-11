@@ -10,6 +10,7 @@ import GeneralNotesFooterNotes from './content/GeneralNotesFooterNotes';
 import CalculatorInstructions from './content/CalculatorInstructions';
 import Video from './content/Video';
 import Updates from './content/Updates';
+import ContactForm from './content/ContactForm';
 
 interface IProps { }
 
@@ -81,6 +82,11 @@ const App: React.FC<IProps> = (_props: IProps) => {
 			<section className="d-xl-none py-6 bg-light">
 				<div className="container pt-4">
 					<Video />
+				</div>
+			</section>
+			<section className="py-6 bg-light">
+				<div className="container pt-4">
+					<ContactForm formName="body" />
 				</div>
 			</section>
 			<section className="py-6">
