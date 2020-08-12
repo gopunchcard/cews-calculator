@@ -58,7 +58,7 @@ const ContactForm: React.FC<IProps> = (props: IProps) => {
 					>
 						<span aria-hidden="true">&times;</span>
 					</button>
-					Thank you for subscribing. We will let you know of updates the CEWS 2.0 Estimator.
+					Thank you for subscribing. We will let you know of updates to the CEWS 2.0 Estimator.
 				</div>
 			)}
 			<form onSubmit={submit}>
