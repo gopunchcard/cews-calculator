@@ -120,7 +120,7 @@ const App: React.FC<IProps> = (_props: IProps) => {
 								<p>Subscribe to get updates to the CEWS 2.0 Estimator.</p>
 								<ContactForm formName="footer" />
 							</div>
-							<div className="col-lg-5 mt-4 mt-lg-1 order-lg-first">
+							<div className="col-lg-5 mt-4 mt-lg-1">
 								<Updates />
 							</div>
 						</div>
