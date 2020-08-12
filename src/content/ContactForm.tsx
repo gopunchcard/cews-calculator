@@ -70,7 +70,7 @@ const ContactForm: React.FC<IProps> = (props: IProps) => {
 					<input id={`${props.formName}-contact-gdpr`} type="checkbox" checked={consent} onChange={handleClick} className="form-check-input" />
 					<label htmlFor={`${props.formName}-contact-gdpr`} className="form-check-label">I'd like to receive relevant updates from you</label>
 				</div>
-				<button type="button" onClick={submit} disabled={!consent || email.length < 3} className="btn btn-primary">Subscribe</button>
+				<button type="submit" disabled={!consent || email.length < 3} className="btn btn-primary">Subscribe</button>
 			</form>
 		</React.Fragment>
 	);
