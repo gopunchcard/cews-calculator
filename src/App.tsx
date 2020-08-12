@@ -116,12 +116,12 @@ const App: React.FC<IProps> = (_props: IProps) => {
 					<div className="container">
 						<h2 className="display-2">Stay updated</h2>
 						<div className="row">
-							<div className="col-lg-5 mt-4 mt-lg-1">
-								<Updates />
-							</div>
 							<div className="col-lg-7">
 								<p>Subscribe to get updates to the CEWS 2.0 Estimator.</p>
 								<ContactForm formName="footer" />
+							</div>
+							<div className="col-lg-5 mt-4 mt-lg-1 order-lg-first">
+								<Updates />
 							</div>
 						</div>
 					</div>
