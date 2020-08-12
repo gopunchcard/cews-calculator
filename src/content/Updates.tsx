@@ -5,7 +5,6 @@ interface IProps { }
 const Updates: React.FC<IProps> = (_props: IProps) => {
 	return (
 		<div className="small" id="updates">
-			<hr />
 			<h3 className="h6 text-uppercase">Updates:</h3>
 			<ul>
 				<li><strong>V2 (August 9, 2020)</strong></li>

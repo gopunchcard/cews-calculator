@@ -10,6 +10,7 @@ import GeneralNotesFooterNotes from './content/GeneralNotesFooterNotes';
 import CalculatorInstructions from './content/CalculatorInstructions';
 import Video from './content/Video';
 import Updates from './content/Updates';
+import ContactForm from './content/ContactForm';
 
 interface IProps { }
 
@@ -78,13 +79,26 @@ const App: React.FC<IProps> = (_props: IProps) => {
 					</div>
 				</div>
 			</section>
-			<section className="d-xl-none py-6 bg-light">
+			<section className="d-xl-none py-6">
 				<div className="container pt-4">
 					<Video />
 				</div>
 			</section>
+			<section className="py-5 bg-light">
+				<div className="container pt-xl-5">
+					<div className="row">
+						<div className="col-lg-5">
+							<h2 className="display-2">Stay updated</h2>
+							<p>We'll be updating the Estimator with new features and as the program changes. Subscribe here to receive e-mail notifications from the team.</p>
+						</div>
+						<div className="col-lg-7 mt-1">
+							<ContactForm formName="body" />
+						</div>
+					</div>
+				</div>
+			</section>
 			<section className="py-6">
-				<div className="container py-xl-6">
+				<div className="container">
 					<GeneralNotes />
 				</div>
 			</section>
@@ -97,10 +111,23 @@ const App: React.FC<IProps> = (_props: IProps) => {
 				<section className="container">
 					<Disclaimers />
 					<GeneralNotesFooterNotes />
-					<Updates />
+				</section>
+				<section className="mt-6 py-5 border-top">
+					<div className="container">
+						<h2 className="display-2">Stay updated</h2>
+						<div className="row">
+							<div className="col-lg-7">
+								<p>We'll be updating the Estimator with new features and as the program changes. Subscribe here to receive e-mail notifications from the team.</p>
+								<ContactForm formName="footer" />
+							</div>
+							<div className="col-lg-5 mt-4 mt-lg-1">
+								<Updates />
+							</div>
+						</div>
+					</div>
 				</section>
 				<section className="text-monospace text-center">
-					<div className="d-flex align-items-center justify-content-center ml-md-auto border-top small mt-6 mb-3 pt-5 text-monospace text-uppercase">
+					<div className="d-flex align-items-center justify-content-center ml-md-auto border-top small mb-3 pt-5 text-monospace text-uppercase">
 						<a href="https://www.videotax.com/" target="_blank" rel="noreferrer noopener" aria-label="Video Tax News" className="navbar-brand-vtn">
 							<img src={require('./components/images/logo-vtn-blue.png')} alt="Video Tax News Logo" className="w-100" />
 						</a>

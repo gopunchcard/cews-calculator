@@ -272,12 +272,14 @@ $tab-active-bg: transparent;
 // Forms
 //////////////////////////////////////////////////
 
-$form-group-margin-bottom: 1.75rem;
+$form-group-margin-bottom: 1rem;
+
+$label-margin-bottom: 0.25rem;
 
 $input-padding-x: $spacer * 0.375;
 
 $input-bg: mix(#fff, $quinary-light, 50%);
-$input-border-color: $gray-400;
+$input-border-color: $gray-500;
 
 $input-label-font-weight: 700;
 
@@ -302,7 +304,9 @@ $custom-control-indicator-active-border: $custom-control-indicator-active-bg;
 
 $custom-checkbox-indicator-indeterminate-bg: $custom-control-indicator-checked-bg;
 
-$tedxtarea-min-height: 10rem;
+$textarea-min-height: 10rem;
+
+$form-check-input-margin-y: 0.5rem;
 
 //////////////////////////////////////////////////
 // Dropdowns
