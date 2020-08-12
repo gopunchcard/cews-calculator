@@ -87,11 +87,11 @@ const App: React.FC<IProps> = (_props: IProps) => {
 			<section className="py-5 bg-light">
 				<div className="container pt-xl-5">
 					<div className="row">
-						<div className="col-lg-4">
+						<div className="col-lg-5">
 							<h2 className="display-2">Stay updated</h2>
-							<p>Subscribe to get updates to the CEWS 2.0 Estimator.</p>
+							<p>We'll be updating the Estimator with new features and as the program changes. Subscribe here to receive e-mail notifications from the team.</p>
 						</div>
-						<div className="col-lg-8 col-xl-6 mt-1">
+						<div className="col-lg-7 mt-1">
 							<ContactForm formName="body" />
 						</div>
 					</div>
@@ -117,7 +117,7 @@ const App: React.FC<IProps> = (_props: IProps) => {
 						<h2 className="display-2">Stay updated</h2>
 						<div className="row">
 							<div className="col-lg-7">
-								<p>Subscribe to get updates to the CEWS 2.0 Estimator.</p>
+								<p>We'll be updating the Estimator with new features and as the program changes. Subscribe here to receive e-mail notifications from the team.</p>
 								<ContactForm formName="footer" />
 							</div>
 							<div className="col-lg-5 mt-4 mt-lg-1">

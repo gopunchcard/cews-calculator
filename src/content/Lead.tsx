@@ -6,7 +6,7 @@ const Lead: React.FC<IProps> = (_props: IProps) => {
 	return (
 		<React.Fragment>
 			<p>
-				This tool estimates entitlement to the Canada Emergency Wage Subsidy (CEWS) for periods 1 through 9 (March 15, 2020 to November 21, 2020). In general, the subsidy is determined by multiplying the percentages calculated below by the {` `}
+				This tool estimates entitlement to the Canada Emergency Wage Subsidy (CEWS 2.0) for periods 1 through 9 (March 15, 2020 to November 21, 2020). In general, the subsidy is determined by multiplying the percentages calculated below by the {` `}
 				<a className="text-primary-light font-weight-bold" href="https://www.canada.ca/en/revenue-agency/services/subsidy/emergency-wage-subsidy/cews-frequently-asked-questions.html#h_5" target="_blank" rel="noreferrer noopener">
 					eligible remuneration
 				</a>{` `}
