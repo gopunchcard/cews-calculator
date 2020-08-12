@@ -22,21 +22,23 @@ const ContactForm: React.FC<IProps> = (props: IProps) => {
 	const [email, setEmail] = React.useState("");
 	const [consent, setConsent] = React.useState(false);
 	const [submitSuccess, setSubmitSuccess] = React.useState(false);
-	
+
 	function submit(event: FormEvent) {
 		console.log('test');
 		var post = `/jsonp/?email=${email}&consent=${!consent}` // Need to reverse; SharpSpring treats the consent value as unsubscribe
 		var url = sharpSpringUrl + endpoint + post;
 		jsonp(url, undefined, function (err: any, data: any) {
 			if (err) {
-				console.error(err.message);
+				//console.error(err.message);
 			} else {
-				console.log(data);
+				//console.log(data);
 				setSubmitSuccess(true);
 				// TODO: Clear fields on success
 			}
 		});
-
+		setSubmitSuccess(true);
+		setEmail("");
+		setConsent(false);
 		event.preventDefault();
 		return false;
 	}
@@ -62,13 +64,13 @@ const ContactForm: React.FC<IProps> = (props: IProps) => {
 			<form onSubmit={submit}>
 				<div className="form-group">
 					<label htmlFor={`${props.formName}-contact-email`} className="font-weight-bold">E-mail</label>
-					<input id={`${props.formName}-contact-email`} type="email" className="form-control bg-white" onChange={e => setEmail(e.target.value)} />
+					<input id={`${props.formName}-contact-email`} type="email" className="form-control bg-white" value={email} onChange={e => setEmail(e.target.value)} />
 				</div>
 				<div className="form-group form-check">
-					<input id={`${props.formName}-contact-gdpr`} type="checkbox" checked={consent} onClick={handleClick} className="form-check-input" />
+					<input id={`${props.formName}-contact-gdpr`} type="checkbox" checked={consent} onChange={handleClick} className="form-check-input" />
 					<label htmlFor={`${props.formName}-contact-gdpr`} className="form-check-label">I'd like to receive relevant updates from you</label>
 				</div>
-				<button type="button" onClick={submit} className="btn btn-primary">Subscribe</button>
+				<button type="button" onClick={submit} disabled={!consent || email.length < 3} className="btn btn-primary">Subscribe</button>
 			</form>
 		</React.Fragment>
 	);
