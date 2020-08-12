@@ -25,7 +25,7 @@ const ContactForm: React.FC<IProps> = (props: IProps) => {
 	
 	function submit(event: FormEvent) {
 		console.log('test');
-		var post = `/jsonp/?email=${email}&consent=${consent}`
+		var post = `/jsonp/?email=${email}&consent=${!consent}` // Need to reverse; SharpSpring treats the consent value as unsubscribe
 		var url = sharpSpringUrl + endpoint + post;
 		jsonp(url, undefined, function (err: any, data: any) {
 			if (err) {
