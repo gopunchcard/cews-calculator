@@ -107,6 +107,9 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 									})}
 								</tbody>
 							</table>
+							<div className="d-none d-lg-block text-center text-lg-left mt-3 pt-2">
+								<button className="btn btn-outline-primary" onClick={reset}>Reset fields</button>
+							</div>
 						</div>
 						<div className="col-md px-md-0">
 							<h2 className="d-md-none h6 text-monospace text-uppercase">
@@ -281,18 +284,27 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 											</tr>
 										)
 									})}
-									<tr className="d-none d-md-table-row">
-										<td className="d-md-none pl-3 text-uppercase text-monospace small text-nowrap align-middle">SubTotal</td>
-										<td className="pr-3">Period 1-4 Subtotal</td>
-									</tr>
-									<tr className="d-none d-md-table-row">
-										<td className="d-md-none pl-3 text-uppercase text-monospace small text-nowrap align-middle">SubTotal</td>
-										<td className="pr-3">Period 5-9 Subtotal</td>
-									</tr>
-									{!enabledPeriods.includes(true) && (
-										<tr className="bg-transparent d-md-none"><td className="px-0 font-italic text-muted">No months selected. Choose the months you want to calculate above.</td></tr>
+									</tbody>
+									{enabledPeriods.includes(true) && (
+										<React.Fragment>
+											<thead>
+												<tr>
+													<th colSpan={2} className="d-none d-lg-table-cell pl-lg-3 pr-lg-2 visibility-hidden"><h2 className="h6 mt-3 mb-0 text-md-center text-monospace text-uppercase">&nbsp;</h2></th>
+												</tr>
+											</thead>
+											<tbody className="text-right">
+												<tr className="d-none d-lg-table-row bg-transparent">
+													<td className="pr-3 text-monospace"><small>Period 1-4</small></td>
+												</tr>
+												<tr className="d-none d-lg-table-row bg-transparent">
+													<td className="pr-3 text-monospace"><small>Period 5-9</small></td>
+												</tr>
+												{!enabledPeriods.includes(true) && (
+													<tr className="bg-transparent d-md-none"><td className="px-0 font-italic text-muted text-left">No months selected. Choose the months you want to calculate above.</td></tr>
+												)}
+											</tbody>
+										</React.Fragment>
 									)}
-								</tbody>
 							</table>
 						</div>
 					</div>
@@ -301,13 +313,13 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 					<h2 className="h6 text-md-center text-monospace text-uppercase">
 						Estimated subsidy
 					</h2>
-					<table className="table table-sm table-striped table-borderless mb-0">
+					<table className="table table-sm table-borderless mb-0">
 						<thead>
 							<tr>
-								<th className="d-none d-md-table-cell d-lg-none pl-3 text-monospace line-height-1">
+								<th className="d-none d-sm-table-cell d-lg-none pl-3 text-monospace line-height-1">
 									Period
 								</th>
-								<th className="px-3 text-monospace text-right line-height-1">
+								<th className="pl-3 text-monospace text-right line-height-1">
 									<span><br className="d-none d-lg-inline-block" />General</span>
 								</th>
 								<th className="px-3 text-monospace text-right line-height-1">
@@ -318,65 +330,87 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 						<tbody>
 							{values2019.map((item, index: number) => {
 								return (
-									<tr key={`column-results-${index}`} className={classnames(!checkEnabledPeriods(index) && 'disabled', !enabledPeriods[index] && 'd-none d-lg-table-row')}>
-										<td className="pl-3 text-uppercase text-monospace small text-nowrap align-middle d-lg-none">
-											{monthLabels[index]}
-											<small className="d-block mt-n2">
-												{index - periodStart >= 0 ? `Period ${index - periodStart + 1}` : '-'}
-											</small>
-										</td>
-										<td className="pl-lg-3 pr-lg-2">
-											<div
-												className={classnames(
-													"d-flex flex-column justify-content-center form-control px-0 bg-transparent border-transparent text-right line-height-1 min-width-5",
-													resultsGeneral[index] > 0 && 'font-weight-bold',
-													!enabledPeriods[index] && 'disabled',
-												)}
-											>
-												{(enabledPeriods[index] && (resultsGeneral[index] !== undefined)) ? (
-													getGeneralSubsidyAmount(index))
-													:
-													"-"
-												}
-											</div>
-										</td>
-										<td className="pl-lg-2 pr-3">
-											<div
-												className={classnames(
-													"d-flex flex-column justify-content-center form-control px-0 bg-transparent border-transparent text-right line-height-1 min-width-5",
-													resultsAlt[index] > 0 && 'font-weight-bold',
-													!enabledPeriods[index] && 'disabled',
-												)}
-											>
-												{(enabledPeriods[index] && (resultsAlt[index] !== undefined)) ? (
-													getAltSubsidyAmount(index))
-													:
-													"-"
-												}
-											</div>
-										</td>
-									</tr>
+									<React.Fragment key={`column-results-${index}`}>
+										<tr className={classnames('d-sm-none', !checkEnabledPeriods(index) && 'disabled', !enabledPeriods[index] && 'd-none')}>	
+											<td colSpan={2} className="pb-0 text-uppercase text-monospace small text-nowrap align-middle">
+												{monthLabels[index]} - {index - periodStart >= 0 ? `Period ${index - periodStart + 1}` : '-'}:
+											</td>										
+										</tr>
+										<tr className={classnames(!checkEnabledPeriods(index) && 'disabled', !enabledPeriods[index] && 'd-none d-lg-table-row', !(index % 2) && 'bg-sm-table-accent')}>
+											<td className="pl-3 text-uppercase text-monospace small text-nowrap align-middle d-none d-sm-table-cell d-lg-none">
+												{monthLabels[index]}
+												<small className="d-block mt-n2">
+													{index - periodStart >= 0 ? `Period ${index - periodStart + 1}` : '-'}
+												</small>
+											</td>
+											<td className="pl-lg-3 pr-lg-2">
+												<div
+													className={classnames(
+														"d-flex flex-column justify-content-center form-control px-0 bg-transparent border-transparent text-right line-height-1 min-width-5",
+														resultsGeneral[index] > 0 && 'font-weight-bold',
+														!enabledPeriods[index] && 'disabled',
+													)}
+												>
+													{(enabledPeriods[index] && (resultsGeneral[index] !== undefined)) ? (
+														getGeneralSubsidyAmount(index))
+														:
+														"-"
+													}
+												</div>
+											</td>
+											<td className="pl-lg-2 pr-3">
+												<div
+													className={classnames(
+														"d-flex flex-column justify-content-center form-control px-0 bg-transparent border-transparent text-right line-height-1 min-width-5",
+														resultsAlt[index] > 0 && 'font-weight-bold',
+														!enabledPeriods[index] && 'disabled',
+													)}
+												>
+													{(enabledPeriods[index] && (resultsAlt[index] !== undefined)) ? (
+														getAltSubsidyAmount(index))
+														:
+														"-"
+													}
+												</div>
+											</td>
+										</tr>
+									</React.Fragment>
 								)
 							})}
-							<tr className="d-none d-lg-table-row">
-
-								<td className="pl-lg-3 pr-lg-2" >{getGeneralSubTotals1to4()}</td>
-								<td className="pl-lg-2 pr-3" >{getAltSubTotals1to4()}</td>
-							</tr>
-							<tr className="d-none d-lg-table-row">
-
-								<td className="pl-lg-3 pr-lg-2" >{getGeneralSubTotals5to9()}</td>
-								<td className="pl-lg-2 pr-3" >{getAltSubTotals5to9()}</td>
-							</tr>
 							{!enabledPeriods.includes(true) && (
-
-								<tr className="bg-transparent d-md-none"><td className="px-0 font-italic text-muted" colSpan={3}>No months selected. Choose the months you want to calculate above.</td></tr>
+								<tr className="bg-transparent d-lg-none"><td className="px-0 font-italic text-muted" colSpan={3}>No months selected. Choose the months you want to calculate above.</td></tr>
 							)}
 						</tbody>
+
+						{enabledPeriods.includes(true) && (
+							<React.Fragment>
+								<thead>
+									<tr className="border-top border-dark">
+										<th colSpan={3} className="d-none d-lg-table-cell pl-lg-3 pr-lg-2"><h2 className="h6 mt-3 mb-0 text-md-center text-monospace text-uppercase">Estimated subtotal</h2></th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr className="d-sm-none bg-transparent"><td colSpan={2}><h2 className="h6 mt-3 mb-0 text-md-center text-monospace text-uppercase">Period 1-4 Subtotal</h2></td></tr>
+									<tr className="d-lg-table-row bg-transparent">
+
+										<td className="d-none d-sm-table-cell d-lg-none pl-3 text-monospace"><small className="font-weight-bold">Period 1-4 Subtotal</small></td>
+										<td className="pl-lg-3 pr-lg-2 text-right font-weight-bold" >{getGeneralSubTotals1to4()}</td>
+										<td className="pl-lg-2 pr-3 text-right font-weight-bold" >{getAltSubTotals1to4()}</td>
+									</tr>
+									<tr className="d-sm-none bg-transparent"><td colSpan={2}><h2 className="h6 mt-3 mb-0 text-md-center text-monospace text-uppercase">Period 5-9 Subtotal</h2></td></tr>
+									<tr className="d-lg-table-row bg-transparent">
+
+										<td className="d-none d-sm-table-cell d-lg-none pl-3 text-monospace"><small className="font-weight-bold">Period 5-9 Subtotal</small></td>
+										<td className="pl-lg-3 pr-lg-2 text-right font-weight-bold" >{getGeneralSubTotals5to9()}</td>
+										<td className="pl-lg-2 pr-3 text-right font-weight-bold" >{getAltSubTotals5to9()}</td>
+									</tr>
+								</tbody>
+							</React.Fragment>
+						)}
 					</table>
 				</div>
 			</div>
-			<div className="text-center text-lg-left mt-4 mt-lg-3">
+			<div className="d-lg-none text-center text-lg-left mt-4 mt-lg-3">
 				<button className="btn btn-outline-primary" onClick={reset}>Reset fields</button>
 			</div>
 		</React.Fragment>

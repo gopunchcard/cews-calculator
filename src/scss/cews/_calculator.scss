@@ -9,3 +9,9 @@
 .right-0 {
 	right: 0;
 }
+
+@include media-breakpoint-up(sm) {
+	.bg-sm-table-accent {
+		background-color: $table-accent-bg;
+	}
+}
