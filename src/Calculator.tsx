@@ -37,6 +37,9 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 
 	const [enabledPeriods, setEnabledPeriods] = React.useState<boolean[]>(defaultEnabledPeriods);
 	const [renumerationValues, setRenumeration] = React.useState<Array<number>>(defaultRenumeration);
+
+
+
 	React.useEffect(init, []);
 	React.useEffect(update, [values2019, values2020]);
 
@@ -154,12 +157,12 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 														/>
 													</div>
 												) : (
-													<div className="form-control bg-transparent border-transparent px-0 text-right text-monospace">
-														<small className="d-inline-flex align-items-center align-middle mx-md-n3">
-															Field for Alt.<IconArrowRight />
-														</small>
-													</div>
-												)}
+														<div className="form-control bg-transparent border-transparent px-0 text-right text-monospace">
+															<small className="d-inline-flex align-items-center align-middle mx-md-n3">
+																Field for Alt.<IconArrowRight />
+															</small>
+														</div>
+													)}
 											</td>
 										</tr>
 									))}
@@ -278,6 +281,14 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 											</tr>
 										)
 									})}
+									<tr className="d-none d-md-table-row">
+										<td className="d-md-none pl-3 text-uppercase text-monospace small text-nowrap align-middle">SubTotal</td>
+										<td className="pr-3">Period 1-4 Subtotal</td>
+									</tr>
+									<tr className="d-none d-md-table-row">
+										<td className="d-md-none pl-3 text-uppercase text-monospace small text-nowrap align-middle">SubTotal</td>
+										<td className="pr-3">Period 5-9 Subtotal</td>
+									</tr>
 									{!enabledPeriods.includes(true) && (
 										<tr className="bg-transparent d-md-none"><td className="px-0 font-italic text-muted">No months selected. Choose the months you want to calculate above.</td></tr>
 									)}
@@ -347,7 +358,18 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 									</tr>
 								)
 							})}
+							<tr className="d-none d-lg-table-row">
+
+								<td className="pl-lg-3 pr-lg-2" >{getGeneralSubTotals1to4()}</td>
+								<td className="pl-lg-2 pr-3" >{getAltSubTotals1to4()}</td>
+							</tr>
+							<tr className="d-none d-lg-table-row">
+
+								<td className="pl-lg-3 pr-lg-2" >{getGeneralSubTotals5to9()}</td>
+								<td className="pl-lg-2 pr-3" >{getAltSubTotals5to9()}</td>
+							</tr>
 							{!enabledPeriods.includes(true) && (
+
 								<tr className="bg-transparent d-md-none"><td className="px-0 font-italic text-muted" colSpan={3}>No months selected. Choose the months you want to calculate above.</td></tr>
 							)}
 						</tbody>
@@ -405,15 +427,43 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 		year.getvalues();
 		setResultsGeneral(year.finalGeneralResults);
 		setResultsAlt(year.finalAltResults);
-	}
 
+	}
+	function getGeneralSubTotals1to4() {
+		let total = 0;
+		for (let i = 2; i < 6; i++) {
+			total += (resultsGeneral[i]) * renumerationValues[i];
+		}
+		return '$' + round(total / 100).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	}
+	function getAltSubTotals1to4() {
+		let total = 0;
+		for (let i = 2; i < 6; i++) {
+			total += (resultsAlt[i]) * renumerationValues[i];
+		}
+		return '$' + round(total / 100).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	}
+	function getGeneralSubTotals5to9() {
+		let total = 0;
+		for (let i = 6; i < 11; i++) {
+			total += (resultsGeneral[i]) * renumerationValues[i];
+		}
+		return '$' + round(total / 100).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	}
+	function getAltSubTotals5to9() {
+		let total = 0;
+		for (let i = 6; i < 11; i++) {
+			total += (resultsAlt[i]) * renumerationValues[i];
+		}
+		return '$' + round(total / 100).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	}
 	function reset() {
 		setValues2019(defaultValues2019);
 		setValues2020(defaultValues2020);
 		setRenumeration(defaultRenumeration);
 		setEnabledPeriods(defaultEnabledPeriods);
 		init();
-		document.getElementById("wrapper-calculator")!.scrollIntoView({behavior: "smooth"});
+		document.getElementById("wrapper-calculator")!.scrollIntoView({ behavior: "smooth" });
 	}
 
 	function addError(field: string) {
