@@ -386,7 +386,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 							<React.Fragment>
 								<thead>
 									<tr className="border-top border-dark">
-										<th colSpan={3} className="d-none d-lg-table-cell pl-lg-3 pr-lg-2"><h2 className="h6 mt-3 mb-0 text-md-center text-monospace text-uppercase">Estimated subtotal</h2></th>
+										<th colSpan={3} className="pl-lg-3 pr-lg-2"><h2 className="d-none d-lg-block h6 mt-3 mb-0 text-md-center text-monospace text-uppercase">Estimated subtotal</h2></th>
 									</tr>
 								</thead>
 								<tbody>
