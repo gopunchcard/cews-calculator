@@ -286,34 +286,32 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 									})}
 									</tbody>
 									{enabledPeriods.includes(true) && (
-										<React.Fragment>
-											<tbody className="text-right text-monospace">
-												<tr className="d-none d-lg-table-row bg-transparent border-top border-transparent">
-													<td className="pr-3 py-0">
-														<div className="d-flex flex-column justify-content-center form-control px-0 bg-transparent border-transparent text-right line-height-1">
-															<small>Period 1-4<br /><small>Subtotal</small></small>
-														</div>
-													</td>
-												</tr>
-												<tr className="d-none d-lg-table-row bg-transparent">
-													<td className="pr-3 py-0">
-														<div className="d-flex flex-column justify-content-center form-control px-0 bg-transparent border-transparent text-right line-height-1">
-															<small>Period 5-9<br /><small>Subtotal</small></small>
-														</div>
-													</td>
-												</tr>
-												<tr className="d-none d-lg-table-row bg-transparent border-top border-transparent">
-													<td className="pr-3 py-0">
-														<div className="d-flex flex-column justify-content-center form-control px-0 bg-transparent border-transparent text-right line-height-1">
-															<small className="font-weight-bold text-uppercase">Total</small>
-														</div>
-													</td>
-												</tr>
-												{!enabledPeriods.includes(true) && (
-													<tr className="bg-transparent d-md-none"><td className="px-0 font-italic text-muted text-left">No months selected. Choose the months you want to calculate above.</td></tr>
-												)}
-											</tbody>
-										</React.Fragment>
+										<tbody className="text-right text-monospace">
+											<tr className="d-none d-lg-table-row bg-transparent border-top border-transparent">
+												<td className="pr-3 py-0">
+													<div className="d-flex flex-column justify-content-center form-control px-0 bg-transparent border-transparent text-right line-height-1">
+														<small>Period 1-4<br /><small>Subtotal</small></small>
+													</div>
+												</td>
+											</tr>
+											<tr className="d-none d-lg-table-row bg-transparent">
+												<td className="pr-3 py-0">
+													<div className="d-flex flex-column justify-content-center form-control px-0 bg-transparent border-transparent text-right line-height-1">
+														<small>Period 5-9<br /><small>Subtotal</small></small>
+													</div>
+												</td>
+											</tr>
+											<tr className="d-none d-lg-table-row bg-transparent border-top border-transparent">
+												<td className="pr-3 py-0">
+													<div className="d-flex flex-column justify-content-center form-control px-0 bg-transparent border-transparent text-right line-height-1">
+														<small className="font-weight-bold text-uppercase">Total</small>
+													</div>
+												</td>
+											</tr>
+											{!enabledPeriods.includes(true) && (
+												<tr className="bg-transparent d-md-none"><td className="px-0 font-italic text-muted text-left">No months selected. Choose the months you want to calculate above.</td></tr>
+											)}
+										</tbody>
 									)}
 							</table>
 						</div>
@@ -393,55 +391,53 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 						</tbody>
 
 						{enabledPeriods.includes(true) && (
-							<React.Fragment>
-								<tbody className="border-top border-dark">
-									<tr className="d-sm-none bg-transparent"><td colSpan={2}><h2 className="h6 mt-3 mb-0 text-md-center text-monospace text-uppercase">Period 1-4 Subtotal</h2></td></tr>
-									<tr className="d-lg-table-row bg-transparent">
+							<tbody className="border-top border-dark">
+								<tr className="d-sm-none bg-transparent"><td colSpan={2}><h2 className="h6 mt-3 mb-0 text-md-center text-monospace text-uppercase">Period 1-4 Subtotal</h2></td></tr>
+								<tr className="d-lg-table-row bg-transparent">
 
-										<td className="d-none d-sm-table-cell d-lg-none pl-3 text-monospace align-middle"><small className="font-weight-bold">Period 1-4 Subtotal</small></td>
-										<td className="pl-lg-3 pr-lg-2 py-0" >
-											<div className="d-flex flex-column justify-content-center form-control px-0 bg-transparent border-transparent text-right font-weight-bold line-height-1">
-												{getGeneralSubTotals1to4()}
-											</div>
-										</td>
-										<td className="pl-lg-2 pr-3 py-0" >
-											<div className="d-flex flex-column justify-content-center form-control px-0 bg-transparent border-transparent text-right font-weight-bold line-height-1">
-												{getAltSubTotals1to4()}
-											</div>	
-										</td>
-									</tr>
-									<tr className="d-sm-none bg-transparent"><td colSpan={2}><h2 className="h6 mt-3 mb-0 text-md-center text-monospace text-uppercase">Period 5-9 Subtotal</h2></td></tr>
-									<tr className="d-lg-table-row bg-transparent border-bottom border-dark">
+									<td className="d-none d-sm-table-cell d-lg-none pl-3 text-monospace align-middle"><small className="font-weight-bold">Period 1-4 Subtotal</small></td>
+									<td className="pl-lg-3 pr-lg-2 py-0" >
+										<div className="d-flex flex-column justify-content-center form-control px-0 bg-transparent border-transparent text-right font-weight-bold line-height-1">
+											{getGeneralSubTotals1to4()}
+										</div>
+									</td>
+									<td className="pl-lg-2 pr-3 py-0" >
+										<div className="d-flex flex-column justify-content-center form-control px-0 bg-transparent border-transparent text-right font-weight-bold line-height-1">
+											{getAltSubTotals1to4()}
+										</div>	
+									</td>
+								</tr>
+								<tr className="d-sm-none bg-transparent"><td colSpan={2}><h2 className="h6 mt-3 mb-0 text-md-center text-monospace text-uppercase">Period 5-9 Subtotal</h2></td></tr>
+								<tr className="d-lg-table-row bg-transparent border-bottom border-dark">
 
-										<td className="d-none d-sm-table-cell d-lg-none pl-3 text-monospace align-middle"><small className="font-weight-bold">Period 5-9 Subtotal</small></td>
-										<td className="pl-lg-3 pr-lg-2 py-0" >
-											<div className="d-flex flex-column justify-content-center form-control px-0 bg-transparent border-transparent text-right font-weight-bold line-height-1">
-												{getGeneralSubTotals5to9()}
-											</div>
-										</td>
-										<td className="pl-lg-2 pr-3 py-0" >
-											<div className="d-flex flex-column justify-content-center form-control px-0 bg-transparent border-transparent text-right font-weight-bold line-height-1">
-												{getAltSubTotals5to9()}
-											</div>
-										</td>
-									</tr>
-									<tr className="d-sm-none bg-transparent"><td colSpan={2}><h2 className="h6 mt-3 mb-0 text-md-center text-monospace text-uppercase">Total</h2></td></tr>
-									<tr className="d-lg-table-row bg-transparent">
+									<td className="d-none d-sm-table-cell d-lg-none pl-3 text-monospace align-middle"><small className="font-weight-bold">Period 5-9 Subtotal</small></td>
+									<td className="pl-lg-3 pr-lg-2 py-0" >
+										<div className="d-flex flex-column justify-content-center form-control px-0 bg-transparent border-transparent text-right font-weight-bold line-height-1">
+											{getGeneralSubTotals5to9()}
+										</div>
+									</td>
+									<td className="pl-lg-2 pr-3 py-0" >
+										<div className="d-flex flex-column justify-content-center form-control px-0 bg-transparent border-transparent text-right font-weight-bold line-height-1">
+											{getAltSubTotals5to9()}
+										</div>
+									</td>
+								</tr>
+								<tr className="d-sm-none bg-transparent"><td colSpan={2}><h2 className="h6 mt-3 mb-0 text-md-center text-monospace text-uppercase">Total</h2></td></tr>
+								<tr className="d-lg-table-row bg-transparent">
 
-										<td className="d-none d-sm-table-cell d-lg-none pl-3 text-monospace align-middle"><small className="font-weight-bold text-uppercase">Total</small></td>
-										<td className="pl-lg-3 pr-lg-2 py-0" >
-											<div className="d-flex flex-column justify-content-center form-control px-0 bg-transparent border-transparent text-right font-weight-bold line-height-1">
-												{getGeneralTotals()}
-											</div>
-											</td>
-										<td className="pl-lg-2 pr-3 py-0" >
-											<div className="d-flex flex-column justify-content-center form-control px-0 bg-transparent border-transparent text-right font-weight-bold line-height-1">
-												{getAltTotals()}
-											</div>
+									<td className="d-none d-sm-table-cell d-lg-none pl-3 text-monospace align-middle"><small className="font-weight-bold text-uppercase">Total</small></td>
+									<td className="pl-lg-3 pr-lg-2 py-0" >
+										<div className="d-flex flex-column justify-content-center form-control px-0 bg-transparent border-transparent text-right font-weight-bold line-height-1">
+											{getGeneralTotals()}
+										</div>
 										</td>
-									</tr>
-								</tbody>
-							</React.Fragment>
+									<td className="pl-lg-2 pr-3 py-0" >
+										<div className="d-flex flex-column justify-content-center form-control px-0 bg-transparent border-transparent text-right font-weight-bold line-height-1">
+											{getAltTotals()}
+										</div>
+									</td>
+								</tr>
+							</tbody>
 						)}
 					</table>
 				</div>
