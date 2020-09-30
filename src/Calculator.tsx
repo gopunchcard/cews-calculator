@@ -284,37 +284,37 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 											</tr>
 										)
 									})}
-									</tbody>
-									{enabledPeriods.includes(true) && (
-										<React.Fragment>
-											<tbody className="text-right text-monospace">
-												<tr className="d-none d-lg-table-row bg-transparent border-top border-transparent">
-													<td className="pr-3 py-0">
-														<div className="d-flex flex-column justify-content-center form-control px-0 bg-transparent border-transparent text-right line-height-1">
-															<small>Period 1-4<br /><small>Subtotal</small></small>
-														</div>
-													</td>
-												</tr>
-												<tr className="d-none d-lg-table-row bg-transparent">
-													<td className="pr-3 py-0">
-														<div className="d-flex flex-column justify-content-center form-control px-0 bg-transparent border-transparent text-right line-height-1">
-															<small>Period 5-9<br /><small>Subtotal</small></small>
-														</div>
-													</td>
-												</tr>
-												<tr className="d-none d-lg-table-row bg-transparent border-top border-transparent">
-													<td className="pr-3 py-0">
-														<div className="d-flex flex-column justify-content-center form-control px-0 bg-transparent border-transparent text-right line-height-1">
-															<small className="font-weight-bold text-uppercase">Total</small>
-														</div>
-													</td>
-												</tr>
-												{!enabledPeriods.includes(true) && (
-													<tr className="bg-transparent d-md-none"><td className="px-0 font-italic text-muted text-left">No months selected. Choose the months you want to calculate above.</td></tr>
-												)}
-											</tbody>
-										</React.Fragment>
-									)}
+								</tbody>
+								{enabledPeriods.includes(true) && (
+									<React.Fragment>
+										<tbody className="text-right text-monospace">
+											<tr className="d-none d-lg-table-row bg-transparent border-top border-transparent">
+												<td className="pr-3 py-0">
+													<div className="d-flex flex-column justify-content-center form-control px-0 bg-transparent border-transparent text-right line-height-1">
+														<small>Period 1-4<br /><small>Subtotal</small></small>
+													</div>
+												</td>
+											</tr>
+											<tr className="d-none d-lg-table-row bg-transparent">
+												<td className="pr-3 py-0">
+													<div className="d-flex flex-column justify-content-center form-control px-0 bg-transparent border-transparent text-right line-height-1">
+														<small>Period 5-9<br /><small>Subtotal</small></small>
+													</div>
+												</td>
+											</tr>
+											<tr className="d-none d-lg-table-row bg-transparent border-top border-transparent">
+												<td className="pr-3 py-0">
+													<div className="d-flex flex-column justify-content-center form-control px-0 bg-transparent border-transparent text-right line-height-1">
+														<small className="font-weight-bold text-uppercase">Total</small>
+													</div>
+												</td>
+											</tr>
+											{!enabledPeriods.includes(true) && (
+												<tr className="bg-transparent d-md-none"><td className="px-0 font-italic text-muted text-left">No months selected. Choose the months you want to calculate above.</td></tr>
+											)}
+										</tbody>
+									</React.Fragment>
+								)}
 							</table>
 						</div>
 					</div>
@@ -341,10 +341,10 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 							{values2019.map((item, index: number) => {
 								return (
 									<React.Fragment key={`column-results-${index}`}>
-										<tr className={classnames('d-sm-none', !checkEnabledPeriods(index) && 'disabled', !enabledPeriods[index] && 'd-none')}>	
+										<tr className={classnames('d-sm-none', !checkEnabledPeriods(index) && 'disabled', !enabledPeriods[index] && 'd-none')}>
 											<td colSpan={2} className="pb-0 text-uppercase text-monospace small text-nowrap align-middle">
 												{monthLabels[index]} - {index - periodStart >= 0 ? `Period ${index - periodStart + 1}` : '-'}:
-											</td>										
+											</td>
 										</tr>
 										<tr className={classnames(!checkEnabledPeriods(index) && 'disabled', !enabledPeriods[index] && 'd-none d-lg-table-row', !(index % 2) && 'bg-sm-table-accent')}>
 											<td className="pl-3 text-uppercase text-monospace small text-nowrap align-middle d-none d-sm-table-cell d-lg-none">
@@ -407,7 +407,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 										<td className="pl-lg-2 pr-3 py-0" >
 											<div className="d-flex flex-column justify-content-center form-control px-0 bg-transparent border-transparent text-right font-weight-bold line-height-1">
 												{getAltSubTotals1to4()}
-											</div>	
+											</div>
 										</td>
 									</tr>
 									<tr className="d-sm-none bg-transparent"><td colSpan={2}><h2 className="h6 mt-3 mb-0 text-md-center text-monospace text-uppercase">Period 5-9 Subtotal</h2></td></tr>
@@ -433,7 +433,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 											<div className="d-flex flex-column justify-content-center form-control px-0 bg-transparent border-transparent text-right font-weight-bold line-height-1">
 												{getGeneralTotals()}
 											</div>
-											</td>
+										</td>
 										<td className="pl-lg-2 pr-3 py-0" >
 											<div className="d-flex flex-column justify-content-center form-control px-0 bg-transparent border-transparent text-right font-weight-bold line-height-1">
 												{getAltTotals()}
@@ -504,6 +504,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 		for (let i = 2; i < 6; i++) {
 			total += (resultsGeneral[i]) * renumerationValues[i];
 		}
+		if (Number.isNaN(total)) return '-';
 		return '$' + round(total / 100).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 	}
 	function getAltSubTotals1to4() {
@@ -511,6 +512,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 		for (let i = 2; i < 6; i++) {
 			total += (resultsAlt[i]) * renumerationValues[i];
 		}
+		if (Number.isNaN(total)) return '-';
 		return '$' + round(total / 100).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 	}
 	function getGeneralSubTotals5to9() {
@@ -518,6 +520,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 		for (let i = 6; i < 11; i++) {
 			total += (resultsGeneral[i]) * renumerationValues[i];
 		}
+		if (Number.isNaN(total)) return '-';
 		return '$' + round(total / 100).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 	}
 	function getGeneralTotals() {
@@ -525,6 +528,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 		for (let i = 2; i < 11; i++) {
 			total += (resultsGeneral[i]) * renumerationValues[i];
 		}
+		if (Number.isNaN(total)) return '-';
 		return '$' + round(total / 100).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 	}
 	function getAltSubTotals5to9() {
@@ -532,6 +536,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 		for (let i = 6; i < 11; i++) {
 			total += (resultsAlt[i]) * renumerationValues[i];
 		}
+		if (Number.isNaN(total)) return '-';
 		return '$' + round(total / 100).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 	}
 	function getAltTotals() {
@@ -539,6 +544,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 		for (let i = 2; i < 11; i++) {
 			total += (resultsAlt[i]) * renumerationValues[i];
 		}
+		if (Number.isNaN(total)) return '-';
 		return '$' + round(total / 100).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 	}
 	function reset() {
