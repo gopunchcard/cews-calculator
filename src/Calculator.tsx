@@ -37,6 +37,9 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 
 	const [enabledPeriods, setEnabledPeriods] = React.useState<boolean[]>(defaultEnabledPeriods);
 	const [renumerationValues, setRenumeration] = React.useState<Array<number>>(defaultRenumeration);
+
+
+
 	React.useEffect(init, []);
 	React.useEffect(update, [values2019, values2020]);
 
@@ -104,6 +107,9 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 									})}
 								</tbody>
 							</table>
+							<div className="d-none d-lg-block text-center text-lg-left mt-3 pt-2">
+								<button className="btn btn-outline-primary" onClick={reset}>Reset fields</button>
+							</div>
 						</div>
 						<div className="col-md px-md-0">
 							<h2 className="d-md-none h6 text-monospace text-uppercase">
@@ -154,12 +160,12 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 														/>
 													</div>
 												) : (
-													<div className="form-control bg-transparent border-transparent px-0 text-right text-monospace">
-														<small className="d-inline-flex align-items-center align-middle mx-md-n3">
-															Field for Alt.<IconArrowRight />
-														</small>
-													</div>
-												)}
+														<div className="form-control bg-transparent border-transparent px-0 text-right text-monospace">
+															<small className="d-inline-flex align-items-center align-middle mx-md-n3">
+																Field for Alt.<IconArrowRight />
+															</small>
+														</div>
+													)}
 											</td>
 										</tr>
 									))}
@@ -278,10 +284,35 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 											</tr>
 										)
 									})}
-									{!enabledPeriods.includes(true) && (
-										<tr className="bg-transparent d-md-none"><td className="px-0 font-italic text-muted">No months selected. Choose the months you want to calculate above.</td></tr>
+									</tbody>
+									{enabledPeriods.includes(true) && (
+										<tbody className="text-right text-monospace">
+											<tr className="d-none d-lg-table-row bg-transparent border-top border-transparent">
+												<td className="pr-3 py-0">
+													<div className="d-flex flex-column justify-content-center form-control px-0 bg-transparent border-transparent text-right line-height-1">
+														<small>Period 1-4<br /><small>Subtotal</small></small>
+													</div>
+												</td>
+											</tr>
+											<tr className="d-none d-lg-table-row bg-transparent">
+												<td className="pr-3 py-0">
+													<div className="d-flex flex-column justify-content-center form-control px-0 bg-transparent border-transparent text-right line-height-1">
+														<small>Period 5-9<br /><small>Subtotal</small></small>
+													</div>
+												</td>
+											</tr>
+											<tr className="d-none d-lg-table-row bg-transparent border-top border-transparent">
+												<td className="pr-3 py-0">
+													<div className="d-flex flex-column justify-content-center form-control px-0 bg-transparent border-transparent text-right line-height-1">
+														<small className="font-weight-bold text-uppercase">Total</small>
+													</div>
+												</td>
+											</tr>
+											{!enabledPeriods.includes(true) && (
+												<tr className="bg-transparent d-md-none"><td className="px-0 font-italic text-muted text-left">No months selected. Choose the months you want to calculate above.</td></tr>
+											)}
+										</tbody>
 									)}
-								</tbody>
 							</table>
 						</div>
 					</div>
@@ -290,13 +321,13 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 					<h2 className="h6 text-md-center text-monospace text-uppercase">
 						Estimated subsidy
 					</h2>
-					<table className="table table-sm table-striped table-borderless mb-0">
+					<table className="table table-sm table-borderless mb-0">
 						<thead>
 							<tr>
-								<th className="d-none d-md-table-cell d-lg-none pl-3 text-monospace line-height-1">
+								<th className="d-none d-sm-table-cell d-lg-none pl-3 text-monospace line-height-1">
 									Period
 								</th>
-								<th className="px-3 text-monospace text-right line-height-1">
+								<th className="pl-3 text-monospace text-right line-height-1">
 									<span><br className="d-none d-lg-inline-block" />General</span>
 								</th>
 								<th className="px-3 text-monospace text-right line-height-1">
@@ -307,54 +338,111 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 						<tbody>
 							{values2019.map((item, index: number) => {
 								return (
-									<tr key={`column-results-${index}`} className={classnames(!checkEnabledPeriods(index) && 'disabled', !enabledPeriods[index] && 'd-none d-lg-table-row')}>
-										<td className="pl-3 text-uppercase text-monospace small text-nowrap align-middle d-lg-none">
-											{monthLabels[index]}
-											<small className="d-block mt-n2">
-												{index - periodStart >= 0 ? `Period ${index - periodStart + 1}` : '-'}
-											</small>
-										</td>
-										<td className="pl-lg-3 pr-lg-2">
-											<div
-												className={classnames(
-													"d-flex flex-column justify-content-center form-control px-0 bg-transparent border-transparent text-right line-height-1 min-width-5",
-													resultsGeneral[index] > 0 && 'font-weight-bold',
-													!enabledPeriods[index] && 'disabled',
-												)}
-											>
-												{(enabledPeriods[index] && (resultsGeneral[index] !== undefined)) ? (
-													getGeneralSubsidyAmount(index))
-													:
-													"-"
-												}
-											</div>
-										</td>
-										<td className="pl-lg-2 pr-3">
-											<div
-												className={classnames(
-													"d-flex flex-column justify-content-center form-control px-0 bg-transparent border-transparent text-right line-height-1 min-width-5",
-													resultsAlt[index] > 0 && 'font-weight-bold',
-													!enabledPeriods[index] && 'disabled',
-												)}
-											>
-												{(enabledPeriods[index] && (resultsAlt[index] !== undefined)) ? (
-													getAltSubsidyAmount(index))
-													:
-													"-"
-												}
-											</div>
-										</td>
-									</tr>
+									<React.Fragment key={`column-results-${index}`}>
+										<tr className={classnames('d-sm-none', !checkEnabledPeriods(index) && 'disabled', !enabledPeriods[index] && 'd-none')}>
+											<td colSpan={2} className="pb-0 text-uppercase text-monospace small text-nowrap align-middle">
+												{monthLabels[index]} - {index - periodStart >= 0 ? `Period ${index - periodStart + 1}` : '-'}:
+											</td>
+										</tr>
+										<tr className={classnames(!checkEnabledPeriods(index) && 'disabled', !enabledPeriods[index] && 'd-none d-lg-table-row', !(index % 2) && 'bg-sm-table-accent')}>
+											<td className="pl-3 text-uppercase text-monospace small text-nowrap align-middle d-none d-sm-table-cell d-lg-none">
+												{monthLabels[index]}
+												<small className="d-block mt-n2">
+													{index - periodStart >= 0 ? `Period ${index - periodStart + 1}` : '-'}
+												</small>
+											</td>
+											<td className="pl-lg-3 pr-lg-2">
+												<div
+													className={classnames(
+														"d-flex flex-column justify-content-center form-control px-0 bg-transparent border-transparent text-right line-height-1 min-width-5",
+														resultsGeneral[index] > 0 && 'font-weight-bold',
+														!enabledPeriods[index] && 'disabled',
+													)}
+												>
+													{(enabledPeriods[index] && (resultsGeneral[index] !== undefined)) ? (
+														getGeneralSubsidyAmount(index))
+														:
+														"-"
+													}
+												</div>
+											</td>
+											<td className="pl-lg-2 pr-3">
+												<div
+													className={classnames(
+														"d-flex flex-column justify-content-center form-control px-0 bg-transparent border-transparent text-right line-height-1 min-width-5",
+														resultsAlt[index] > 0 && 'font-weight-bold',
+														!enabledPeriods[index] && 'disabled',
+													)}
+												>
+													{(enabledPeriods[index] && (resultsAlt[index] !== undefined)) ? (
+														getAltSubsidyAmount(index))
+														:
+														"-"
+													}
+												</div>
+											</td>
+										</tr>
+									</React.Fragment>
 								)
 							})}
 							{!enabledPeriods.includes(true) && (
-								<tr className="bg-transparent d-md-none"><td className="px-0 font-italic text-muted" colSpan={3}>No months selected. Choose the months you want to calculate above.</td></tr>
+								<tr className="bg-transparent d-lg-none"><td className="px-0 font-italic text-muted" colSpan={3}>No months selected. Choose the months you want to calculate above.</td></tr>
 							)}
 						</tbody>
+
+						{enabledPeriods.includes(true) && (
+							<tbody className="border-top border-dark">
+								<tr className="d-sm-none bg-transparent"><td colSpan={2}><h2 className="h6 mt-3 mb-0 text-md-center text-monospace text-uppercase">Period 1-4 Subtotal</h2></td></tr>
+								<tr className="d-lg-table-row bg-transparent">
+
+									<td className="d-none d-sm-table-cell d-lg-none pl-3 text-monospace align-middle"><small className="font-weight-bold">Period 1-4 Subtotal</small></td>
+									<td className="pl-lg-3 pr-lg-2 py-0" >
+										<div className="d-flex flex-column justify-content-center form-control px-0 bg-transparent border-transparent text-right font-weight-bold line-height-1">
+											{getGeneralSubTotals1to4()}
+										</div>
+									</td>
+									<td className="pl-lg-2 pr-3 py-0" >
+										<div className="d-flex flex-column justify-content-center form-control px-0 bg-transparent border-transparent text-right font-weight-bold line-height-1">
+											{getAltSubTotals1to4()}
+										</div>	
+									</td>
+								</tr>
+								<tr className="d-sm-none bg-transparent"><td colSpan={2}><h2 className="h6 mt-3 mb-0 text-md-center text-monospace text-uppercase">Period 5-9 Subtotal</h2></td></tr>
+								<tr className="d-lg-table-row bg-transparent border-bottom border-dark">
+
+									<td className="d-none d-sm-table-cell d-lg-none pl-3 text-monospace align-middle"><small className="font-weight-bold">Period 5-9 Subtotal</small></td>
+									<td className="pl-lg-3 pr-lg-2 py-0" >
+										<div className="d-flex flex-column justify-content-center form-control px-0 bg-transparent border-transparent text-right font-weight-bold line-height-1">
+											{getGeneralSubTotals5to9()}
+										</div>
+									</td>
+									<td className="pl-lg-2 pr-3 py-0" >
+										<div className="d-flex flex-column justify-content-center form-control px-0 bg-transparent border-transparent text-right font-weight-bold line-height-1">
+											{getAltSubTotals5to9()}
+										</div>
+									</td>
+								</tr>
+								<tr className="d-sm-none bg-transparent"><td colSpan={2}><h2 className="h6 mt-3 mb-0 text-md-center text-monospace text-uppercase">Total</h2></td></tr>
+								<tr className="d-lg-table-row bg-transparent">
+
+									<td className="d-none d-sm-table-cell d-lg-none pl-3 text-monospace align-middle"><small className="font-weight-bold text-uppercase">Total</small></td>
+									<td className="pl-lg-3 pr-lg-2 py-0" >
+										<div className="d-flex flex-column justify-content-center form-control px-0 bg-transparent border-transparent text-right font-weight-bold line-height-1">
+											{getGeneralTotals()}
+										</div>
+										</td>
+									<td className="pl-lg-2 pr-3 py-0" >
+										<div className="d-flex flex-column justify-content-center form-control px-0 bg-transparent border-transparent text-right font-weight-bold line-height-1">
+											{getAltTotals()}
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						)}
 					</table>
 				</div>
 			</div>
-			<div className="text-center text-lg-left mt-4 mt-lg-3">
+			<div className="d-lg-none text-center text-lg-left mt-4 mt-lg-3">
 				<button className="btn btn-outline-primary" onClick={reset}>Reset fields</button>
 			</div>
 		</React.Fragment>
@@ -405,15 +493,63 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 		year.getvalues();
 		setResultsGeneral(year.finalGeneralResults);
 		setResultsAlt(year.finalAltResults);
-	}
 
+	}
+	function getGeneralSubTotals1to4() {
+		let total = 0;
+		for (let i = 2; i < 6; i++) {
+			total += (resultsGeneral[i]) * renumerationValues[i];
+		}
+		if (Number.isNaN(total)) return '-';
+		return '$' + round(total / 100).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	}
+	function getAltSubTotals1to4() {
+		let total = 0;
+		for (let i = 2; i < 6; i++) {
+			total += (resultsAlt[i]) * renumerationValues[i];
+		}
+		if (Number.isNaN(total)) return '-';
+		return '$' + round(total / 100).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	}
+	function getGeneralSubTotals5to9() {
+		let total = 0;
+		for (let i = 6; i < 11; i++) {
+			total += (resultsGeneral[i]) * renumerationValues[i];
+		}
+		if (Number.isNaN(total)) return '-';
+		return '$' + round(total / 100).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	}
+	function getGeneralTotals() {
+		let total = 0;
+		for (let i = 2; i < 11; i++) {
+			total += (resultsGeneral[i]) * renumerationValues[i];
+		}
+		if (Number.isNaN(total)) return '-';
+		return '$' + round(total / 100).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	}
+	function getAltSubTotals5to9() {
+		let total = 0;
+		for (let i = 6; i < 11; i++) {
+			total += (resultsAlt[i]) * renumerationValues[i];
+		}
+		if (Number.isNaN(total)) return '-';
+		return '$' + round(total / 100).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	}
+	function getAltTotals() {
+		let total = 0;
+		for (let i = 2; i < 11; i++) {
+			total += (resultsAlt[i]) * renumerationValues[i];
+		}
+		if (Number.isNaN(total)) return '-';
+		return '$' + round(total / 100).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	}
 	function reset() {
 		setValues2019(defaultValues2019);
 		setValues2020(defaultValues2020);
 		setRenumeration(defaultRenumeration);
 		setEnabledPeriods(defaultEnabledPeriods);
 		init();
-		document.getElementById("wrapper-calculator")!.scrollIntoView({behavior: "smooth"});
+		document.getElementById("wrapper-calculator")!.scrollIntoView({ behavior: "smooth" });
 	}
 
 	function addError(field: string) {
