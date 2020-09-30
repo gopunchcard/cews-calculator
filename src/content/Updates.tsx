@@ -8,7 +8,7 @@ const Updates: React.FC<IProps> = (_props: IProps) => {
 			<h3 className="h6 text-uppercase">Updates:</h3>
 			<ul>
 				<li>
-					<strong>V3 (September 30 2020)</strong>
+					<strong>V3 (September 30, 2020)</strong>
 					<ol type="a">
 						<li>Added subtotals and total subsidy.</li>
 					</ol>
