@@ -339,10 +339,10 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 							{values2019.map((item, index: number) => {
 								return (
 									<React.Fragment key={`column-results-${index}`}>
-										<tr className={classnames('d-sm-none', !checkEnabledPeriods(index) && 'disabled', !enabledPeriods[index] && 'd-none')}>	
+										<tr className={classnames('d-sm-none', !checkEnabledPeriods(index) && 'disabled', !enabledPeriods[index] && 'd-none')}>
 											<td colSpan={2} className="pb-0 text-uppercase text-monospace small text-nowrap align-middle">
 												{monthLabels[index]} - {index - periodStart >= 0 ? `Period ${index - periodStart + 1}` : '-'}:
-											</td>										
+											</td>
 										</tr>
 										<tr className={classnames(!checkEnabledPeriods(index) && 'disabled', !enabledPeriods[index] && 'd-none d-lg-table-row', !(index % 2) && 'bg-sm-table-accent')}>
 											<td className="pl-3 text-uppercase text-monospace small text-nowrap align-middle d-none d-sm-table-cell d-lg-none">
@@ -500,6 +500,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 		for (let i = 2; i < 6; i++) {
 			total += (resultsGeneral[i]) * renumerationValues[i];
 		}
+		if (Number.isNaN(total)) return '-';
 		return '$' + round(total / 100).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 	}
 	function getAltSubTotals1to4() {
@@ -507,6 +508,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 		for (let i = 2; i < 6; i++) {
 			total += (resultsAlt[i]) * renumerationValues[i];
 		}
+		if (Number.isNaN(total)) return '-';
 		return '$' + round(total / 100).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 	}
 	function getGeneralSubTotals5to9() {
@@ -514,6 +516,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 		for (let i = 6; i < 11; i++) {
 			total += (resultsGeneral[i]) * renumerationValues[i];
 		}
+		if (Number.isNaN(total)) return '-';
 		return '$' + round(total / 100).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 	}
 	function getGeneralTotals() {
@@ -521,6 +524,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 		for (let i = 2; i < 11; i++) {
 			total += (resultsGeneral[i]) * renumerationValues[i];
 		}
+		if (Number.isNaN(total)) return '-';
 		return '$' + round(total / 100).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 	}
 	function getAltSubTotals5to9() {
@@ -528,6 +532,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 		for (let i = 6; i < 11; i++) {
 			total += (resultsAlt[i]) * renumerationValues[i];
 		}
+		if (Number.isNaN(total)) return '-';
 		return '$' + round(total / 100).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 	}
 	function getAltTotals() {
@@ -535,6 +540,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 		for (let i = 2; i < 11; i++) {
 			total += (resultsAlt[i]) * renumerationValues[i];
 		}
+		if (Number.isNaN(total)) return '-';
 		return '$' + round(total / 100).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 	}
 	function reset() {
