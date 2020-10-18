@@ -50,6 +50,7 @@ const GeneralNotesFooterNotes: React.FC<IProps> = (_props: IProps) => {
 						<li>Period 7 Aug 30 – Sep 26</li>
 						<li>Period 8 Sep 27 – Oct 24</li>
 						<li>Period 9 Oct 25 – Nov 21</li>
+						<li>Period 10 Nov 22 – Dec 19</li>
 					</ul>
 				</li>
 				<li id="general-notes-9">
@@ -62,7 +63,7 @@ const GeneralNotesFooterNotes: React.FC<IProps> = (_props: IProps) => {
 					<p>These elections can be made on an employee by employee basis.  It is assumed that the Estimator user has determined the baseline remuneration and any impacts on remuneration eligible for the subsidy.</p>
 				</li>
 				<li id="general-notes-10">
-					<p className="mb-0"><strong>10)	3-month reference periods for top-up subsidy </strong> The applicable months are as follows:</p>
+					<p className="mb-0"><strong>3-month reference periods for top-up subsidy </strong> The applicable months are as follows:</p>
 					<ul className="mb-3">
 						<li>Period 5 – April to June</li>
 						<li>Period 6 – May to July</li>
@@ -78,6 +79,9 @@ const GeneralNotesFooterNotes: React.FC<IProps> = (_props: IProps) => {
 					<p>No information entered in the calculator is saved.</p>
 				</li>
 				<li id="general-notes-13">
+					<p>On October 9, 2020, the government announced that the subsidy would remain at the current (Period 8) subsidy rate of up to a maximum of 65% of eligible wages until December 19, 2020. The calculator assumes that the particular calculation for periods 9 and 10 are the same as for period 8.  The calculations will be adjusted as specific details are released.  Also, it was announced that the program would be extended until June 2021, however details for the periods past 10 have not yet been announced.  For more details, click <a href="https://www.canada.ca/en/department-finance/news/2020/10/government-announces-new-targeted-support-to-help-businesses-through-pandemic.html">here</a>.</p>
+				</li>
+				<li id="general-notes-14">
 					<p>
 						For more information on the subsidy, see the following Government of Canada documents: {` `}
 						<a href="https://www.canada.ca/en/department-finance/news/2020/04/additional-details-on-the-canada-emergency-wage-subsidy0.html" target="_blank" rel="noreferrer noopener">

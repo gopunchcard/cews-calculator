@@ -56,7 +56,7 @@ const GeneralNotes: React.FC<IProps> = (_props: IProps) => {
 			</p>
 
 			<p>
-				<strong>Base Subsidy Calculation –</strong> Once the revenue reduction percentage<sup>5</sup> is determined based on the above, it is multiplied by a pre-defined factor which decreases over time.  The factors and related claim caps are: 1.2 and 60% for Periods 5 and 6, 1.0 and 50% for Period 7, 0.8 and 40% for Period 8, and 0.4 and 20% for Period 9. Details on Period 10 have not yet been released.  This percentage would generally be applied to the amount of remuneration paid to the employee for the eligibility period, on remuneration of up to $1,129 per week.  For non-arm’s length employees, the percentage would be applied to the employee’s weekly eligible remuneration<sup>8</sup> or pre-crisis remuneration<sup>9</sup>, whichever is less, up to a maximum of $1,129.  These limits on eligible remuneration apply to Periods 5 through 9.
+				<strong>Base Subsidy Calculation –</strong> Once the revenue reduction percentage<sup>5</sup> is determined based on the above, it is multiplied by a pre-defined factor which decreases over time.  The factors and related claim caps are: 1.2 and 60% for Periods 5 and 6, 1.0 and 50% for Period 7, and 0.8 and 40% for Period 8, Period 9 was previously set at 0.4 and 20%, however, periods 9 and 10 were subsequently announced to be forzed at the macimum 65% claim from period 8. This percentage would generally be applied to the amount of remuneration paid to the employee for the eligibility period, on remuneration of up to $1,129 per week.  For non-arm’s length employees, the percentage would be applied to the employee’s weekly eligible remuneration<sup>8</sup> or pre-crisis remuneration<sup>9</sup>, whichever is less, up to a maximum of $1,129.  These limits on eligible remuneration apply to Periods 5 through 9.
 			</p>
 			<h4>Top-up Subsidy</h4>
 			<p>
@@ -68,9 +68,8 @@ const GeneralNotes: React.FC<IProps> = (_props: IProps) => {
 			<p>
 				<strong>Top-up Subsidy Calculation –</strong> The 3-month average revenue decline in excess of 50% is multiplied by 1.25.  This new percentage, capped at 25%, is added to the percentage calculated under the base subsidy.
 			</p>
-			<p>
-				<strong>Period 10 –</strong>Details have not yet been released.
-			</p>
+			<h3>Period 10</h3>
+			<p>See note 13.</p>
 		</React.Fragment>
 	);
 };

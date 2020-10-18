@@ -47,7 +47,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 		<React.Fragment>
 			<div className="mb-4 p-3 bg-quinary-light border border-dark">
 				<h2 className="h6 text-monospace text-uppercase mb-2">
-					Choose the months you want to calculate the subsidy for
+					Choose the months you want to calculate the subsidy for<a href="#general-notes-13"><sup>13</sup></a>
 				</h2>
 				<div className="row">
 					{monthLabels.map((month, index: number) => index - periodStart >= 0 && (
