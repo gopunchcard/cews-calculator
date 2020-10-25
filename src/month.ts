@@ -87,7 +87,7 @@ class Month {
 	get generalTopUpRevenueDrop(): number {
 		if (this.month < 6)
 			return 0;
-		if (this.month < 8)
+		if (this.month < 9)
 			return calcPercentLostNoNegative(this.prevYear3PrecedingMonthsRevenue, this.currentYearPreceding3MonthsRevenue)
 		else {
 			//the top up is 1.25 x the % decline in excess of 50% for the greater of 
@@ -103,7 +103,7 @@ class Month {
 	get altTopUpRevenueDrop(): number {
 		if (this.month < 6)
 			return 0;
-		if (this.month < 8)
+		if (this.month < 9)
 			return calcPercentLostNoNegative(this.janFebValue, this.currentYearPreceding3MonthsRevenue)
 		else {
 			//the top up is 1.25 x the % decline in excess of 50% for the greater of 
