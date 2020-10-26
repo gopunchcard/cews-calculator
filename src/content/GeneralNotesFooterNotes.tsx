@@ -54,7 +54,7 @@ const GeneralNotesFooterNotes: React.FC<IProps> = (_props: IProps) => {
 					</ul>
 				</li>
 				<li id="general-notes-9">
-					<p className="mb-0"><strong>"Pre-crisis weekly remuneration" (baseline remuneration)</strong> is generally the average weekly eligible remuneration paid to the eligible employee by the eligible entity during the January 1 to March 15, 2020 period.  However, elections could be made for the period to beelections can be made for these dates to change.  The available election dates for each claim period are:</p>
+					<p className="mb-0"><strong>"Pre-crisis weekly remuneration" (baseline remuneration)</strong> is generally the average weekly eligible remuneration paid to the eligible employee by the eligible entity during the January 1 to March 15, 2020 period.  However, elections could be made for the period to change.  The available election dates for each claim period are:</p>
 					<ul className="mb-3">
 						<li>Periods 1-3: March 1, 2019 to May 31, 2019 </li>
 						<li>Period 4: March 1, 2019 to June 30, 2019 or March 1, 2019 to May 31, 2019</li>

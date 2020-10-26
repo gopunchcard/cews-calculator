@@ -38,7 +38,7 @@ const GeneralNotes: React.FC<IProps> = (_props: IProps) => {
 
 			<h3>Periods 5-6</h3>
 			<p>
-				The greater of the results as calculated under the Period 1-4 method (original) and the Period 7-9 method (new) will be used.  Note that an election to use the average of January and February 2020 as the prior reference period<sup>4</sup> in respect of periods 5-9, means that the computation under both the old and new methods for Period 5 must incorporate that election, regardless of whether the election was made for periods 1-4.
+				The greater of the results as calculated under the Period 1-4 method (original) and the Period 7-10 method (new) will be used.
 			</p>
 			<h3>Periods 7-10</h3>
 			<p>
@@ -49,14 +49,14 @@ const GeneralNotes: React.FC<IProps> = (_props: IProps) => {
 				<strong>General –</strong> Gross revenue<sup>1</sup> from the current reference period<sup>2</sup> is compared to that of the   same month in 2019 (prior reference period<sup>4</sup>).
 			</p>
 			<p>
-				<strong>Election –</strong> An election can be made to use the average monthly gross revenues from January and February of 2020 as the prior reference period4 gross revenue. We refer to this as the “Alternative Calculation”<sup>6</sup>.  If the election is made, the alternative calculation method must be used for all of these periods (5-10).
+				<strong>Election –</strong> An election can be made to use the average monthly gross revenues from January and February of 2020 as the prior reference period 4 gross revenue. We refer to this as the “Alternative Calculation”<sup>6</sup>.  If the election is made, the alternative calculation method must be used for all of these periods (5-10).
 			</p>
 			<p>
 				<strong>Safe Harbour –</strong> If the revenue reduction percentage<sup>5</sup> is greater for the immediately preceding period, that prior period decline will be deemed to be the current revenue reduction percentage<sup>5</sup>.  However, if the prior period also benefited from the deemed decline, the actual decline from the prior period must be used to determine if there is a deemed decline in the current period.
 			</p>
 
 			<p>
-				<strong>Calculation –</strong> Once the revenue reduction percentage<sup>5</sup> is determined based on the above, it is multiplied by a pre-defined factor which decreases over time.  The factors and related claim caps are: 1.2 and 60% for Periods 5 and 6, 1.0 and 50% for Period 7, and 0.8 and 40% for Periods 8, 9 and 10. Perriod 9 was previously set at 0.4 and 20%, however, periods 9 and 10 were subsequently announced to be frozen at the maximum 65% claim from period 8. This percentage would generally be applied to the amount of remuneration paid to the employee for the eligibility period, on remuneration of up to $1,129 per week.  For non-arm’s length employees, the percentage would be applied to the employee’s weekly eligible remuneration<sup>8</sup> or pre-crisis remuneration<sup>9</sup>, whichever is less, up to a maximum of $1,129.  These limits on eligible remuneration apply to Periods 5 through 10.
+				<strong>Calculation –</strong> Once the revenue reduction percentage<sup>5</sup> is determined based on the above, it is multiplied by a pre-defined factor which decreases over time.  The factors and related claim caps are: 1.2 and 60% for Periods 5 and 6, 1.0 and 50% for Period 7, and 0.8 and 40% for Periods 8, 9 and 10. Period 9 was previously set at 0.4 and 20%, however, Periods 9 and 10 were subsequently announced to be frozen at the maximum 65% claim from Period 8. This percentage would generally be applied to the amount of remuneration paid to the employee for the eligibility period, on remuneration of up to $1,129 per week.  For non-arm’s length employees, the percentage would be applied to the employee’s weekly eligible remuneration<sup>8</sup> or pre-crisis remuneration<sup>9</sup>, whichever is less, up to a maximum of $1,129.  These limits on eligible remuneration apply to Periods 5 through 10.
 			</p>
 			<h4>Top-up Subsidy</h4>
 			<p>
@@ -70,6 +70,8 @@ const GeneralNotes: React.FC<IProps> = (_props: IProps) => {
 			</p>
 			<h3>Period 10</h3>
 			<p>See note 13.</p>
+			<h4>Period 11</h4>
+			<p>Details for Period 11 to the close of the program (announced to end June 2021) have not yet been released.</p>
 		</React.Fragment>
 	);
 };

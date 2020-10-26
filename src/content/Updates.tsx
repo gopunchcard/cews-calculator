@@ -9,7 +9,7 @@ const Updates: React.FC<IProps> = (_props: IProps) => {
 			<ul><li>
 				<strong>V4 (October 9, 2020)</strong>
 				<ol type="a">
-					<li>Added calculation for Period 10 and adjusted calculations for period 9 per October 9, 2020 announcement (see note 13)</li>
+					<li>Added calculation for Period 10 and adjusted calculations for Periods 8 and 9 per October 14, 2020 backgrounder (see note 13).</li>
 				</ol>
 			</li>
 				<li>
