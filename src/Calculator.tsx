@@ -7,7 +7,7 @@ import { ReactComponent as IconArrowRight } from './components/icons/icon-arrow-
 interface IProps { }
 
 const Calculator: React.FC<IProps> = (props: IProps) => {
-	const monthLabels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov'];
+	const monthLabels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 	const defaultValues2019 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 	const defaultValues2020 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 	const defaultRenumeration = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
@@ -24,10 +24,10 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 		[5, 6, 7, 8],
 		[6, 7, 8, 9],
 		[7, 8, 9, 10],
-		[8, 9, 10],
-		[9, 10],
-		[10],
-		[]
+		[8, 9, 10, 11],
+		[9, 10, 11],
+		[10, 11],
+		[11]
 	];
 	const [values2019, setValues2019] = React.useState<Array<any>>(defaultValues2019);
 	const [values2020, setValues2020] = React.useState<Array<any>>(defaultValues2020);
@@ -47,7 +47,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 		<React.Fragment>
 			<div className="mb-4 p-3 bg-quinary-light border border-dark">
 				<h2 className="h6 text-monospace text-uppercase mb-2">
-					Choose the months you want to calculate the subsidy for
+					Choose the months you want to calculate the subsidy for<a href="#general-notes-13"><sup>13</sup></a>
 				</h2>
 				<div className="row">
 					{monthLabels.map((month, index: number) => index - periodStart >= 0 && (
@@ -284,35 +284,35 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 											</tr>
 										)
 									})}
+								</tbody>
+								{enabledPeriods.includes(true) && (
+									<tbody className="text-right text-monospace">
+										<tr className="d-none d-lg-table-row bg-transparent border-top border-transparent">
+											<td className="pr-3 py-0">
+												<div className="d-flex flex-column justify-content-center form-control px-0 bg-transparent border-transparent text-right line-height-1">
+													<small>Period 1-4<br /><small>Subtotal</small></small>
+												</div>
+											</td>
+										</tr>
+										<tr className="d-none d-lg-table-row bg-transparent">
+											<td className="pr-3 py-0">
+												<div className="d-flex flex-column justify-content-center form-control px-0 bg-transparent border-transparent text-right line-height-1">
+													<small>Period 5-9<br /><small>Subtotal</small></small>
+												</div>
+											</td>
+										</tr>
+										<tr className="d-none d-lg-table-row bg-transparent border-top border-transparent">
+											<td className="pr-3 py-0">
+												<div className="d-flex flex-column justify-content-center form-control px-0 bg-transparent border-transparent text-right line-height-1">
+													<small className="font-weight-bold text-uppercase">Total</small>
+												</div>
+											</td>
+										</tr>
+										{!enabledPeriods.includes(true) && (
+											<tr className="bg-transparent d-md-none"><td className="px-0 font-italic text-muted text-left">No months selected. Choose the months you want to calculate above.</td></tr>
+										)}
 									</tbody>
-									{enabledPeriods.includes(true) && (
-										<tbody className="text-right text-monospace">
-											<tr className="d-none d-lg-table-row bg-transparent border-top border-transparent">
-												<td className="pr-3 py-0">
-													<div className="d-flex flex-column justify-content-center form-control px-0 bg-transparent border-transparent text-right line-height-1">
-														<small>Period 1-4<br /><small>Subtotal</small></small>
-													</div>
-												</td>
-											</tr>
-											<tr className="d-none d-lg-table-row bg-transparent">
-												<td className="pr-3 py-0">
-													<div className="d-flex flex-column justify-content-center form-control px-0 bg-transparent border-transparent text-right line-height-1">
-														<small>Period 5-9<br /><small>Subtotal</small></small>
-													</div>
-												</td>
-											</tr>
-											<tr className="d-none d-lg-table-row bg-transparent border-top border-transparent">
-												<td className="pr-3 py-0">
-													<div className="d-flex flex-column justify-content-center form-control px-0 bg-transparent border-transparent text-right line-height-1">
-														<small className="font-weight-bold text-uppercase">Total</small>
-													</div>
-												</td>
-											</tr>
-											{!enabledPeriods.includes(true) && (
-												<tr className="bg-transparent d-md-none"><td className="px-0 font-italic text-muted text-left">No months selected. Choose the months you want to calculate above.</td></tr>
-											)}
-										</tbody>
-									)}
+								)}
 							</table>
 						</div>
 					</div>
@@ -404,7 +404,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 									<td className="pl-lg-2 pr-3 py-0" >
 										<div className="d-flex flex-column justify-content-center form-control px-0 bg-transparent border-transparent text-right font-weight-bold line-height-1">
 											{getAltSubTotals1to4()}
-										</div>	
+										</div>
 									</td>
 								</tr>
 								<tr className="d-sm-none bg-transparent"><td colSpan={2}><h2 className="h6 mt-3 mb-0 text-md-center text-monospace text-uppercase">Period 5-9 Subtotal</h2></td></tr>
@@ -430,7 +430,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 										<div className="d-flex flex-column justify-content-center form-control px-0 bg-transparent border-transparent text-right font-weight-bold line-height-1">
 											{getGeneralTotals()}
 										</div>
-										</td>
+									</td>
 									<td className="pl-lg-2 pr-3 py-0" >
 										<div className="d-flex flex-column justify-content-center form-control px-0 bg-transparent border-transparent text-right font-weight-bold line-height-1">
 											{getAltTotals()}
