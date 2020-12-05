@@ -7,16 +7,16 @@ import { ReactComponent as IconArrowRight } from './components/icons/icon-arrow-
 interface IProps { }
 
 const Calculator: React.FC<IProps> = (props: IProps) => {
-	const monthLabels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb'];
-	const defaultValues2019 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-	const defaultValues2020 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-	const defaultRenumeration = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+	const monthLabels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan-21', 'Feb-21', 'Mar-21'];
+	const defaultValues2019 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+	const defaultValues2020 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+	const defaultRenumeration = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
-	const defaultEnabledPeriods = [false, false, false, false, false, false, false, false, false, false, false, false, false, false];
+	const defaultEnabledPeriods = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
 	const periodStart = 2;
 	const enabledValues = [
-		[2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13], //Jan
-		[2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13], //Feb
+		[2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], //Jan
+		[2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], //Feb
 
 		[2, 3], // Mar = Feb and March
 		[3, 4, 6],
@@ -27,9 +27,10 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 		[8, 9, 10, 11],
 		[9, 10, 11, 12],
 		[10, 11, 12, 13],
-		[11, 12, 13],
-		[12, 13],
-		[13]
+		[11, 12, 13, 14],
+		[12, 13, 14],
+		[13, 14],
+		[14]
 	];
 	const [values2019, setValues2019] = React.useState<Array<any>>(defaultValues2019);
 	const [values2020, setValues2020] = React.useState<Array<any>>(defaultValues2020);
@@ -515,7 +516,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 	}
 	function getGeneralSubTotals5to9() {
 		let total = 0;
-		for (let i = 6; i < 13; i++) {
+		for (let i = 6; i < 14; i++) {
 			total += (resultsGeneral[i]) * renumerationValues[i];
 		}
 		if (Number.isNaN(total)) return '-';
@@ -523,7 +524,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 	}
 	function getGeneralTotals() {
 		let total = 0;
-		for (let i = 2; i < 13; i++) {
+		for (let i = 2; i < 14; i++) {
 			total += (resultsGeneral[i]) * renumerationValues[i];
 		}
 		if (Number.isNaN(total)) return '-';
@@ -531,7 +532,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 	}
 	function getAltSubTotals5to9() {
 		let total = 0;
-		for (let i = 6; i < 13; i++) {
+		for (let i = 6; i < 14; i++) {
 			total += (resultsAlt[i]) * renumerationValues[i];
 		}
 		if (Number.isNaN(total)) return '-';
@@ -539,7 +540,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 	}
 	function getAltTotals() {
 		let total = 0;
-		for (let i = 2; i < 13; i++) {
+		for (let i = 2; i < 14; i++) {
 			total += (resultsAlt[i]) * renumerationValues[i];
 		}
 		if (Number.isNaN(total)) return '-';

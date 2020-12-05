@@ -16,11 +16,11 @@ class Year {
 		var results = [];
 		let noZeroRevenue2019 = [];
 		let noZeroRevenue2020 = [];
-		for (let i = 0; i < 14; i++) {
+		for (let i = 0; i < 15; i++) {
 			this.revenue2019[i] === 0 ? noZeroRevenue2019[i] = 0.001 : noZeroRevenue2019[i] = this.revenue2019[i];
 			this.revenue2020[i] === 0 ? noZeroRevenue2020[i] = 0.001 : noZeroRevenue2020[i] = this.revenue2020[i];
 		}
-		for (let i = 0; i < 14; i++) {
+		for (let i = 0; i < 15; i++) {
 			let prevMonthTest = null;
 			let month = new Month(i, i, noZeroRevenue2019, noZeroRevenue2020);
 

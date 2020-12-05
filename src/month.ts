@@ -16,6 +16,8 @@ const constants = [
 	{ month: 12, cewsPeriod: 10, threshold: 200, baseModifier: 0.8, baseCap: .4 },
 	{ month: 1, cewsPeriod: 11, threshold: 200, baseModifier: 0.8, baseCap: .4 },
 	{ month: 2, cewsPeriod: 12, threshold: 200, baseModifier: 0.8, baseCap: .4 },
+	{ month: 3, cewsPeriod: 13, threshold: 200, baseModifier: 0.8, baseCap: .4 },
+
 ];
 
 class Month {
