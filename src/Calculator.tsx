@@ -516,7 +516,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 	}
 	function getGeneralSubTotals5to9() {
 		let total = 0;
-		for (let i = 6; i < 14; i++) {
+		for (let i = 6; i < 15; i++) {
 			total += (resultsGeneral[i]) * renumerationValues[i];
 		}
 		if (Number.isNaN(total)) return '-';
@@ -524,7 +524,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 	}
 	function getGeneralTotals() {
 		let total = 0;
-		for (let i = 2; i < 14; i++) {
+		for (let i = 2; i < 15; i++) {
 			total += (resultsGeneral[i]) * renumerationValues[i];
 		}
 		if (Number.isNaN(total)) return '-';
@@ -532,7 +532,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 	}
 	function getAltSubTotals5to9() {
 		let total = 0;
-		for (let i = 6; i < 14; i++) {
+		for (let i = 6; i < 15; i++) {
 			total += (resultsAlt[i]) * renumerationValues[i];
 		}
 		if (Number.isNaN(total)) return '-';
@@ -540,7 +540,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 	}
 	function getAltTotals() {
 		let total = 0;
-		for (let i = 2; i < 14; i++) {
+		for (let i = 2; i < 15; i++) {
 			total += (resultsAlt[i]) * renumerationValues[i];
 		}
 		if (Number.isNaN(total)) return '-';
