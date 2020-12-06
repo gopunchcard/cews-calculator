@@ -410,10 +410,10 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 										</div>
 									</td>
 								</tr>
-								<tr className="d-sm-none bg-transparent"><td colSpan={2}><h2 className="h6 mt-3 mb-0 text-md-center text-monospace text-uppercase">Period 5-9 Subtotal</h2></td></tr>
+								<tr className="d-sm-none bg-transparent"><td colSpan={2}><h2 className="h6 mt-3 mb-0 text-md-center text-monospace text-uppercase">Period 5-13 Subtotal</h2></td></tr>
 								<tr className="d-lg-table-row bg-transparent border-bottom border-dark">
 
-									<td className="d-none d-sm-table-cell d-lg-none pl-3 text-monospace align-middle"><small className="font-weight-bold">Period 5-9 Subtotal</small></td>
+									<td className="d-none d-sm-table-cell d-lg-none pl-3 text-monospace align-middle"><small className="font-weight-bold">Period 5-13 Subtotal</small></td>
 									<td className="pl-lg-3 pr-lg-2 py-0" >
 										<div className="d-flex flex-column justify-content-center form-control px-0 bg-transparent border-transparent text-right font-weight-bold line-height-1">
 											{getGeneralSubTotals5to9()}
