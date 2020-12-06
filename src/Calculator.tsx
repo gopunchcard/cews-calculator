@@ -7,7 +7,7 @@ import { ReactComponent as IconArrowRight } from './components/icons/icon-arrow-
 interface IProps { }
 
 const Calculator: React.FC<IProps> = (props: IProps) => {
-	const monthLabels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan-21', 'Feb-21', 'Mar-21'];
+	const monthLabels = ['Jan-20', 'Feb-20', 'Mar-20', 'Apr-20', 'May-20', 'Jun-20', 'Jul-20', 'Aug-20', 'Sep-20', 'Oct-20', 'Nov-20', 'Dec-20', 'Jan-21', 'Feb-21', 'Mar-21'];
 	const defaultValues2019 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 	const defaultValues2020 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 	const defaultRenumeration = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
@@ -77,7 +77,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 											<br className="d-none d-lg-inline" />Period
 										</th>
 										<th className="d-none d-lg-table-cell px-3 pl-lg-1 line-height-1">
-											Reference<br />Month
+											Month
 										</th>
 									</tr>
 								</thead>
@@ -122,7 +122,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 								<thead>
 									<tr>
 										<th className="d-none d-md-table-cell px-3 px-md-1 text-monospace line-height-1">
-											<br className="d-none d-lg-inline" />2019
+											<br className="d-none d-lg-inline" />Previous
 										</th>
 									</tr>
 								</thead>
@@ -186,7 +186,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 								<thead>
 									<tr>
 										<th className="d-none d-md-table-cell px-3 px-md-1 text-monospace line-height-1">
-											<br className="d-none d-lg-inline" />2020
+											<br className="d-none d-lg-inline" />Current
 										</th>
 									</tr>
 								</thead>
