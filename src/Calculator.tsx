@@ -67,7 +67,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 				<div className="col-lg px-lg-0 py-lg-3">
 					<div className="row mx-md-0">
 						<h2 className="d-none d-md-block col-12 px-lg-0 h6 text-sm-center text-monospace text-uppercase">
-							Enter your gross revenue below
+							Enter your monthly revenue and renumeration below
 						</h2>
 						<div className="d-none d-md-block col-md-auto px-md-0">
 							<table className="table table-sm table-striped table-borderless mb-0">
@@ -122,7 +122,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 								<thead>
 									<tr>
 										<th className="d-none d-md-table-cell px-3 px-md-1 text-monospace line-height-1">
-											<br className="d-none d-lg-inline" />Previous
+											<br className="d-none d-lg-inline" />Prior Yr.
 										</th>
 									</tr>
 								</thead>
@@ -186,7 +186,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 								<thead>
 									<tr>
 										<th className="d-none d-md-table-cell px-3 px-md-1 text-monospace line-height-1">
-											<br className="d-none d-lg-inline" />Current
+											<br className="d-none d-lg-inline" />Current Yr.
 										</th>
 									</tr>
 								</thead>
@@ -300,7 +300,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 										<tr className="d-none d-lg-table-row bg-transparent">
 											<td className="pr-3 py-0">
 												<div className="d-flex flex-column justify-content-center form-control px-0 bg-transparent border-transparent text-right line-height-1">
-													<small>Period 5-9<br /><small>Subtotal</small></small>
+													<small>Period 5-13<br /><small>Subtotal</small></small>
 												</div>
 											</td>
 										</tr>
@@ -501,7 +501,8 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 	function getGeneralSubTotals1to4() {
 		let total = 0;
 		for (let i = 2; i < 6; i++) {
-			total += (resultsGeneral[i]) * renumerationValues[i];
+			if (enabledPeriods[i])
+				total += (resultsGeneral[i]) * renumerationValues[i];
 		}
 		if (Number.isNaN(total)) return '-';
 		return '$' + round(total / 100).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -509,7 +510,8 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 	function getAltSubTotals1to4() {
 		let total = 0;
 		for (let i = 2; i < 6; i++) {
-			total += (resultsAlt[i]) * renumerationValues[i];
+			if (enabledPeriods[i])
+				total += (resultsAlt[i]) * renumerationValues[i];
 		}
 		if (Number.isNaN(total)) return '-';
 		return '$' + round(total / 100).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -517,7 +519,8 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 	function getGeneralSubTotals5to9() {
 		let total = 0;
 		for (let i = 6; i < 15; i++) {
-			total += (resultsGeneral[i]) * renumerationValues[i];
+			if (enabledPeriods[i])
+				total += (resultsGeneral[i]) * renumerationValues[i];
 		}
 		if (Number.isNaN(total)) return '-';
 		return '$' + round(total / 100).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -525,7 +528,8 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 	function getGeneralTotals() {
 		let total = 0;
 		for (let i = 2; i < 15; i++) {
-			total += (resultsGeneral[i]) * renumerationValues[i];
+			if (enabledPeriods[i])
+				total += (resultsGeneral[i]) * renumerationValues[i];
 		}
 		if (Number.isNaN(total)) return '-';
 		return '$' + round(total / 100).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -533,7 +537,8 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 	function getAltSubTotals5to9() {
 		let total = 0;
 		for (let i = 6; i < 15; i++) {
-			total += (resultsAlt[i]) * renumerationValues[i];
+			if (enabledPeriods[i])
+				total += (resultsAlt[i]) * renumerationValues[i];
 		}
 		if (Number.isNaN(total)) return '-';
 		return '$' + round(total / 100).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -541,7 +546,8 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 	function getAltTotals() {
 		let total = 0;
 		for (let i = 2; i < 15; i++) {
-			total += (resultsAlt[i]) * renumerationValues[i];
+			if (enabledPeriods[i])
+				total += (resultsAlt[i]) * renumerationValues[i];
 		}
 		if (Number.isNaN(total)) return '-';
 		return '$' + round(total / 100).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");

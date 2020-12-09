@@ -93,7 +93,7 @@ class Month {
 			return 0;
 		if (this.month < 9)
 			return calcPercentLostNoNegative(this.prevYear3PrecedingMonthsRevenue, this.currentYearPreceding3MonthsRevenue)
-		else if (this.month === 10) {
+		else if (this.month < 12) {
 			//the top up is 1.25 x the % decline in excess of 50% for the greater of 
 			//a) the 3 month decline comparison already in place, 
 			//b) the current month compared to the same month from the previous year, and 
@@ -116,7 +116,7 @@ class Month {
 			return 0;
 		if (this.month < 9)
 			return calcPercentLostNoNegative(this.janFebValue, this.currentYearPreceding3MonthsRevenue)
-		else if (this.month === 10) {
+		else if (this.month < 12) {
 			//the top up is 1.25 x the % decline in excess of 50% for the greater of 
 			//a) a) the 3 month average as compared to the January/February average decline already in place, 
 			//b) the current month compared to the January/February average, and 
@@ -163,7 +163,7 @@ class Month {
 	calulateTopUpRate(revenueDrop: number): number {
 		if (revenueDrop <= .5)
 			return 0;
-		if (this.month <= 10)
+		if (this.month <= 11)
 			return Math.min(1.25 * (revenueDrop - 0.5), 0.25);
 		else
 			return Math.min(1.75 * (revenueDrop - 0.5), 0.35);
