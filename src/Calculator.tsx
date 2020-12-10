@@ -78,6 +78,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 											<br className="d-none d-lg-inline" />Period
 										</th>
 										<th className="d-none d-lg-table-cell px-3 pl-lg-1 line-height-1">
+											Reference<br />
 											Month
 										</th>
 									</tr>
