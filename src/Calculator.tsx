@@ -8,6 +8,7 @@ interface IProps { }
 
 const Calculator: React.FC<IProps> = (props: IProps) => {
 	const monthLabels = ['Jan-20', 'Feb-20', 'Mar-20', 'Apr-20', 'May-20', 'Jun-20', 'Jul-20', 'Aug-20', 'Sep-20', 'Oct-20', 'Nov-20', 'Dec-20', 'Jan-21', 'Feb-21', 'Mar-21'];
+	const refMonthLabels = ['Jan-20', 'Feb-20', 'Mar-20', 'Apr-20', 'May-20', 'Jun-20', 'Jul-20', 'Aug-20', 'Sep-20', 'Oct-20', 'Nov-20', 'Dec-20', 'Dec-20', 'Jan-21', 'Feb-21'];
 	const defaultValues2019 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 	const defaultValues2020 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 	const defaultRenumeration = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
@@ -88,7 +89,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 												<td className="d-lg-none px-3 text-uppercase text-monospace small text-nowrap align-middle">
 													<div className="d-flex flex-column justify-content-center form-control px-0 bg-transparent border-transparent">
 														<small>
-															{monthLabels[index]}
+															{refMonthLabels[index]}
 															<small className="d-block mt-n2">
 																{index - periodStart >= 0 ? `Period ${index - periodStart + 1}` : '-'}
 															</small>
@@ -102,7 +103,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 												</td>
 												<td className="d-none d-lg-table-cell px-3 pl-lg-1">
 													<div className="form-control bg-transparent border-transparent px-0">
-														<small className="text-uppercase text-monospace text-right">{monthLabels[index]}</small>
+														<small className="text-uppercase text-monospace text-right">{refMonthLabels[index]}</small>
 													</div>
 												</td>
 											</tr>
@@ -130,7 +131,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 									{values2019.map((item, index: number) => (
 										<tr key={`column-2019-${index}`} className={classnames(!checkEnabledPeriods(index) && 'd-none d-md-table-row disabled', index < periodStart && checkEnabledPeriods(index) && 'd-none d-md-table-row')}>
 											<td className="d-md-none pl-3 text-uppercase text-monospace small text-nowrap align-middle">
-												{monthLabels[index]}
+												{refMonthLabels[index]}
 												<small className="d-block mt-n2">
 													{index - periodStart >= 0 ? `Period ${index - periodStart + 1}` : '-'}
 												</small>
@@ -195,7 +196,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 										return (
 											<tr key={`column-2020-${index}`} className={classnames(!checkEnabledPeriods(index) && 'd-none d-md-table-row disabled')}>
 												<td className="d-md-none pl-3 text-uppercase text-monospace small text-nowrap align-middle">
-													{monthLabels[index]}
+													{refMonthLabels[index]}
 													<small className="d-block mt-n2">
 														{index - periodStart >= 0 ? `Period ${index - periodStart + 1}` : '-'}
 													</small>
@@ -253,7 +254,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 										return (
 											<tr key={`column-2020-${index}`} className={classnames(!checkEnabledPeriods(index) && 'disabled', !enabledPeriods[index] && 'd-none d-md-table-row')}>
 												<td className="d-md-none pl-3 text-uppercase text-monospace small text-nowrap align-middle">
-													{monthLabels[index]}
+													{refMonthLabels[index]}
 													<small className="d-block mt-n2">
 														{index - periodStart >= 0 ? `Period ${index - periodStart + 1}` : '-'}
 													</small>
@@ -344,12 +345,12 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 									<React.Fragment key={`column-results-${index}`}>
 										<tr className={classnames('d-sm-none', !checkEnabledPeriods(index) && 'disabled', !enabledPeriods[index] && 'd-none')}>
 											<td colSpan={2} className="pb-0 text-uppercase text-monospace small text-nowrap align-middle">
-												{monthLabels[index]} - {index - periodStart >= 0 ? `Period ${index - periodStart + 1}` : '-'}:
+												{refMonthLabels[index]} - {index - periodStart >= 0 ? `Period ${index - periodStart + 1}` : '-'}:
 											</td>
 										</tr>
 										<tr className={classnames(!checkEnabledPeriods(index) && 'disabled', !enabledPeriods[index] && 'd-none d-lg-table-row', !(index % 2) && 'bg-sm-table-accent')}>
 											<td className="pl-3 text-uppercase text-monospace small text-nowrap align-middle d-none d-sm-table-cell d-lg-none">
-												{monthLabels[index]}
+												{refMonthLabels[index]}
 												<small className="d-block mt-n2">
 													{index - periodStart >= 0 ? `Period ${index - periodStart + 1}` : '-'}
 												</small>
