@@ -87,6 +87,9 @@ const GeneralNotesFooterNotes: React.FC<IProps> = (_props: IProps) => {
 					<p>On October 9, 2020, the government announced that the subsidy would remain at the current (Period 8) subsidy rate of up to a maximum of 65% of eligible wages until December 19, 2020. In the November 30, 2020 Fall Economic Statement, details were released for periods 11-13 that would provide a maximum 75% subsidy, however no further details were released in respect of the remaining periods (program announced to end June 2021).  The calculations will be adjusted as specific details are released.  For more details, click <a href="https://www.videotax.com/covid19-implications-cews">here</a>.</p>
 				</li>
 				<li id="general-notes-14">
+					<p>The current reference period month for both Periods 10 and 11 is December, 2020.  In other words, the revenue decline for these two claim periods is based on the same months, however, the formula is slightly different.  This anomaly occurred since each claim period covers less than a full month (only 28 days).</p>
+				</li>
+				<li id="general-notes-15">
 					<p>
 						For more information on the subsidy, see the following Government of Canada documents: {` `}
 						<a href="https://www.canada.ca/en/department-finance/news/2020/04/additional-details-on-the-canada-emergency-wage-subsidy0.html" target="_blank" rel="noreferrer noopener">
