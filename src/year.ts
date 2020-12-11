@@ -38,7 +38,7 @@ class Year {
 			this.finalGeneralResults.push(finalGeneral);
 			this.finalAltResults.push(finalAlt);
 			results.push(month);
-			console.log(i + " " + new Date(2019, month.month, 1).toLocaleString('default', { month: 'short' }) + ' ');
+			console.log("Period: " + (i - 1) + " ");//+ new Date(2019, month.month, 1).toLocaleString('default', { month: 'short' }) + ' ');
 			console.log('    '
 				+ month.generalPercentChange.toFixed(2) + ' '
 				+ month.alternativePercentChange.toFixed(2) + ' '

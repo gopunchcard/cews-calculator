@@ -127,8 +127,8 @@ class Month {
 			return Math.max(a, b, c);
 		}
 		else {
-			let b = calcPercentLostNoNegative(this.prevYearMonthlyRevenue, this.currentYearMontlyRevenue);
-			let c = calcPercentLostNoNegative(this.prevYearPreviousMonthlyRevenue, this.currentYearPreviousMontlyRevenue);
+			let b = calcPercentLostNoNegative(this.janFebValue, this.currentYearMontlyRevenue);
+			let c = calcPercentLostNoNegative(this.janFebValue, this.currentYearPreviousMontlyRevenue);
 			return Math.max(b, c);
 		}
 	}
