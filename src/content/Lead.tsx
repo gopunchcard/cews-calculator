@@ -27,7 +27,7 @@ const Lead: React.FC<IProps> = (_props: IProps) => {
 				(comprised of a top-up subsidy and base subsidy) available from the first dollar of revenue decline “new system”.
 			</p>
 			<p>
-				This version includes the announcements from the November 30, 2020 Fall Economic Statement.  While the program is to extend to June 2021, details past March 13, 2021 have not yet been released."
+				This version includes the announcements from the November 30, 2020 Fall Economic Statement.  While the program is to extend to June 2021, details past March 13, 2021 have not yet been released.
 			</p>
 			<p>
 				Important: The rules for calculating specific subsidies and eligibility are very complex and dynamic. Professional assistance should be sought. See {` `}

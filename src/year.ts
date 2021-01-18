@@ -24,7 +24,14 @@ class Year {
 			let prevMonthTest = null;
 			let month = new Month(i, i, noZeroRevenue2019, noZeroRevenue2020);
 
-			if (i >= 6) { //This only applies to the newcalculations
+			//Period 11 is a special case and we need to look back 2 months
+			if (i === 12) {
+				prevMonthTest = new Month(i - 1, i, noZeroRevenue2019, noZeroRevenue2020);
+				month.prevNewGeneral = (prevMonthTest.generalBasePercent);
+				month.prevNewAlternative = (prevMonthTest.altBasePercent);
+			}
+
+			else if (i >= 6) { //This only applies to the newcalculations
 				// This should only apply to the new values, not the old values..
 				prevMonthTest = new Month(i - 1, i, noZeroRevenue2019, noZeroRevenue2020);
 				month.prevNewGeneral = (prevMonthTest.generalBasePercent);

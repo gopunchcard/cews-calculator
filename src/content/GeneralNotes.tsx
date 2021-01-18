@@ -10,7 +10,7 @@ const GeneralNotes: React.FC<IProps> = (_props: IProps) => {
 				The following are the general rules that the Estimator attempts to follow<sup>12</sup>.  Note that there are many exceptions.  Further, clarification from CRA as to how many aspects of the rules work has not yet been received.  These assumptions and calculations are based on our understanding of the rules but cannot be relied upon for the filing of a claim.  Professional assistance is required. For the government application site, click <a href="https://www.canada.ca/en/revenue-agency/services/subsidy/emergency-wage-subsidy.html">here</a>.
 			</p>
 			<p>
-				The calculation can be separated into four period groups: Periods 1-4 (March 15 to July 4, 2020), Periods 5-6 (July 5 to August 29, 2020), Periods 7 – 10 (August 30 to December 19, 2020). and Period 11-13 (December 20, 2020 to March 13, 2021).
+				The calculation can be separated into four period groups: Periods 1-4 (March 15 to July 4, 2020), Periods 5-6 (July 5 to August 29, 2020), Periods 7 – 10 (August 30 to December 19, 2020) and periods 11-13 (December 20, 2020 to March 13, 2021).
 
 			</p>
 			<h3>Periods 1-4 (original method)</h3>
