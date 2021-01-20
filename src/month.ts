@@ -50,6 +50,9 @@ class Month {
 			this.prevYear3PrecedingMonthsRevenue = (this.revenue2019[month - 1] + this.revenue2019[month - 2] + this.revenue2019[month - 3]) / 3
 
 		}
+		if (month === 12) {
+			this.currentYearPreviousMontlyRevenue = revenue2020[month - 2];
+		}
 	}
 
 	get generalPercentChange(): number {
