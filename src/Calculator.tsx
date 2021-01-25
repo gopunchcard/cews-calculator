@@ -26,10 +26,10 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 		[6, 7, 8, 9],
 		[7, 8, 9, 10],
 		[8, 9, 10, 11],
-		[9, 10, 11, 12],
-		[10, 11, 12, 13],
-		[11, 12, 13, 14],
-		[12, 13, 14],
+		[9, 10, 11],
+		[10, 11, 12],
+		[11, 12],
+		[12, 13],
 		[13, 14],
 		[14]
 	];
@@ -68,7 +68,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 				<div className="col-lg px-lg-0 py-lg-3">
 					<div className="row mx-md-0">
 						<h2 className="d-none d-md-block col-12 px-lg-0 h6 text-sm-center text-monospace text-uppercase">
-							Enter your monthly revenue and renumeration below
+							Enter your monthly revenue and remuneration below
 						</h2>
 						<div className="d-none d-md-block col-md-auto px-md-0">
 							<table className="table table-sm table-striped table-borderless mb-0">
@@ -246,7 +246,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 						</div>
 						<div className="col-md mt-4 mt-md-0 px-md-0">
 							<h2 className="d-md-none h6 text-monospace text-uppercase">
-								Eligible Renumeration<a href="#general-notes-8"><sup>8</sup></a>
+								Eligible Remuneration<a href="#general-notes-8"><sup>8</sup></a>
 							</h2>
 							<table className="table table-sm table-striped table-borderless mb-0">
 								<thead>
