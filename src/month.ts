@@ -14,6 +14,10 @@ const constants = [
 	{ month: 10, cewsPeriod: 8, threshold: 200, baseModifier: 0.8, baseCap: .4 },
 	{ month: 11, cewsPeriod: 9, threshold: 200, baseModifier: 0.8, baseCap: .4 },
 	{ month: 12, cewsPeriod: 10, threshold: 200, baseModifier: 0.8, baseCap: .4 },
+	{ month: 1, cewsPeriod: 11, threshold: 200, baseModifier: 0.8, baseCap: .4 },
+	{ month: 2, cewsPeriod: 12, threshold: 200, baseModifier: 0.8, baseCap: .4 },
+	{ month: 3, cewsPeriod: 13, threshold: 200, baseModifier: 0.8, baseCap: .4 },
+
 ];
 
 class Month {
@@ -45,6 +49,9 @@ class Month {
 			this.currentYearPreceding3MonthsRevenue = (this.revenue2020[month - 1] + this.revenue2020[month - 2] + this.revenue2020[month - 3]) / 3
 			this.prevYear3PrecedingMonthsRevenue = (this.revenue2019[month - 1] + this.revenue2019[month - 2] + this.revenue2019[month - 3]) / 3
 
+		}
+		if (month === 12) {
+			this.currentYearPreviousMontlyRevenue = revenue2020[month - 2];
 		}
 	}
 
@@ -89,7 +96,7 @@ class Month {
 			return 0;
 		if (this.month < 9)
 			return calcPercentLostNoNegative(this.prevYear3PrecedingMonthsRevenue, this.currentYearPreceding3MonthsRevenue)
-		else {
+		else if (this.month < 12) {
 			//the top up is 1.25 x the % decline in excess of 50% for the greater of 
 			//a) the 3 month decline comparison already in place, 
 			//b) the current month compared to the same month from the previous year, and 
@@ -99,13 +106,20 @@ class Month {
 			let c = calcPercentLostNoNegative(this.prevYearPreviousMonthlyRevenue, this.currentYearPreviousMontlyRevenue);
 			return Math.max(a, b, c);
 		}
+		else {
+			//the top up is 1.25 x the % decline in excess of 50% for the greater of 
+			//b) the current month compared to the same month from the previous year, and 
+			let b = calcPercentLostNoNegative(this.prevYearMonthlyRevenue, this.currentYearMontlyRevenue);
+			let c = calcPercentLostNoNegative(this.prevYearPreviousMonthlyRevenue, this.currentYearPreviousMontlyRevenue);
+			return Math.max(b, c);
+		}
 	}
 	get altTopUpRevenueDrop(): number {
 		if (this.month < 6)
 			return 0;
 		if (this.month < 9)
 			return calcPercentLostNoNegative(this.janFebValue, this.currentYearPreceding3MonthsRevenue)
-		else {
+		else if (this.month < 12) {
 			//the top up is 1.25 x the % decline in excess of 50% for the greater of 
 			//a) a) the 3 month average as compared to the January/February average decline already in place, 
 			//b) the current month compared to the January/February average, and 
@@ -114,6 +128,11 @@ class Month {
 			let b = calcPercentLostNoNegative(this.janFebValue, this.currentYearMontlyRevenue);
 			let c = calcPercentLostNoNegative(this.janFebValue, this.currentYearPreviousMontlyRevenue);
 			return Math.max(a, b, c);
+		}
+		else {
+			let b = calcPercentLostNoNegative(this.janFebValue, this.currentYearMontlyRevenue);
+			let c = calcPercentLostNoNegative(this.janFebValue, this.currentYearPreviousMontlyRevenue);
+			return Math.max(b, c);
 		}
 	}
 	get generalTopUpPercent(): number {
@@ -124,7 +143,7 @@ class Month {
 	}
 	// Need to now see if they qualify with last months numbers
 	get generalEligiblePercentWithoutPreviousMonth(): number {
-		console.log("month: " + this.month + " base: " + this.generalBasePercent + " topup: " + this.generalTopUpPercent)
+		//console.log("month: " + this.month + " base: " + this.generalBasePercent + " topup: " + this.generalTopUpPercent)
 		return Math.max(this.generalBasePercent + this.generalTopUpPercent);
 	}
 	get altEligiblePercentWithoutPreviousMonth(): number {
@@ -147,7 +166,10 @@ class Month {
 	calulateTopUpRate(revenueDrop: number): number {
 		if (revenueDrop <= .5)
 			return 0;
-		return Math.min(1.25 * (revenueDrop - 0.5), 0.25);
+		if (this.month <= 11)
+			return Math.min(1.25 * (revenueDrop - 0.5), 0.25);
+		else
+			return Math.min(1.75 * (revenueDrop - 0.5), 0.35);
 	}
 }
 

@@ -6,12 +6,19 @@ const Updates: React.FC<IProps> = (_props: IProps) => {
 	return (
 		<div className="small" id="updates">
 			<h3 className="h6 text-uppercase">Updates:</h3>
-			<ul><li>
-				<strong>V4 (October 9, 2020)</strong>
-				<ol type="a">
-					<li>Added calculation for Period 10 and adjusted calculations for Periods 8 and 9 per October 14, 2020 backgrounder (see note 13).</li>
-				</ol>
-			</li>
+			<ul>
+				<li>
+					<strong>V5 (December 9, 2020)</strong>
+					<ol type="a">
+						<li>Added in calculations for Periods 11-13 per November 30, 2020 Fall Economic Update.</li>
+					</ol>
+				</li>
+				<li>
+					<strong>V4 (October 9, 2020)</strong>
+					<ol type="a">
+						<li>Added calculation for Period 10 and adjusted calculations for Periods 8 and 9 per October 14, 2020 backgrounder (see note 13).</li>
+					</ol>
+				</li>
 				<li>
 					<strong>V3 (September 30, 2020)</strong>
 					<ol type="a">

@@ -7,16 +7,17 @@ import { ReactComponent as IconArrowRight } from './components/icons/icon-arrow-
 interface IProps { }
 
 const Calculator: React.FC<IProps> = (props: IProps) => {
-	const monthLabels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-	const defaultValues2019 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-	const defaultValues2020 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-	const defaultRenumeration = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+	const monthLabels = ['Jan-20', 'Feb-20', '1: Mar 15 - Apr 11', '2: Apr 12 – May 9', '3: May 10 – June 6', '4: June 7 – July 4', '5: July 5 – Aug 1', '6: Aug 2 – Aug 29', '7: Aug 30 – Sep 26', '8: Sep 27 – Oct 24', '9: Oct 25 – Nov 21', '10: Nov 22 – Dec 19', '11: Dec 20 – Jan 16', '12: Jan 17 – Feb 13', ' 13: Feb 14 – Mar 13'];
+	const refMonthLabels = ['Jan-20', 'Feb-20', 'Mar-20', 'Apr-20', 'May-20', 'Jun-20', 'Jul-20', 'Aug-20', 'Sep-20', 'Oct-20', 'Nov-20', 'Dec-20', 'Dec-20', 'Jan-21', 'Feb-21'];
+	const defaultValues2019 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+	const defaultValues2020 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+	const defaultRenumeration = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
-	const defaultEnabledPeriods = [false, false, false, false, false, false, false, false, false, false, false, false];
+	const defaultEnabledPeriods = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
 	const periodStart = 2;
 	const enabledValues = [
-		[2, 3, 4, 5, 6, 7, 8, 9, 10, 11], //Jan
-		[2, 3, 4, 5, 6, 7, 8, 9, 10, 11], //Feb
+		[2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], //Jan
+		[2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], //Feb
 
 		[2, 3], // Mar = Feb and March
 		[3, 4, 6],
@@ -26,8 +27,11 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 		[7, 8, 9, 10],
 		[8, 9, 10, 11],
 		[9, 10, 11],
-		[10, 11],
-		[11]
+		[10, 11, 12],
+		[11, 12],
+		[12, 13],
+		[13, 14],
+		[14]
 	];
 	const [values2019, setValues2019] = React.useState<Array<any>>(defaultValues2019);
 	const [values2020, setValues2020] = React.useState<Array<any>>(defaultValues2020);
@@ -47,7 +51,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 		<React.Fragment>
 			<div className="mb-4 p-3 bg-quinary-light border border-dark">
 				<h2 className="h6 text-monospace text-uppercase mb-2">
-					Choose the months you want to calculate the subsidy for<a href="#general-notes-13"><sup>13</sup></a>
+					Choose the periods you want to calculate the subsidy for<a href="#general-notes-13"><sup>13</sup></a>
 				</h2>
 				<div className="row">
 					{monthLabels.map((month, index: number) => index - periodStart >= 0 && (
@@ -64,7 +68,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 				<div className="col-lg px-lg-0 py-lg-3">
 					<div className="row mx-md-0">
 						<h2 className="d-none d-md-block col-12 px-lg-0 h6 text-sm-center text-monospace text-uppercase">
-							Enter your gross revenue below
+							Enter your monthly revenue and remuneration below
 						</h2>
 						<div className="d-none d-md-block col-md-auto px-md-0">
 							<table className="table table-sm table-striped table-borderless mb-0">
@@ -74,7 +78,8 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 											<br className="d-none d-lg-inline" />Period
 										</th>
 										<th className="d-none d-lg-table-cell px-3 pl-lg-1 line-height-1">
-											Reference<br />Month
+											Reference<br />
+											Month
 										</th>
 									</tr>
 								</thead>
@@ -84,12 +89,15 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 											<tr key={`row-labels-${index}`} className={classnames(!checkEnabledPeriods(index) && 'disabled')}>
 												<td className="d-lg-none px-3 text-uppercase text-monospace small text-nowrap align-middle">
 													<div className="d-flex flex-column justify-content-center form-control px-0 bg-transparent border-transparent">
-														<small>
-															{monthLabels[index]}
-															<small className="d-block mt-n2">
-																{index - periodStart >= 0 ? `Period ${index - periodStart + 1}` : '-'}
-															</small>
+
+
+
+														{index - periodStart >= 0 ? `Period ${index - periodStart + 1}` : '-'}
+
+														<small className="d-block mt-n2">
+															{refMonthLabels[index]}{showDecFootnote(index)}
 														</small>
+
 													</div>
 												</td>
 												<td className="d-none d-lg-table-cell px-3">
@@ -99,7 +107,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 												</td>
 												<td className="d-none d-lg-table-cell px-3 pl-lg-1">
 													<div className="form-control bg-transparent border-transparent px-0">
-														<small className="text-uppercase text-monospace text-right">{monthLabels[index]}</small>
+														<small className="text-uppercase text-monospace text-right">{refMonthLabels[index]}{showDecFootnote(index)}</small>
 													</div>
 												</td>
 											</tr>
@@ -119,7 +127,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 								<thead>
 									<tr>
 										<th className="d-none d-md-table-cell px-3 px-md-1 text-monospace line-height-1">
-											<br className="d-none d-lg-inline" />2019
+											<br className="d-none d-lg-inline" />Prior Yr.
 										</th>
 									</tr>
 								</thead>
@@ -127,9 +135,9 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 									{values2019.map((item, index: number) => (
 										<tr key={`column-2019-${index}`} className={classnames(!checkEnabledPeriods(index) && 'd-none d-md-table-row disabled', index < periodStart && checkEnabledPeriods(index) && 'd-none d-md-table-row')}>
 											<td className="d-md-none pl-3 text-uppercase text-monospace small text-nowrap align-middle">
-												{monthLabels[index]}
+												{index - periodStart >= 0 ? `Period ${index - periodStart + 1}` : '-'}
 												<small className="d-block mt-n2">
-													{index - periodStart >= 0 ? `Period ${index - periodStart + 1}` : '-'}
+													{refMonthLabels[index]}{showDecFootnote(index)}
 												</small>
 											</td>
 											<td className="pr-3">
@@ -183,7 +191,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 								<thead>
 									<tr>
 										<th className="d-none d-md-table-cell px-3 px-md-1 text-monospace line-height-1">
-											<br className="d-none d-lg-inline" />2020
+											<br className="d-none d-lg-inline" />Current Yr.
 										</th>
 									</tr>
 								</thead>
@@ -192,9 +200,12 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 										return (
 											<tr key={`column-2020-${index}`} className={classnames(!checkEnabledPeriods(index) && 'd-none d-md-table-row disabled')}>
 												<td className="d-md-none pl-3 text-uppercase text-monospace small text-nowrap align-middle">
-													{monthLabels[index]}
+
+
+													{index - periodStart >= 0 ? `Period ${index - periodStart + 1}` : '-'}
+
 													<small className="d-block mt-n2">
-														{index - periodStart >= 0 ? `Period ${index - periodStart + 1}` : '-'}
+														{refMonthLabels[index]}
 													</small>
 												</td>
 												<td className="pr-3">
@@ -235,7 +246,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 						</div>
 						<div className="col-md mt-4 mt-md-0 px-md-0">
 							<h2 className="d-md-none h6 text-monospace text-uppercase">
-								Eligible Renumeration<a href="#general-notes-8"><sup>8</sup></a>
+								Eligible Remuneration<a href="#general-notes-8"><sup>8</sup></a>
 							</h2>
 							<table className="table table-sm table-striped table-borderless mb-0">
 								<thead>
@@ -250,9 +261,12 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 										return (
 											<tr key={`column-2020-${index}`} className={classnames(!checkEnabledPeriods(index) && 'disabled', !enabledPeriods[index] && 'd-none d-md-table-row')}>
 												<td className="d-md-none pl-3 text-uppercase text-monospace small text-nowrap align-middle">
-													{monthLabels[index]}
+
+
+													{index - periodStart >= 0 ? `Period ${index - periodStart + 1}` : '-'}
+
 													<small className="d-block mt-n2">
-														{index - periodStart >= 0 ? `Period ${index - periodStart + 1}` : '-'}
+														{refMonthLabels[index]}
 													</small>
 												</td>
 												<td className="pr-3">
@@ -297,7 +311,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 										<tr className="d-none d-lg-table-row bg-transparent">
 											<td className="pr-3 py-0">
 												<div className="d-flex flex-column justify-content-center form-control px-0 bg-transparent border-transparent text-right line-height-1">
-													<small>Period 5-9<br /><small>Subtotal</small></small>
+													<small>Period 5-13<br /><small>Subtotal</small></small>
 												</div>
 											</td>
 										</tr>
@@ -341,14 +355,16 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 									<React.Fragment key={`column-results-${index}`}>
 										<tr className={classnames('d-sm-none', !checkEnabledPeriods(index) && 'disabled', !enabledPeriods[index] && 'd-none')}>
 											<td colSpan={2} className="pb-0 text-uppercase text-monospace small text-nowrap align-middle">
-												{monthLabels[index]} - {index - periodStart >= 0 ? `Period ${index - periodStart + 1}` : '-'}:
+												{index - periodStart >= 0 ? `Period ${index - periodStart + 1}` : '-'} - {refMonthLabels[index]}:
 											</td>
 										</tr>
 										<tr className={classnames(!checkEnabledPeriods(index) && 'disabled', !enabledPeriods[index] && 'd-none d-lg-table-row', !(index % 2) && 'bg-sm-table-accent')}>
 											<td className="pl-3 text-uppercase text-monospace small text-nowrap align-middle d-none d-sm-table-cell d-lg-none">
-												{monthLabels[index]}
+
+
+												{index - periodStart >= 0 ? `Period ${index - periodStart + 1}` : '-'}
 												<small className="d-block mt-n2">
-													{index - periodStart >= 0 ? `Period ${index - periodStart + 1}` : '-'}
+													{refMonthLabels[index]}
 												</small>
 											</td>
 											<td className="pl-lg-3 pr-lg-2">
@@ -407,10 +423,10 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 										</div>
 									</td>
 								</tr>
-								<tr className="d-sm-none bg-transparent"><td colSpan={2}><h2 className="h6 mt-3 mb-0 text-md-center text-monospace text-uppercase">Period 5-9 Subtotal</h2></td></tr>
+								<tr className="d-sm-none bg-transparent"><td colSpan={2}><h2 className="h6 mt-3 mb-0 text-md-center text-monospace text-uppercase">Period 5-13 Subtotal</h2></td></tr>
 								<tr className="d-lg-table-row bg-transparent border-bottom border-dark">
 
-									<td className="d-none d-sm-table-cell d-lg-none pl-3 text-monospace align-middle"><small className="font-weight-bold">Period 5-9 Subtotal</small></td>
+									<td className="d-none d-sm-table-cell d-lg-none pl-3 text-monospace align-middle"><small className="font-weight-bold">Period 5-13 Subtotal</small></td>
 									<td className="pl-lg-3 pr-lg-2 py-0" >
 										<div className="d-flex flex-column justify-content-center form-control px-0 bg-transparent border-transparent text-right font-weight-bold line-height-1">
 											{getGeneralSubTotals5to9()}
@@ -498,7 +514,8 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 	function getGeneralSubTotals1to4() {
 		let total = 0;
 		for (let i = 2; i < 6; i++) {
-			total += (resultsGeneral[i]) * renumerationValues[i];
+			if (enabledPeriods[i])
+				total += (resultsGeneral[i]) * renumerationValues[i];
 		}
 		if (Number.isNaN(total)) return '-';
 		return '$' + round(total / 100).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -506,39 +523,44 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 	function getAltSubTotals1to4() {
 		let total = 0;
 		for (let i = 2; i < 6; i++) {
-			total += (resultsAlt[i]) * renumerationValues[i];
+			if (enabledPeriods[i])
+				total += (resultsAlt[i]) * renumerationValues[i];
 		}
 		if (Number.isNaN(total)) return '-';
 		return '$' + round(total / 100).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 	}
 	function getGeneralSubTotals5to9() {
 		let total = 0;
-		for (let i = 6; i < 11; i++) {
-			total += (resultsGeneral[i]) * renumerationValues[i];
+		for (let i = 6; i < 15; i++) {
+			if (enabledPeriods[i])
+				total += (resultsGeneral[i]) * renumerationValues[i];
 		}
 		if (Number.isNaN(total)) return '-';
 		return '$' + round(total / 100).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 	}
 	function getGeneralTotals() {
 		let total = 0;
-		for (let i = 2; i < 11; i++) {
-			total += (resultsGeneral[i]) * renumerationValues[i];
+		for (let i = 2; i < 15; i++) {
+			if (enabledPeriods[i])
+				total += (resultsGeneral[i]) * renumerationValues[i];
 		}
 		if (Number.isNaN(total)) return '-';
 		return '$' + round(total / 100).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 	}
 	function getAltSubTotals5to9() {
 		let total = 0;
-		for (let i = 6; i < 11; i++) {
-			total += (resultsAlt[i]) * renumerationValues[i];
+		for (let i = 6; i < 15; i++) {
+			if (enabledPeriods[i])
+				total += (resultsAlt[i]) * renumerationValues[i];
 		}
 		if (Number.isNaN(total)) return '-';
 		return '$' + round(total / 100).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 	}
 	function getAltTotals() {
 		let total = 0;
-		for (let i = 2; i < 11; i++) {
-			total += (resultsAlt[i]) * renumerationValues[i];
+		for (let i = 2; i < 15; i++) {
+			if (enabledPeriods[i])
+				total += (resultsAlt[i]) * renumerationValues[i];
 		}
 		if (Number.isNaN(total)) return '-';
 		return '$' + round(total / 100).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -593,6 +615,10 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 				return true;
 		}
 		return false;
+	}
+	function showDecFootnote(index: number) {
+		if (index === 11 || index === 12)
+			return <sup>14</sup>;
 	}
 
 };
