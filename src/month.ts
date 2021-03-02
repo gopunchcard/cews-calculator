@@ -52,6 +52,7 @@ class Month {
 		}
 		if (month === 12) {
 			this.currentYearPreviousMontlyRevenue = revenue2020[month - 2];
+			this.prevYearPreviousMonthlyRevenue = revenue2019[month - 2];
 		}
 	}
 
@@ -153,13 +154,13 @@ class Month {
 		if (this.month <= 11)
 			return Math.max(this.generalEligiblePercentWithoutPreviousMonth, this._prevNewGeneral, this.oldgeneralEligiblePercent);
 		else
-			return Math.max(this.generalEligiblePercentWithoutPreviousMonth);
+			return Math.max(this.generalEligiblePercentWithoutPreviousMonth, this._prevNewGeneral,);
 	}
 	get altEligiblePercent(): number {
 		if (this.month <= 11)
 			return Math.max(this.altEligiblePercentWithoutPreviousMonth, this._prevNewAlternative, this.oldAlternativeEligiblePercent);
 		else
-			return Math.max(this.generalEligiblePercentWithoutPreviousMonth);
+			return Math.max(this.generalEligiblePercentWithoutPreviousMonth, this._prevNewAlternative);
 	}
 	// This is used to supply last months values as you can use last months values for the new Numbers
 	set prevNewGeneral(value: number) {
