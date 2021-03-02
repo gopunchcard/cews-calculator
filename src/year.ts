@@ -24,14 +24,20 @@ class Year {
 			let prevMonthTest = null;
 			let month = new Month(i, i, noZeroRevenue2019, noZeroRevenue2020);
 
-			if (i >= 6) { //This only applies to the newcalculations
-				// This should only apply to the new values, not the old values..
+			if (i >= 6 && i !== 12) { //This only applies to the newcalculations
+				// We calculate last months values with this months calculation engine!
 				prevMonthTest = new Month(i - 1, i, noZeroRevenue2019, noZeroRevenue2020);
 				month.prevNewGeneral = (prevMonthTest.generalBasePercent);
 				month.prevNewAlternative = (prevMonthTest.altBasePercent);
 				//we need to inject the results
 				// finalGeneral = Math.max(month.generalEligiblePercent, prevMonthTest.generalEligiblePercent)
 				// finalAlt = Math.max(month.altEligiblePercent, prevMonthTest.altEligiblePercent)
+			}
+			if (i === 12) {
+				// We calculate last months values with this months calculation engine!
+				prevMonthTest = new Month(i - 2, i, noZeroRevenue2019, noZeroRevenue2020);
+				month.prevNewGeneral = (prevMonthTest.generalBasePercent);
+				month.prevNewAlternative = (prevMonthTest.altBasePercent);
 			}
 			let finalGeneral = month.generalEligiblePercent;
 			let finalAlt = month.altEligiblePercent;
