@@ -7,17 +7,17 @@ import { ReactComponent as IconArrowRight } from './components/icons/icon-arrow-
 interface IProps { }
 
 const Calculator: React.FC<IProps> = (props: IProps) => {
-	const monthLabels = ['Jan-20', 'Feb-20', '1: Mar 15 - Apr 11', '2: Apr 12 – May 9', '3: May 10 – June 6', '4: June 7 – July 4', '5: July 5 – Aug 1', '6: Aug 2 – Aug 29', '7: Aug 30 – Sep 26', '8: Sep 27 – Oct 24', '9: Oct 25 – Nov 21', '10: Nov 22 – Dec 19', '11: Dec 20 – Jan 16', '12: Jan 17 – Feb 13', ' 13: Feb 14 – Mar 13'];
-	const refMonthLabels = ['Jan-20', 'Feb-20', 'Mar-20', 'Apr-20', 'May-20', 'Jun-20', 'Jul-20', 'Aug-20', 'Sep-20', 'Oct-20', 'Nov-20', 'Dec-20', 'Dec-20', 'Jan-21', 'Feb-21'];
-	const defaultValues2019 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-	const defaultValues2020 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-	const defaultRenumeration = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+	const monthLabels = ['Jan-20', 'Feb-20', '1: Mar 15 - Apr 11', '2: Apr 12 – May 9', '3: May 10 – June 6', '4: June 7 – July 4', '5: July 5 – Aug 1', '6: Aug 2 – Aug 29', '7: Aug 30 – Sep 26', '8: Sep 27 – Oct 24', '9: Oct 25 – Nov 21', '10: Nov 22 – Dec 19', '11: Dec 20 – Jan 16', '12: Jan 17 – Feb 13', ' 13: Feb 14 – Mar 13', ' 14: Mar 14 – Apr 10', ' 15: Apr 11 – May 8', ' 16: May 9 – June 5'];
+	const refMonthLabels = ['Jan-20', 'Feb-20', 'Mar-20', 'Apr-20', 'May-20', 'Jun-20', 'Jul-20', 'Aug-20', 'Sep-20', 'Oct-20', 'Nov-20', 'Dec-20', 'Dec-20', 'Jan-21', 'Feb-21', 'Mar-21', 'Apr-21', 'May-21'];
+	const defaultValues2019 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+	const defaultValues2020 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+	const defaultRenumeration = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
-	const defaultEnabledPeriods = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
+	const defaultEnabledPeriods = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
 	const periodStart = 2;
 	const enabledValues = [
-		[2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], //Jan
-		[2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], //Feb
+		[2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17], //Jan
+		[2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17], //Feb
 
 		[2, 3], // Mar = Feb and March
 		[3, 4, 6],
@@ -31,7 +31,10 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 		[11, 12],
 		[12, 13],
 		[13, 14],
-		[14]
+		[14, 15],
+		[15, 16],
+		[16, 17],
+		[17]
 	];
 	const [values2019, setValues2019] = React.useState<Array<any>>(defaultValues2019);
 	const [values2020, setValues2020] = React.useState<Array<any>>(defaultValues2020);
@@ -168,12 +171,12 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 														/>
 													</div>
 												) : (
-														<div className="form-control bg-transparent border-transparent px-0 text-right text-monospace">
-															<small className="d-inline-flex align-items-center align-middle mx-md-n3">
-																Field for Alt.<IconArrowRight />
-															</small>
-														</div>
-													)}
+													<div className="form-control bg-transparent border-transparent px-0 text-right text-monospace">
+														<small className="d-inline-flex align-items-center align-middle mx-md-n3">
+															Field for Alt.<IconArrowRight />
+														</small>
+													</div>
+												)}
 											</td>
 										</tr>
 									))}

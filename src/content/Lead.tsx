@@ -6,7 +6,7 @@ const Lead: React.FC<IProps> = (_props: IProps) => {
 	return (
 		<React.Fragment>
 			<p>
-				This tool estimates entitlement to the Canada Emergency Wage Subsidy for periods 1 through 13 (March 15, 2020 to March 13, 2021). In general, the subsidy is determined by multiplying the percentages calculated below by the {` `}
+				This tool estimates entitlement to the Canada Emergency Wage Subsidy for periods 1 through 16 (March 15, 2020 to June 5, 2021). In general, the subsidy is determined by multiplying the percentages calculated below by the {` `}
 				<a className="text-primary-light font-weight-bold" href="https://www.canada.ca/en/revenue-agency/services/subsidy/emergency-wage-subsidy/cews-frequently-asked-questions.html#h_5" target="_blank" rel="noreferrer noopener">
 					eligible remuneration
 				</a>{` `}
@@ -27,13 +27,10 @@ const Lead: React.FC<IProps> = (_props: IProps) => {
 				(comprised of a top-up subsidy and base subsidy) available from the first dollar of revenue decline “new system”.
 			</p>
 			<p>
-				This version includes the announcements from the November 30, 2020 Fall Economic Statement.  While the program is to extend to June 2021, details past March 13, 2021 have not yet been released.
-			</p>
-			<p>
 				Important: The rules for calculating specific subsidies and eligibility are very complex and dynamic. Professional assistance should be sought. See {` `}
 				<a href="#disclaimers" className="text-primary-light font-weight-bold">Disclaimer below</a>.
 			</p>
-			<p>UPDATED DECEMBER 10<sup>th</sup>, 2020</p>
+			<p>UPDATED MARCH 7<sup>th</sup>, 2020</p>
 		</React.Fragment>
 	);
 };
