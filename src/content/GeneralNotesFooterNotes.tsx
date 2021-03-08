@@ -149,6 +149,11 @@ if the employee was on certain kinds of long-term leave from July 1, 2019, to Ma
 						</a>
 					</p>
 				</li>
+				<li id="general-notes-16">
+					<p>
+						The calculations and rules will remain largely the same as for Periods 11-13 with the exception that any comparisons using March, April, or May revenues will incorporate prior period revenues from the same month in 2019 as opposed to 2020.
+				</p>
+				</li>
 			</ol>
 
 		</React.Fragment>
