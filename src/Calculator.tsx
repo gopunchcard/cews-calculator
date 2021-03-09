@@ -553,7 +553,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 	}
 	function getGeneralSubTotals5to9() {
 		let total = 0;
-		for (let i = 6; i < 15; i++) {
+		for (let i = 6; i < 18; i++) {
 			if (enabledPeriods[i])
 				total += (resultsGeneral[i]) * renumerationValues[i];
 		}
@@ -562,7 +562,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 	}
 	function getGeneralTotals() {
 		let total = 0;
-		for (let i = 2; i < 15; i++) {
+		for (let i = 2; i < 18; i++) {
 			if (enabledPeriods[i])
 				total += (resultsGeneral[i]) * renumerationValues[i];
 		}
@@ -571,7 +571,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 	}
 	function getAltSubTotals5to9() {
 		let total = 0;
-		for (let i = 6; i < 15; i++) {
+		for (let i = 6; i < 18; i++) {
 			if (enabledPeriods[i])
 				total += (resultsAlt[i]) * renumerationValues[i];
 		}
@@ -580,7 +580,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 	}
 	function getAltTotals() {
 		let total = 0;
-		for (let i = 2; i < 15; i++) {
+		for (let i = 2; i < 18; i++) {
 			if (enabledPeriods[i])
 				total += (resultsAlt[i]) * renumerationValues[i];
 		}
