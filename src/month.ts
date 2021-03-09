@@ -163,7 +163,7 @@ class Month {
 		if (this.month <= 11)
 			return Math.max(this.altEligiblePercentWithoutPreviousMonth, this._prevNewAlternative, this.oldAlternativeEligiblePercent);
 		else
-			return Math.max(this.generalEligiblePercentWithoutPreviousMonth, this._prevNewAlternative);
+			return Math.max(this.altEligiblePercentWithoutPreviousMonth, this._prevNewAlternative);
 	}
 	// This is used to supply last months values as you can use last months values for the new Numbers
 	set prevNewGeneral(value: number) {
