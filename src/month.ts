@@ -17,6 +17,9 @@ const constants = [
 	{ month: 1, cewsPeriod: 11, threshold: 200, baseModifier: 0.8, baseCap: .4 },
 	{ month: 2, cewsPeriod: 12, threshold: 200, baseModifier: 0.8, baseCap: .4 },
 	{ month: 3, cewsPeriod: 13, threshold: 200, baseModifier: 0.8, baseCap: .4 },
+	{ month: 4, cewsPeriod: 14, threshold: 200, baseModifier: 0.8, baseCap: .4 },
+	{ month: 5, cewsPeriod: 15, threshold: 200, baseModifier: 0.8, baseCap: .4 },
+	{ month: 6, cewsPeriod: 16, threshold: 200, baseModifier: 0.8, baseCap: .4 },
 
 ];
 
@@ -160,7 +163,7 @@ class Month {
 		if (this.month <= 11)
 			return Math.max(this.altEligiblePercentWithoutPreviousMonth, this._prevNewAlternative, this.oldAlternativeEligiblePercent);
 		else
-			return Math.max(this.generalEligiblePercentWithoutPreviousMonth, this._prevNewAlternative);
+			return Math.max(this.altEligiblePercentWithoutPreviousMonth, this._prevNewAlternative);
 	}
 	// This is used to supply last months values as you can use last months values for the new Numbers
 	set prevNewGeneral(value: number) {

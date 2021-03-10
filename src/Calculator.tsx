@@ -7,17 +7,17 @@ import { ReactComponent as IconArrowRight } from './components/icons/icon-arrow-
 interface IProps { }
 
 const Calculator: React.FC<IProps> = (props: IProps) => {
-	const monthLabels = ['Jan-20', 'Feb-20', '1: Mar 15 - Apr 11', '2: Apr 12 – May 9', '3: May 10 – June 6', '4: June 7 – July 4', '5: July 5 – Aug 1', '6: Aug 2 – Aug 29', '7: Aug 30 – Sep 26', '8: Sep 27 – Oct 24', '9: Oct 25 – Nov 21', '10: Nov 22 – Dec 19', '11: Dec 20 – Jan 16', '12: Jan 17 – Feb 13', ' 13: Feb 14 – Mar 13'];
-	const refMonthLabels = ['Jan-20', 'Feb-20', 'Mar-20', 'Apr-20', 'May-20', 'Jun-20', 'Jul-20', 'Aug-20', 'Sep-20', 'Oct-20', 'Nov-20', 'Dec-20', 'Dec-20', 'Jan-21', 'Feb-21'];
-	const defaultValues2019 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-	const defaultValues2020 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-	const defaultRenumeration = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+	const monthLabels = ['Jan-20', 'Feb-20', '1: Mar 15 - Apr 11', '2: Apr 12 – May 9', '3: May 10 – June 6', '4: June 7 – July 4', '5: July 5 – Aug 1', '6: Aug 2 – Aug 29', '7: Aug 30 – Sep 26', '8: Sep 27 – Oct 24', '9: Oct 25 – Nov 21', '10: Nov 22 – Dec 19', '11: Dec 20 – Jan 16', '12: Jan 17 – Feb 13', '13: Feb 14 – Mar 13', '14: Mar 14 – Apr 10', '15: Apr 11 – May 8', '16: May 9 – June 5'];
+	const refMonthLabels = ['Jan-20', 'Feb-20', 'Mar-20', 'Apr-20', 'May-20', 'Jun-20', 'Jul-20', 'Aug-20', 'Sep-20', 'Oct-20', 'Nov-20', 'Dec-20', 'Dec-20', 'Jan-21', 'Feb-21', 'Mar-21', 'Apr-21', 'May-21'];
+	const defaultValues2019 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+	const defaultValues2020 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+	const defaultRenumeration = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
-	const defaultEnabledPeriods = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
+	const defaultEnabledPeriods = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
 	const periodStart = 2;
 	const enabledValues = [
-		[2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], //Jan
-		[2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], //Feb
+		[2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17], //Jan
+		[2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17], //Feb
 
 		[2, 3], // Mar = Feb and March
 		[3, 4, 6],
@@ -31,7 +31,10 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 		[11, 12],
 		[12, 13],
 		[13, 14],
-		[14]
+		[14, 15],
+		[15, 16],
+		[16, 17],
+		[17]
 	];
 	const [values2019, setValues2019] = React.useState<Array<any>>(defaultValues2019);
 	const [values2020, setValues2020] = React.useState<Array<any>>(defaultValues2020);
@@ -86,31 +89,35 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 								<tbody>
 									{values2019.map((item, index: number) => {
 										return (
-											<tr key={`row-labels-${index}`} className={classnames(!checkEnabledPeriods(index) && 'disabled')}>
-												<td className="d-lg-none px-3 text-uppercase text-monospace small text-nowrap align-middle">
-													<div className="d-flex flex-column justify-content-center form-control px-0 bg-transparent border-transparent">
+											<React.Fragment>{index === 15 && (
+												<tr><td>&nbsp;</td></tr>
+											)}
+												<tr key={`row-labels-${index}`} className={classnames(!checkEnabledPeriods(index) && 'disabled')}>
+													<td className="d-lg-none px-3 text-uppercase text-monospace small text-nowrap align-middle">
+														<div className="d-flex flex-column justify-content-center form-control px-0 bg-transparent border-transparent">
 
 
 
-														{index - periodStart >= 0 ? `Period ${index - periodStart + 1}` : '-'}
+															{index - periodStart >= 0 ? `Period ${index - periodStart + 1}` : '-'}
 
-														<small className="d-block mt-n2">
-															{refMonthLabels[index]}{showDecFootnote(index)}
-														</small>
+															<small className="d-block mt-n2">
+																{refMonthLabels[index]}{showDecFootnote(index)}
+															</small>
 
-													</div>
-												</td>
-												<td className="d-none d-lg-table-cell px-3">
-													<div className="form-control bg-transparent border-transparent px-0">
-														<small className="text-uppercase text-monospace text-right">{index - periodStart >= 0 ? index - periodStart + 1 : '-'}</small>
-													</div>
-												</td>
-												<td className="d-none d-lg-table-cell px-3 pl-lg-1">
-													<div className="form-control bg-transparent border-transparent px-0">
-														<small className="text-uppercase text-monospace text-right">{refMonthLabels[index]}{showDecFootnote(index)}</small>
-													</div>
-												</td>
-											</tr>
+														</div>
+													</td>
+													<td className="d-none d-lg-table-cell px-3">
+														<div className="form-control bg-transparent border-transparent px-0">
+															<small className="text-uppercase text-monospace text-right">{index - periodStart >= 0 ? index - periodStart + 1 : '-'}</small>
+														</div>
+													</td>
+													<td className="d-none d-lg-table-cell px-3 pl-lg-1">
+														<div className="form-control bg-transparent border-transparent px-0">
+															<small className="text-uppercase text-monospace text-right">{refMonthLabels[index]}{showDecFootnote(index)}</small>
+														</div>
+													</td>
+												</tr>
+											</React.Fragment>
 										)
 									})}
 								</tbody>
@@ -133,49 +140,53 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 								</thead>
 								<tbody>
 									{values2019.map((item, index: number) => (
-										<tr key={`column-2019-${index}`} className={classnames(!checkEnabledPeriods(index) && 'd-none d-md-table-row disabled', index < periodStart && checkEnabledPeriods(index) && 'd-none d-md-table-row')}>
-											<td className="d-md-none pl-3 text-uppercase text-monospace small text-nowrap align-middle">
-												{index - periodStart >= 0 ? `Period ${index - periodStart + 1}` : '-'}
-												<small className="d-block mt-n2">
-													{refMonthLabels[index]}{showDecFootnote(index)}
-												</small>
-											</td>
-											<td className="pr-3">
-												{index >= periodStart ? (
-													<div className={classnames("input-group", !checkEnabledPeriods(index) && 'disabled')}>
-														<div className="input-group-prepend">
-															<span className="input-group-text">$</span>
-														</div>
-														<NumberFormat
-															thousandSeparator=","
+										<React.Fragment>{index === 15 && (
+											<tr><td className=" text-uppercase text-monospace small text-nowrap align-middle">Use 2019 Values &#8595;</td></tr>
+										)}
+											<tr key={`column-2019-${index}`} className={classnames(!checkEnabledPeriods(index) && 'd-none d-md-table-row disabled', index < periodStart && checkEnabledPeriods(index) && 'd-none d-md-table-row')}>
+												<td className="d-md-none pl-3 text-uppercase text-monospace small text-nowrap align-middle">
+													{index - periodStart >= 0 ? `Period ${index - periodStart + 1}` : '-'}
+													<small className="d-block mt-n2">
+														{refMonthLabels[index]}{showDecFootnote(index)}
+													</small>
+												</td>
+												<td className="pr-3">
+													{index >= periodStart ? (
+														<div className={classnames("input-group", !checkEnabledPeriods(index) && 'disabled')}>
+															<div className="input-group-prepend">
+																<span className="input-group-text">$</span>
+															</div>
+															<NumberFormat
+																thousandSeparator=","
 
-															className={
-																classnames(
-																	'form-control text-right',
-																	fieldsWithErrors.includes(`field-2019-${index}`) && "is-invalid",
-																)
-															}
-															value={index >= 2 && values2019[index]}
-															onValueChange={({ floatValue }) => {
-																updateArray2019(index, floatValue);
-																if (floatValue !== undefined && Math.sign(floatValue) !== -1) {
-																	removeError(`field-2019-${index}`);
-																} else {
-																	addError(`field-2019-${index}`);
+																className={
+																	classnames(
+																		'form-control text-right',
+																		fieldsWithErrors.includes(`field-2019-${index}`) && "is-invalid",
+																	)
 																}
-															}}
-															disabled={!checkEnabledPeriods(index)}
-														/>
-													</div>
-												) : (
+																value={index >= 2 && values2019[index]}
+																onValueChange={({ floatValue }) => {
+																	updateArray2019(index, floatValue);
+																	if (floatValue !== undefined && Math.sign(floatValue) !== -1) {
+																		removeError(`field-2019-${index}`);
+																	} else {
+																		addError(`field-2019-${index}`);
+																	}
+																}}
+																disabled={!checkEnabledPeriods(index)}
+															/>
+														</div>
+													) : (
 														<div className="form-control bg-transparent border-transparent px-0 text-right text-monospace">
 															<small className="d-inline-flex align-items-center align-middle mx-md-n3">
 																Field for Alt.<IconArrowRight />
 															</small>
 														</div>
 													)}
-											</td>
-										</tr>
+												</td>
+											</tr>
+										</React.Fragment>
 									))}
 									{!enabledPeriods.includes(true) && (
 										<tr className="bg-transparent d-md-none"><td className="px-0 font-italic text-muted">No months selected. Choose the months you want to calculate above.</td></tr>
@@ -198,44 +209,48 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 								<tbody>
 									{values2020.map((item, index: number) => {
 										return (
-											<tr key={`column-2020-${index}`} className={classnames(!checkEnabledPeriods(index) && 'd-none d-md-table-row disabled')}>
-												<td className="d-md-none pl-3 text-uppercase text-monospace small text-nowrap align-middle">
+											<React.Fragment>{index === 15 && (
+												<tr><td>&nbsp;</td></tr>
+											)}
+												<tr key={`column-2020-${index}`} className={classnames(!checkEnabledPeriods(index) && 'd-none d-md-table-row disabled')}>
+													<td className="d-md-none pl-3 text-uppercase text-monospace small text-nowrap align-middle">
 
 
-													{index - periodStart >= 0 ? `Period ${index - periodStart + 1}` : '-'}
+														{index - periodStart >= 0 ? `Period ${index - periodStart + 1}` : '-'}
 
-													<small className="d-block mt-n2">
-														{refMonthLabels[index]}
-													</small>
-												</td>
-												<td className="pr-3">
-													<div className={classnames("input-group", !checkEnabledPeriods(index) && 'disabled')}>
-														<div className="input-group-prepend">
-															<span className="input-group-text">$</span>
-														</div>
-														<NumberFormat
-															thousandSeparator=","
+														<small className="d-block mt-n2">
+															{refMonthLabels[index]}
+														</small>
+													</td>
+													<td className="pr-3">
+														<div className={classnames("input-group", !checkEnabledPeriods(index) && 'disabled')}>
+															<div className="input-group-prepend">
+																<span className="input-group-text">$</span>
+															</div>
+															<NumberFormat
+																thousandSeparator=","
 
-															className={
-																classnames(
-																	'form-control text-right',
-																	fieldsWithErrors.includes(`field-2020-${index}`) && "is-invalid"
-																)
-															}
-															value={values2020[index]}
-															onValueChange={({ floatValue }) => {
-																updateArray2020(index, floatValue);
-																if (floatValue !== undefined && Math.sign(floatValue) !== -1) {
-																	removeError(`field-2020-${index}`);
-																} else {
-																	addError(`field-2020-${index}`);
+																className={
+																	classnames(
+																		'form-control text-right',
+																		fieldsWithErrors.includes(`field-2020-${index}`) && "is-invalid"
+																	)
 																}
-															}}
-															disabled={!checkEnabledPeriods(index)}
-														/>
-													</div>
-												</td>
-											</tr>
+																value={values2020[index]}
+																onValueChange={({ floatValue }) => {
+																	updateArray2020(index, floatValue);
+																	if (floatValue !== undefined && Math.sign(floatValue) !== -1) {
+																		removeError(`field-2020-${index}`);
+																	} else {
+																		addError(`field-2020-${index}`);
+																	}
+																}}
+																disabled={!checkEnabledPeriods(index)}
+															/>
+														</div>
+													</td>
+												</tr>
+											</React.Fragment>
 										)
 									})}
 									{!enabledPeriods.includes(true) && (
@@ -259,43 +274,47 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 								<tbody>
 									{renumerationValues.map((item, index: number) => {
 										return (
-											<tr key={`column-2020-${index}`} className={classnames(!checkEnabledPeriods(index) && 'disabled', !enabledPeriods[index] && 'd-none d-md-table-row')}>
-												<td className="d-md-none pl-3 text-uppercase text-monospace small text-nowrap align-middle">
+											<React.Fragment>{index === 15 && (
+												<tr><td>&nbsp;</td></tr>
+											)}
+												<tr key={`column-2020-${index}`} className={classnames(!checkEnabledPeriods(index) && 'disabled', !enabledPeriods[index] && 'd-none d-md-table-row')}>
+													<td className="d-md-none pl-3 text-uppercase text-monospace small text-nowrap align-middle">
 
 
-													{index - periodStart >= 0 ? `Period ${index - periodStart + 1}` : '-'}
+														{index - periodStart >= 0 ? `Period ${index - periodStart + 1}` : '-'}
 
-													<small className="d-block mt-n2">
-														{refMonthLabels[index]}
-													</small>
-												</td>
-												<td className="pr-3">
-													<div className={classnames("input-group", !enabledPeriods[index] && 'disabled')}>
-														<div className="input-group-prepend">
-															<span className="input-group-text">$</span>
-														</div>
-														<NumberFormat
-															thousandSeparator=","
-															className={
-																classnames(
-																	'form-control text-right',
-																	fieldsWithErrors.includes(`field-ren-${index}`) && "is-invalid"
-																)
-															}
-															value={renumerationValues[index]}
-															onValueChange={({ floatValue }) => {
-																updateArrayRenumeration(index, floatValue);
-																if (floatValue !== undefined && Math.sign(floatValue) !== -1) {
-																	removeError(`field-ren-${index}`);
-																} else {
-																	addError(`field-ren0-${index}`);
+														<small className="d-block mt-n2">
+															{refMonthLabels[index]}
+														</small>
+													</td>
+													<td className="pr-3">
+														<div className={classnames("input-group", !enabledPeriods[index] && 'disabled')}>
+															<div className="input-group-prepend">
+																<span className="input-group-text">$</span>
+															</div>
+															<NumberFormat
+																thousandSeparator=","
+																className={
+																	classnames(
+																		'form-control text-right',
+																		fieldsWithErrors.includes(`field-ren-${index}`) && "is-invalid"
+																	)
 																}
-															}}
-															disabled={!enabledPeriods[index]}
-														/>
-													</div>
-												</td>
-											</tr>
+																value={renumerationValues[index]}
+																onValueChange={({ floatValue }) => {
+																	updateArrayRenumeration(index, floatValue);
+																	if (floatValue !== undefined && Math.sign(floatValue) !== -1) {
+																		removeError(`field-ren-${index}`);
+																	} else {
+																		addError(`field-ren0-${index}`);
+																	}
+																}}
+																disabled={!enabledPeriods[index]}
+															/>
+														</div>
+													</td>
+												</tr>
+											</React.Fragment>
 										)
 									})}
 								</tbody>
@@ -311,7 +330,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 										<tr className="d-none d-lg-table-row bg-transparent">
 											<td className="pr-3 py-0">
 												<div className="d-flex flex-column justify-content-center form-control px-0 bg-transparent border-transparent text-right line-height-1">
-													<small>Period 5-13<br /><small>Subtotal</small></small>
+													<small>Period 5-16<br /><small>Subtotal</small></small>
 												</div>
 											</td>
 										</tr>
@@ -352,7 +371,10 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 						<tbody>
 							{values2019.map((item, index: number) => {
 								return (
-									<React.Fragment key={`column-results-${index}`}>
+
+									<React.Fragment key={`column-results-${index}`}>{index === 15 && (
+										<tr><td>&nbsp;</td></tr>
+									)}
 										<tr className={classnames('d-sm-none', !checkEnabledPeriods(index) && 'disabled', !enabledPeriods[index] && 'd-none')}>
 											<td colSpan={2} className="pb-0 text-uppercase text-monospace small text-nowrap align-middle">
 												{index - periodStart >= 0 ? `Period ${index - periodStart + 1}` : '-'} - {refMonthLabels[index]}:
@@ -423,10 +445,10 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 										</div>
 									</td>
 								</tr>
-								<tr className="d-sm-none bg-transparent"><td colSpan={2}><h2 className="h6 mt-3 mb-0 text-md-center text-monospace text-uppercase">Period 5-13 Subtotal</h2></td></tr>
+								<tr className="d-sm-none bg-transparent"><td colSpan={2}><h2 className="h6 mt-3 mb-0 text-md-center text-monospace text-uppercase">Period 5-16 Subtotal</h2></td></tr>
 								<tr className="d-lg-table-row bg-transparent border-bottom border-dark">
 
-									<td className="d-none d-sm-table-cell d-lg-none pl-3 text-monospace align-middle"><small className="font-weight-bold">Period 5-13 Subtotal</small></td>
+									<td className="d-none d-sm-table-cell d-lg-none pl-3 text-monospace align-middle"><small className="font-weight-bold">Period 5-16 Subtotal</small></td>
 									<td className="pl-lg-3 pr-lg-2 py-0" >
 										<div className="d-flex flex-column justify-content-center form-control px-0 bg-transparent border-transparent text-right font-weight-bold line-height-1">
 											{getGeneralSubTotals5to9()}
@@ -531,7 +553,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 	}
 	function getGeneralSubTotals5to9() {
 		let total = 0;
-		for (let i = 6; i < 15; i++) {
+		for (let i = 6; i < 18; i++) {
 			if (enabledPeriods[i])
 				total += (resultsGeneral[i]) * renumerationValues[i];
 		}
@@ -540,7 +562,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 	}
 	function getGeneralTotals() {
 		let total = 0;
-		for (let i = 2; i < 15; i++) {
+		for (let i = 2; i < 18; i++) {
 			if (enabledPeriods[i])
 				total += (resultsGeneral[i]) * renumerationValues[i];
 		}
@@ -549,7 +571,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 	}
 	function getAltSubTotals5to9() {
 		let total = 0;
-		for (let i = 6; i < 15; i++) {
+		for (let i = 6; i < 18; i++) {
 			if (enabledPeriods[i])
 				total += (resultsAlt[i]) * renumerationValues[i];
 		}
@@ -558,7 +580,7 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 	}
 	function getAltTotals() {
 		let total = 0;
-		for (let i = 2; i < 15; i++) {
+		for (let i = 2; i < 18; i++) {
 			if (enabledPeriods[i])
 				total += (resultsAlt[i]) * renumerationValues[i];
 		}
@@ -619,6 +641,8 @@ const Calculator: React.FC<IProps> = (props: IProps) => {
 	function showDecFootnote(index: number) {
 		if (index === 11 || index === 12)
 			return <sup>14</sup>;
+		if (index === 15 || index === 16 || index === 17)
+			return <sup><a href="#general-notes-16">15</a></sup>;
 	}
 
 };
