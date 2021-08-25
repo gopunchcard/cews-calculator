@@ -11,6 +11,7 @@ import CalculatorInstructions from './content/CalculatorInstructions';
 import Video from './content/Video';
 import Updates from './content/Updates';
 import ContactForm from './content/ContactForm';
+import NotSupported from './content/NotSupported';
 
 interface IProps { }
 
@@ -46,6 +47,7 @@ const App: React.FC<IProps> = (_props: IProps) => {
 						</a>
 					</div>
 				</div>
+				<NotSupported />
 				<div className="row">
 					<div className="col-xxl-4">
 						<div className="mt-xl-4 mr-xl-4">
