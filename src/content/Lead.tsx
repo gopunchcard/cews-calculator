@@ -30,7 +30,7 @@ const Lead: React.FC<IProps> = (_props: IProps) => {
 				Important: The rules for calculating specific subsidies and eligibility are very complex and dynamic. Professional assistance should be sought. See {` `}
 				<a href="#disclaimers" className="text-primary-light font-weight-bold">Disclaimer below</a>.
 			</p>
-			<p>UPDATED MARCH 7<sup>th</sup>, 2020</p>
+			<p>UPDATED MARCH 7<sup>th</sup>, 2021</p>
 		</React.Fragment>
 	);
 };
